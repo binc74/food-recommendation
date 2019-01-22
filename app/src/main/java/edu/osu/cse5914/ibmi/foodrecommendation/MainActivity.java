@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         mTextView = findViewById(R.id.text1);
         mButton = findViewById(R.id.submit_sign_up);
-
         mButton.setOnClickListener(this);
     }
 
