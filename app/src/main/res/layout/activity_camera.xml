@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".CameraActivity">
 
+
+    <Button
+        android:id="@+id/take_picture"
+        style="?android:textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/title_activity_takephoto"
+        android:textStyle="bold" />
+
+
+
+
 </android.support.constraint.ConstraintLayout>
