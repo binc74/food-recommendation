@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class PrefSetActivity extends AppCompatActivity implements View.OnClickListener {
 
-    //private TextView mTextView;
+   // private TextView mTextView;
     private Button msubmitButton;
 
 
@@ -18,7 +18,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pref_set);
-        //mTextView = findViewById(R.id.text1);
+        // = findViewById(R.id.text1);
         msubmitButton = findViewById(R.id.submit_pref);
         msubmitButton.setOnClickListener(this);
     }
@@ -30,6 +30,8 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
                 Intent pref_intent = new Intent(this, LoginActivity.class); //link to preference view
                 startActivity(pref_intent);
                 break;
+
+
         }
     }
 }
