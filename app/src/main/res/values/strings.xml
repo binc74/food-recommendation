@@ -2,7 +2,8 @@
     <string name="app_name">FoodRecommendation</string>
     <string name="str1">This is a Button</string>
     <string name="str2">text22</string>
-    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_login">Log in</string>
+    <string name="title_activity_signup">Sign up</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
