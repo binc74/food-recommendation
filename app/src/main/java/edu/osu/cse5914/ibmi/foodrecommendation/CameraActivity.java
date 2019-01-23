@@ -20,13 +20,22 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         mTextView = findViewById(R.id.text1);
         mButton = findViewById(R.id.take_picture);
         mButton.setOnClickListener(this);
+
+        Button btnNext = findViewById(R.id.submit_photo);
+        btnNext.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
-            case R.id.submit_sign_up:
-                Intent intent = new Intent(this, LoginActivity.class);
+            case R.id.take_picture:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+
+            case R.id.submit_photo:
+                intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 break;
         }

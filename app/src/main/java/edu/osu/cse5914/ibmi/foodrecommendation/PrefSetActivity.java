@@ -27,7 +27,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submit_pref:
-                Intent pref_intent = new Intent(this, LoginActivity.class); //link to preference view
+                Intent pref_intent = new Intent(this, CameraActivity.class); //link to preference view
                 startActivity(pref_intent);
                 break;
         }

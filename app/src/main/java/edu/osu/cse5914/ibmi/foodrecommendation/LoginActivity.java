@@ -32,12 +32,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.email_sign_in_button:
-                Intent pref_intent = new Intent(this, LoginActivity.class); //link to preference view
+                Intent pref_intent = new Intent(this, PrefSetActivity.class); //link to preference view
                 startActivity(pref_intent);
                 break;
 
             case R.id.email_sign_up:
-                Intent signup_intent = new Intent(this, LoginActivity.class); //link to signup view
+                Intent signup_intent = new Intent(this, PrefSetActivity.class); //link to signup view
                 startActivity(signup_intent);
                 break;
         }
