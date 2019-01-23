@@ -4,6 +4,7 @@
     <string name="str2">text22</string>
     <string name="title_activity_login">Log in</string>
     <string name="title_activity_signup">Sign up</string>
+    <string name="title_activity_takephoto">Take photo</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

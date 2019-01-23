@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".PrefSetActivity"></activity>
         <activity android:name=".MainActivity">
         </activity>
@@ -25,6 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CameraActivity"></activity>
     </application>
 
 </manifest>
