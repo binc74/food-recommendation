@@ -8,10 +8,55 @@
     tools:context=".PrefSetActivity">
 
 
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Height" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Weight" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Age" />
+
+    <Spinner
+        android:id="@+id/spinner3"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:dropDownWidth="match_parent"
+        android:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/spinner4"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:dropDownWidth="match_parent"
+        android:visibility="visible" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="260dp"
+        android:layout_height="40dp"
+        android:dropDownWidth="match_parent"
+        android:visibility="visible" />
+
     <Button
         android:id="@+id/submit_pref"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str1" />
+        android:text="@string/action_start" />
 
 </LinearLayout>
