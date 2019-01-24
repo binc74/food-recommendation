@@ -6,36 +6,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class CameraActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mTextView;
-    private Button mButton;
+    private Button recommButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        mButton = findViewById(R.id.take_picture);
-        mButton.setOnClickListener(this);
+        recommButton = findViewById(R.id.recommendation);
+        recommButton.setOnClickListener(this);
 
-        Button btnNext = findViewById(R.id.submit_photo);
-        btnNext.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent;
         switch (v.getId()) {
-            case R.id.take_picture:
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                break;
-
-            case R.id.submit_photo:
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+            case R.id.recommendation:
+                Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
+                startActivity(pref_intent);
                 break;
         }
     }
