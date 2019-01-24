@@ -5,6 +5,9 @@
     <string name="title_activity_signup">Sign up</string>
     <string name="title_activity_takephoto">Take photo</string>
     <string name="result_page_back">Back</string>
+    <string name="prompt_height">Height</string>
+    <string name="prompt_weight">Weight</string>
+    <string name="prompt_birthday">Birthday</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>

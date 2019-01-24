@@ -27,7 +27,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
         msubmitButton = findViewById(R.id.submit_pref);
         msubmitButton.setOnClickListener(this);
 
-        String[] dtype = new String[]{"Lose Weight", "Gain Weight", "Keep Healthy"};
+        String[] dtype = new String[]{"Lose Weight", "Gain Weight", "Keep Healthy", "Build Muscle"};
         String[] ptype = new String[]{"Vegetarian", "Vegan", "Nondairy", "None"};
         String[] stype = new String[]{"Male", "Female"};
         ArrayAdapter<String> dadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dtype);
@@ -38,11 +38,11 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
         padapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        mprefSpinner = super.findViewById(R.id.spinner);
+        mprefSpinner = super.findViewById(R.id.spinner3);
         mprefSpinner.setAdapter(padapter);
-        mdietSpinner = super.findViewById(R.id.spinner4);
+        mdietSpinner = super.findViewById(R.id.spinner2);
         mdietSpinner.setAdapter(dadapter);
-        msexSpinner = super.findViewById(R.id.spinner3);
+        msexSpinner = super.findViewById(R.id.spinner);
         msexSpinner.setAdapter(sadapter);
 
     }
