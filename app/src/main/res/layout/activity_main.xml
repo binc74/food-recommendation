@@ -1,23 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
-    <TextView
-        android:id="@+id/text1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/str2" />
 
     <Button
         android:id="@+id/submit_sign_up"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/str1" />
+        android:text="@string/result_page_back" />
+
+    <ImageView
+        android:id="@+id/gongbao_jiding"
+        android:layout_width="match_parent"
+        android:layout_height="245dp"
+        app:srcCompat="@drawable/gongbao_jiding" />
+
+    <TextView
+        android:id="@+id/kun_pao_chicken"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:text="Kung Pao chicken"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/general_tao_chicken"
+        android:layout_width="match_parent"
+        android:layout_height="235dp"
+        android:baselineAligned="false"
+        app:srcCompat="@drawable/general_tao_chicken" />
+
+    <TextView
+        android:id="@+id/general_tao-chichen"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:text="General Tao's Chicken"
+        android:textAlignment="center" />
+
 
 </LinearLayout>

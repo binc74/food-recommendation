@@ -17,7 +17,6 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
-        mTextView = findViewById(R.id.text1);
         mButton = findViewById(R.id.take_picture);
         mButton.setOnClickListener(this);
 
