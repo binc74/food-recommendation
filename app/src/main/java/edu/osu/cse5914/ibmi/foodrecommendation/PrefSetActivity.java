@@ -27,7 +27,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
         msubmitButton = findViewById(R.id.submit_pref);
         msubmitButton.setOnClickListener(this);
 
-        String[] dtype = new String[]{"Lose Weight", "Gain Weight", "Build Muscle"};
+        String[] dtype = new String[]{"Lose Weight", "Gain Weight", "Keep Healthy"};
         String[] ptype = new String[]{"Vegetarian", "Vegan", "Nondairy", "None"};
         String[] stype = new String[]{"Male", "Female"};
         ArrayAdapter<String> dadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dtype);
