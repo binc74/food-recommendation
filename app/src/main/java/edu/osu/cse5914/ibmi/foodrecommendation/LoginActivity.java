@@ -12,7 +12,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private TextView mTextView;
     private Button mloginButton;
-    private Button msingupButton;
+    private Button msignupButton;
 
 
     @Override
@@ -23,8 +23,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mloginButton = findViewById(R.id.email_sign_in_button);
         mloginButton.setOnClickListener(this);
 
-        msingupButton = findViewById(R.id.email_sign_up);
-        msingupButton.setOnClickListener(this);
+        msignupButton = findViewById(R.id.email_sign_up);
+        msignupButton.setOnClickListener(this);
 
     }
 
