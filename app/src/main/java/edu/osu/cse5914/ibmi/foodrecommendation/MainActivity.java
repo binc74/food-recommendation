@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mTextView;
     private Button mButton;
+    private EditText mEditText;
 
     private LanguageTranslator translator;
     private TranslationTask transTask;
@@ -30,8 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton = findViewById(R.id.translate);
         mButton.setOnClickListener(this);
         mTextView = findViewById(R.id.text_trans);
-
-        transTask = new TranslationTask(mTextView);
+        mEditText = findViewById(R.id.password);
         Log.d(TAG, "Success Init");
     }
 
@@ -39,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.translate:
-                transTask.execute("Hello", "en-es");
+                Log.d(TAG, "Current EditText: " + mEditText.getText().toString());
+                new TranslationTask(mTextView).execute(mEditText.getText().toString(), "en-zh");
                 break;
         }
     }
