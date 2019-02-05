@@ -11,11 +11,18 @@
 
 
     <Button
-        android:id="@+id/submit_sign_up"
+        android:id="@+id/translate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/result_page_back" />
 
+    <TextView
+        android:id="@+id/text_trans"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:textAlignment="center" />
+
+    <!--
     <ImageView
         android:id="@+id/gongbao_jiding"
         android:layout_width="match_parent"
@@ -42,6 +49,6 @@
         android:layout_height="22dp"
         android:text="General Tao's Chicken"
         android:textAlignment="center" />
-
+    -->
 
 </LinearLayout>
