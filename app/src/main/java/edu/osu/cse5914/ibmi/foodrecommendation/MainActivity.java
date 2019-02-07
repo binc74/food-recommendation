@@ -13,6 +13,7 @@ import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
 import java.util.HashMap;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.util.SuggestionTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.util.TranslationTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -21,6 +22,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mTextView;
     private Button mButton;
     private EditText mEditText;
+
+
+    private TextView tvRecepieJson;
+    private Button btnFetchRecepie;
+
 
     private LanguageTranslator translator;
     private TranslationTask transTask;
@@ -33,6 +39,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mButton.setOnClickListener(this);
         mTextView = findViewById(R.id.text_trans);
         mEditText = findViewById(R.id.password);
+
+        tvRecepieJson=findViewById(R.id.tv_recepie_json);
+        btnFetchRecepie=findViewById(R.id.btn_fetch_recepie);
+        btnFetchRecepie.setOnClickListener(this);
+
+
+
+
         Log.d(TAG, "Success Init");
     }
 
@@ -43,6 +57,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(TAG, "Current EditText: " + mEditText.getText().toString());
                 new TranslationTask(mTextView).execute(mEditText.getText().toString(), "en-zh");
                 break;
+
+            case R.id.btn_fetch_recepie:
+                new SuggestionTask(tvRecepieJson).execute();
+                break;
+
         }
     }
 }
