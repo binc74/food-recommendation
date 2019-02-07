@@ -31,7 +31,7 @@
     <TextView
         android:id="@+id/tv_recepie_json"
         android:layout_width="match_parent"
-        android:layout_height="128dp"
+        android:layout_height="828dp"
         android:textAlignment="center" />
     <!--recepie suggestion-->
 
