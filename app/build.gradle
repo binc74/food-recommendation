@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
+    buildToolsVersion "28.0.3"
     compileSdkVersion 28
     defaultConfig {
         applicationId "edu.osu.cse5914.ibmi.foodrecommendation"
         minSdkVersion 22
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
