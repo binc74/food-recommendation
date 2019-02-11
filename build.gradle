@@ -1,7 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
     repositories {
         google()
         jcenter()
@@ -14,6 +13,16 @@ buildscript {
     }
 }
 
+plugins {
+    id 'com.gradle.build-scan' version '1.16'
+}
+
+buildScan {
+    server = 'https://gradle-enterprise.mycompany.com'
+
+    publishAlways()
+}
+
 allprojects {
     repositories {
         google()
@@ -24,3 +33,5 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
