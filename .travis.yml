@@ -4,6 +4,13 @@ install: true
 jdk:
   - oraclejdk8
 
+android:
+  components:
+    - build-tools-28.0.3
+    - android-28
+    - extra
+    - sys-img-x86-android-28
+  
 script:
   - ./gradlew build connectedCheck
 
