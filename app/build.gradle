@@ -5,7 +5,7 @@ android {
     defaultConfig {
         applicationId "edu.osu.cse5914.ibmi.foodrecommendation"
         minSdkVersion 22
-        targetSdkVersion 28
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
