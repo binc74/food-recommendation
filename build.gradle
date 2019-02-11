@@ -13,16 +13,6 @@ buildscript {
     }
 }
 
-plugins {
-    id 'com.gradle.build-scan' version '1.16'
-}
-
-buildScan {
-    server = 'https://gradle-enterprise.mycompany.com'
-
-    publishAlways()
-}
-
 allprojects {
     repositories {
         google()
