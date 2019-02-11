@@ -6,11 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.util.SuggestionTask;
@@ -31,6 +33,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LanguageTranslator translator;
     private TranslationTask transTask;
 
+
+
+    private ListView lvRecepieJson;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +49,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tvRecepieJson=findViewById(R.id.tv_recepie_json);
         btnFetchRecepie=findViewById(R.id.btn_fetch_recepie);
         btnFetchRecepie.setOnClickListener(this);
+
+        lvRecepieJson= (ListView) findViewById(R.id.listView);
+
+//        Recepie r1 = new Recepie("r1","1","2" );
+//        Recepie r2 = new Recepie("r2","2", "3");
+//
+//
+//        ArrayList<Recepie> recepieList = new ArrayList<>();
+//        recepieList.add(r1);
+//        recepieList.add(r2);
+
 
 
 
@@ -59,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_fetch_recepie:
-                new SuggestionTask(tvRecepieJson).execute();
+                new SuggestionTask(lvRecepieJson, getApplicationContext()).execute();
                 break;
 
         }

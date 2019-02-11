@@ -21,12 +21,23 @@
         android:text="@string/result_page_back" />
 
 
-<!--recepie suggestion-->
+    <!--recepie suggestion-->
     <Button
         android:id="@+id/btn_fetch_recepie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get recepie suggestion" />
+
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/listView"/>
+
+
 
     <TextView
         android:id="@+id/tv_recepie_json"

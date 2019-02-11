@@ -1,7 +1,9 @@
 package edu.osu.cse5914.ibmi.foodrecommendation.util;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -10,18 +12,26 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.MainActivity;
+import edu.osu.cse5914.ibmi.foodrecommendation.R;
+import edu.osu.cse5914.ibmi.foodrecommendation.Recepie;
+import edu.osu.cse5914.ibmi.foodrecommendation.RecepieListAdapter;
+
 //referenced website: https://www.codexpedia.com/android/asynctask-and-httpurlconnection-sample-in-android/
-public class SuggestionTask extends AsyncTask<String, Void, String> {
+public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
     protected TextView mText;
+    protected ListView mList;
+    private final Context mContext;
 
-    public SuggestionTask(TextView tv){
-        mText = tv;
-
+    public SuggestionTask(ListView lv, Context ct){
+        mList = lv;
+        mContext = ct;
 
     }
     @Override
@@ -30,12 +40,14 @@ public class SuggestionTask extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected String doInBackground(String... objects) {
+    protected ArrayList<Recepie> doInBackground(ArrayList... objects) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String recipieJsonStr = null;
         String single ="";
         String rcpParsed = "";
+        ArrayList<Recepie> recepieList = new ArrayList<>();
+
 
         try {
 
@@ -60,15 +72,16 @@ public class SuggestionTask extends AsyncTask<String, Void, String> {
             JSONObject jsreader = new JSONObject(recipieJsonStr);
             JSONArray rcpArr = jsreader.getJSONArray("matches");
 
+
             for(int i =0 ;i <rcpArr.length(); i++){
                 JSONObject JO = (JSONObject) rcpArr.get(i);
 
 
-                single =  "Recepie Name:" + JO.get("recipeName") + "\n";
+//                single =  "Recepie Name:" + JO.get("recipeName") + "\n";
 
-
-                rcpParsed = rcpParsed + single +"\n" ;
-
+                String name=JO.get("recipeName").toString();
+//                rcpParsed = rcpParsed + single +"\n" ;
+                recepieList.add(new Recepie(name,"1","2"));//use rating=1 and prepTime=2 for now and change later
 
             }
 
@@ -83,15 +96,18 @@ public class SuggestionTask extends AsyncTask<String, Void, String> {
         catch (JSONException e) {
             e.printStackTrace();
         }
-        return rcpParsed;
+        return recepieList;
 
     }
 
     @Override
-    protected void onPostExecute(String o) {
+    protected void onPostExecute(ArrayList o) {
         super.onPostExecute(o);
-        mText.setText(o);
-        Log.i("json", o);
+
+        RecepieListAdapter adapter = new RecepieListAdapter(mContext, R.layout.adapter_view_layout, o);
+        mList.setAdapter(adapter);
+
+
     }
 
 
