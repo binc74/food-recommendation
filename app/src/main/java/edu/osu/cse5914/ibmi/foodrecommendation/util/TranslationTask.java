@@ -51,7 +51,7 @@ public class TranslationTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
-
+    //ZH
         mText.setText(o);
     }
 }
