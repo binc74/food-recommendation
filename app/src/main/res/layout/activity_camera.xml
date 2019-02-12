@@ -1,89 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".CameraActivity">
 
-    <LinearLayout
-        android:id="@+id/camera"
-        android:gravity="bottom"
-        android:orientation="vertical"
+    <TextureView
+        android:id="@+id/texture"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_weight="0.7">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btn_takepicture"
+        android:layout_alignParentTop="true"/>
 
-
-        <ImageView
-            android:id="@+id/burgersfries"
-            android:layout_width="match_parent"
-            android:layout_height="290dp"
-            android:src="@drawable/burgersfries" />
-        <Button
-            android:id="@+id/take_picture"
-            style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/title_activity_takephoto"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-
-    <RelativeLayout
-        android:id="@+id/cameraBranches"
-        android:gravity="bottom"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.3">
-
-        <!-- 这个是在容器中央的 -->
-
-        <Button
-            android:id="@+id/recommendation"
-            style="?android:textAppearanceSmall"
-            android:scaleType="centerCrop"
-            android:layout_alignParentBottom="true"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:background="@drawable/recommendation"
-            android:textStyle="bold" />
-
-        <!-- 在中间图片的左边 -->
-        <Button
-            android:id="@+id/evaliuation"
-            style="?android:textAppearanceSmall"
-            android:scaleType="centerCrop"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="50dp"
-            android:layout_toLeftOf="@id/recommendation"
-            android:background="@drawable/evaluation"
-            android:textStyle="bold" />
-
-        <!-- 在中间图片的右边 -->
-        <Button
-            android:id="@+id/community"
-            style="?android:textAppearanceSmall"
-            android:layout_alignParentBottom="true"
-            android:scaleType="centerCrop"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_toRightOf="@id/recommendation"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="50dp"
-            android:background="@drawable/community"
-            android:textStyle="bold" />
-
-
-    </RelativeLayout>
-
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_takepicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/take_picture" />
+</RelativeLayout>
 
 
