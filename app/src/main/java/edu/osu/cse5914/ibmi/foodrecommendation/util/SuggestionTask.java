@@ -2,7 +2,6 @@ package edu.osu.cse5914.ibmi.foodrecommendation.util;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,9 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.osu.cse5914.ibmi.foodrecommendation.MainActivity;
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
-import edu.osu.cse5914.ibmi.foodrecommendation.Recepie;
+import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 import edu.osu.cse5914.ibmi.foodrecommendation.RecepieListAdapter;
 
 //referenced website: https://www.codexpedia.com/android/asynctask-and-httpurlconnection-sample-in-android/

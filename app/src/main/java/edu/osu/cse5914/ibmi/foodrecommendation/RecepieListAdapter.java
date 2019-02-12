@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 
 
 public class RecepieListAdapter extends ArrayAdapter<Recepie> {

@@ -1,4 +1,4 @@
-package edu.osu.cse5914.ibmi.foodrecommendation;
+package edu.osu.cse5914.ibmi.foodrecommendation.data;
 
 public class Recepie {
 
