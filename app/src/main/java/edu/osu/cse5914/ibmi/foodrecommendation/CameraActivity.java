@@ -70,10 +70,9 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
     // Save to file
     private File file;
-    private Bitmap bitmap;
     private static final int REQUEST_CAMERA_PERMISSION = 200;
     private boolean mFlashSupport;
-    private Handler mBackgroudHandler;
+    private Handler mBackgroundHandler;
     private HandlerThread mBackgroundThread;
 
     CameraDevice.StateCallback stateCallBack = new CameraDevice.StateCallback() {
@@ -152,7 +151,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         try {
             mBackgroundThread.join();
             mBackgroundThread = null;
-            mBackgroudHandler = null;
+            mBackgroundHandler = null;
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -161,7 +160,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     private void startBackgroundThread() {
         mBackgroundThread = new HandlerThread("Camera Background");
         mBackgroundThread.start();
-        mBackgroudHandler = new Handler(mBackgroundThread.getLooper());
+        mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
     }
 
     private void takePicture() {
@@ -196,8 +195,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
                 int rotation = getWindowManager().getDefaultDisplay().getRotation();
                 captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
-
-                file = new File(Environment.getExternalStorageDirectory() + "/Images/" +
+                
+                file = new File(Environment.getExternalStorageDirectory() + "/" +
                         UUID.randomUUID().toString() + ".jpg");
                 ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener () {
                     @Override
@@ -222,22 +221,14 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                     private void save(byte[] bytes) throws IOException {
                         OutputStream outputStream = null;
                         try {
-                            //outputStream = new FileOutputStream(file);
-                            //outputStream.write(bytes);
-
-                            // Write to bitmap
-                            bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, null);
-                            Log.d(TAG, "CCCCount: " + bitmap.getByteCount());
-
-                            // Compress byte array
-                            ByteArrayOutputStream bStream = new ByteArrayOutputStream();
-                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bStream);
-                            byte[] byteArray = bStream.toByteArray();
-
-                            Intent intent = new Intent(CameraActivity.this, TestActivity.class);
-                            intent.putExtra("image", byteArray);
-                            startActivity(intent);
+                            outputStream = new FileOutputStream(file);
+                            outputStream.write(bytes);
                         } finally {
+                            Intent intent = new Intent(CameraActivity.this, TestActivity.class);
+                            intent.putExtra("imagePath", file.getAbsolutePath());
+                            Log.d(TAG, "file path: " + file.getAbsolutePath());
+                            startActivity(intent);
+
                             if (outputStream != null) {
                                 outputStream.close();
                             }
@@ -245,7 +236,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                     }
                 };
 
-                reader.setOnImageAvailableListener(readerListener, mBackgroudHandler);
+                reader.setOnImageAvailableListener(readerListener, mBackgroundHandler);
                 CameraCaptureSession.CaptureCallback captureListener = new CameraCaptureSession.CaptureCallback() {
                     @Override
                     public void onCaptureCompleted(@NonNull CameraCaptureSession session, @NonNull CaptureRequest request, @NonNull TotalCaptureResult result) {
@@ -259,7 +250,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onConfigured(@NonNull CameraCaptureSession session) {
                         try {
-                            session.capture(captureBuilder.build(), captureListener, mBackgroudHandler);
+                            session.capture(captureBuilder.build(), captureListener, mBackgroundHandler);
                         } catch (CameraAccessException e) {
                             e.printStackTrace();
                         }
@@ -269,7 +260,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                     public void onConfigureFailed(@NonNull CameraCaptureSession session) {
 
                     }
-                }, mBackgroudHandler);
+                }, mBackgroundHandler);
             }
         } catch (CameraAccessException e) {
             e.printStackTrace();
@@ -313,7 +304,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         capRequestBuilder.set(CaptureRequest.CONTROL_MODE, CaptureRequest.CONTROL_MODE_AUTO);
 
         try {
-            cameraCapSession.setRepeatingRequest(capRequestBuilder.build(), null, mBackgroudHandler);
+            cameraCapSession.setRepeatingRequest(capRequestBuilder.build(), null, mBackgroundHandler);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
