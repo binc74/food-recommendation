@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.camera2.CameraAccessException;
@@ -67,6 +69,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
     // Save to file
     private File file;
+    private Bitmap bitmap;
     private static final int REQUEST_CAMERA_PERMISSION = 200;
     private boolean mFlashSupport;
     private Handler mBackgroudHandler;
@@ -139,11 +142,11 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     protected void onPause() {
-        stopBackgroudThread();
+        stopBackgroundThread();
         super.onPause();
     }
 
-    private void stopBackgroudThread() {
+    private void stopBackgroundThread() {
         mBackgroundThread.quitSafely();
         try {
             mBackgroundThread.join();
@@ -193,7 +196,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                 int rotation = getWindowManager().getDefaultDisplay().getRotation();
                 captureBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
 
-                file = new File(Environment.getExternalStorageDirectory() + "/" +
+                file = new File(Environment.getExternalStorageDirectory() + "/Images/" +
                         UUID.randomUUID().toString() + ".jpg");
                 ImageReader.OnImageAvailableListener readerListener = new ImageReader.OnImageAvailableListener () {
                     @Override
@@ -218,8 +221,12 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                     private void save(byte[] bytes) throws IOException {
                         OutputStream outputStream = null;
                         try {
-                            outputStream = new FileOutputStream(file);
-                            outputStream.write(bytes);
+                            //outputStream = new FileOutputStream(file);
+                            //outputStream.write(bytes);
+
+                            // Write to bitmap
+                            bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, null);
+                            Log.d(TAG, "CCCCount: " + bitmap.getByteCount());
                         } finally {
                             if (outputStream != null) {
                                 outputStream.close();
