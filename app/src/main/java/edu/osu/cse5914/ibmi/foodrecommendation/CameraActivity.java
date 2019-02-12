@@ -35,6 +35,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -227,6 +228,15 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                             // Write to bitmap
                             bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length, null);
                             Log.d(TAG, "CCCCount: " + bitmap.getByteCount());
+
+                            // Compress byte array
+                            ByteArrayOutputStream bStream = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bStream);
+                            byte[] byteArray = bStream.toByteArray();
+
+                            Intent intent = new Intent(CameraActivity.this, TestActivity.class);
+                            intent.putExtra("image", byteArray);
+                            startActivity(intent);
                         } finally {
                             if (outputStream != null) {
                                 outputStream.close();
