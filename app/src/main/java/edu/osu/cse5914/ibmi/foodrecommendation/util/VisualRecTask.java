@@ -50,7 +50,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
         //final File photoFile = new File( (Uri.parse(objects[0])).getPath());
         final File photoFile = new File(objects[0]);
         //final File photoFile = new File("C:\\Users\\Ziming Ma\\Desktop\\Steak\\5.jpg");
-        Log.d("VisualRecTask", "Current File: " + photoFile);
+        Log.d("VisualRecTask", "Current File: " + photoFile.length());
 
         InputStream imagesStream = null;
         try {
@@ -58,15 +58,15 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
         Log.d("VisualRecTask", "Current File: " + imagesStream);
         ClassifyOptions classifyOptions = new ClassifyOptions.Builder()
                 .imagesFile(imagesStream)
                 .imagesFilename(photoFile.getName())
                 //.url("http://e.hiphotos.baidu.com/nuomi/pic/item/b64543a98226cffc07155532b1014a90f603ea77.jpg")
-                .classifierIds( Collections.singletonList("DefaultCustomModel_1496929061"))
-                .threshold((float) 0.6)
-                .owners( Arrays.asList("me"))
+                .classifierIds(Arrays.asList("food"))
                 .build();
+
         ClassifiedImages result = mVisualRecor.classify(classifyOptions).execute();
 
 
