@@ -46,7 +46,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mButton.setOnClickListener(this);
 
         mReport = findViewById(R.id.report);
-        mReport.setOnClickListener(this);
+        //mReport.setOnClickListener(this);
 
         Bitmap image = BitmapFactory.decodeFile(filePath);
 

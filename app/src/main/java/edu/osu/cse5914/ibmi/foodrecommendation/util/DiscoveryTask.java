@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
+import com.ibm.watson.developer_cloud.http.HttpMediaType;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.discovery.v1.model.*;
 import java.io.InputStream;
@@ -17,6 +18,7 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     protected Discovery mDiscovery;
     protected String environmentId;
     protected String collectionId;
+    protected String documentJson;
 
     public DiscoveryTask(TextView tv) {
         mText = tv;
@@ -34,7 +36,7 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
 
         ListCollectionsOptions listOptions = new ListCollectionsOptions.Builder(environmentId).build();
         ListCollectionsResponse listResponse = mDiscovery.listCollections(listOptions).execute();
-        Log.d("DiscoveryTask", "Current File: " + mText.getText().toString());
+        Log.d("DiscoveryTask", "Current File: " + listResponse.toString());
 
     }
     @Override
@@ -44,7 +46,11 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected String doInBackground(String... objects) {
-        Log.d("DiscoveryTask", "1" + objects[0]);
+        documentJson = "{\"field\":\"value\"}";
+        InputStream documentStream = new ByteArrayInputStream(documentJson.getBytes());
+        AddDocumentOptions.Builder builder = new AddDocumentOptions.Builder(environmentId, collectionId);
+       // builder.inputStream(documentStream, HttpMediaType.APPLICATION_JSON);
+       // AddDocumentResponse createResponse = mDiscovery.addDocument(builder.build()).execute();
         return null;
     }
     @Override
