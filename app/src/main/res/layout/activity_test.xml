@@ -38,10 +38,16 @@
 
     <Button
         android:id="@+id/report"
-        android:layout_width="wrap_content"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="206dp"
+        android:layout_marginBottom="36dp"
         android:text="Report"
         tools:layout_editor_absoluteX="223dp"
-        tools:layout_editor_absoluteY="647dp" />
+        tools:layout_editor_absoluteY="647dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
