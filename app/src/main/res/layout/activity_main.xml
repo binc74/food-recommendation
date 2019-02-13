@@ -9,16 +9,16 @@
     tools:context=".MainActivity"
     >
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"  />
+    <!--<EditText-->
+        <!--android:id="@+id/password"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"  />-->
 
-    <Button
-        android:id="@+id/translate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/result_page_back" />
+    <!--<Button-->
+        <!--android:id="@+id/translate"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/result_page_back" />-->
 
 
     <!--recepie suggestion-->
@@ -39,18 +39,18 @@
 
 
 
-    <TextView
-        android:id="@+id/tv_recepie_json"
-        android:layout_width="match_parent"
-        android:layout_height="828dp"
-        android:textAlignment="center" />
-    <!--recepie suggestion-->
+    <!--<TextView-->
+        <!--android:id="@+id/tv_recepie_json"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="828dp"-->
+        <!--android:textAlignment="center" />-->
+    <!--&lt;!&ndash;recepie suggestion&ndash;&gt;-->
 
-    <TextView
-        android:id="@+id/text_trans"
-        android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:textAlignment="center" />
+    <!--<TextView-->
+        <!--android:id="@+id/text_trans"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="22dp"-->
+        <!--android:textAlignment="center" />-->
 
     <!--
     <ImageView

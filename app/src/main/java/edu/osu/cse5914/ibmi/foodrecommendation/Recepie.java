@@ -5,14 +5,22 @@ public class Recepie {
     private String name;
     private String  rating;
     private String prepTime;
+    private String imgUrl;
 
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
 
+    public void setImgUrl(String url) {
+        this.imgUrl = url;
+    }
 
-    public Recepie(String name, String rating, String prepTime) {
+    public Recepie(String name, String rating, String prepTime, String imgUrl) {
         this.rating = rating;
         this.name = name;
         this.prepTime = prepTime;
+        this.imgUrl=imgUrl;
     }
 
 
