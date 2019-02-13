@@ -24,7 +24,7 @@ import java.util.Collections;
 import edu.osu.cse5914.ibmi.foodrecommendation.CameraActivity;
 
 public class VisualRecTask extends AsyncTask<String, Void, String> {
-    protected TextView mText;
+    public TextView mText;
     protected VisualRecognition mVisualRecor;
 
     public VisualRecTask(TextView tv) {

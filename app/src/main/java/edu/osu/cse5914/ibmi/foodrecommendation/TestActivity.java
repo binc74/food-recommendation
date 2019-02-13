@@ -1,5 +1,6 @@
 package edu.osu.cse5914.ibmi.foodrecommendation;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
@@ -46,7 +47,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mButton.setOnClickListener(this);
 
         mReport = findViewById(R.id.report);
-        //mReport.setOnClickListener(this);
+        mReport.setOnClickListener(this);
 
         Bitmap image = BitmapFactory.decodeFile(filePath);
 
@@ -61,13 +62,13 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.report:
-                new DiscoveryTask(mTextView).execute();
+                Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
+                startActivity(pref_intent);
             case R.id.btn_visualrec:
                 // String filePath = "file:" + getIntent().getStringExtra("imagePath");
                 Log.d(TAG, "get path: " + filePath);
                 new VisualRecTask( mTextView ).execute(filePath);
                // new File(filePath).delete();
-
                 break;
         }
     }

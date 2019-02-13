@@ -34,10 +34,6 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
         environmentId = "system";
         collectionId = "news-en";
 
-        ListCollectionsOptions listOptions = new ListCollectionsOptions.Builder(environmentId).build();
-        ListCollectionsResponse listResponse = mDiscovery.listCollections(listOptions).execute();
-        Log.d("DiscoveryTask", "Current File: " + listResponse.toString());
-
     }
     @Override
     protected void onPreExecute() {
@@ -46,12 +42,14 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected String doInBackground(String... objects) {
-        documentJson = "{\"field\":\"value\"}";
-        InputStream documentStream = new ByteArrayInputStream(documentJson.getBytes());
-        AddDocumentOptions.Builder builder = new AddDocumentOptions.Builder(environmentId, collectionId);
-       // builder.inputStream(documentStream, HttpMediaType.APPLICATION_JSON);
+        ListCollectionsOptions listOptions = new ListCollectionsOptions.Builder(environmentId).build();
+        ListCollectionsResponse listResponse = mDiscovery.listCollections(listOptions).execute();
+      //  documentJson = "{\"field\":\"value\"}";
+      //  InputStream documentStream = new ByteArrayInputStream(documentJson.getBytes());
+     //   AddDocumentOptions.Builder builder = new AddDocumentOptions.Builder(environmentId, collectionId);
+       // builder.(documentStream, HttpMediaType.APPLICATION_JSON);
        // AddDocumentResponse createResponse = mDiscovery.addDocument(builder.build()).execute();
-        return null;
+        return listResponse.getCollections().toString();
     }
     @Override
     protected void onProgressUpdate(Void[] values) {
