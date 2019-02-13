@@ -3,12 +3,12 @@ package edu.osu.cse5914.ibmi.foodrecommendation.util;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.AddCorpusOptions;
-
+import com.ibm.watson.developer_cloud.discovery.v1.model.*;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 
@@ -17,20 +17,25 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     protected Discovery mDiscovery;
     protected String environmentId;
     protected String collectionId;
-    protected String documentJson;
 
     public DiscoveryTask(TextView tv) {
         mText = tv;
-
-        mDiscovery = new Discovery("2018-12-03");
-        mDiscovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");
-
+        Log.d("DiscoveryTask", "Current File: " + mText.getText().toString());
         IamOptions options = new IamOptions.Builder()
                 .apiKey("1YJgxYDcHqAH75k-Q3Z1_LKMegZa30d4gKAGEr_hiKKA")
                 .build();
+        mDiscovery = new Discovery("2018-12-03",options);
+        mDiscovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");
+
+
         mDiscovery.setIamCredentials(options);
-        environmentId = "d73e9ac3-e284-4c40-b672-bb0a228a3e81";
-        collectionId = "27e5c66c-09cd-4cd8-b221-cabbb18e5bf7";
+        environmentId = "system";
+        collectionId = "news-en";
+
+        ListCollectionsOptions listOptions = new ListCollectionsOptions.Builder(environmentId).build();
+        ListCollectionsResponse listResponse = mDiscovery.listCollections(listOptions).execute();
+        Log.d("DiscoveryTask", "Current File: " + mText.getText().toString());
+
     }
     @Override
     protected void onPreExecute() {
@@ -39,12 +44,12 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected String doInBackground(String... objects) {
-        documentJson = "{\"field\":\"value\"}";
-        InputStream documentStream = new ByteArrayInputStream(documentJson.getBytes());
+        Log.d("DiscoveryTask", "1" + objects[0]);
         return null;
     }
     @Override
     protected void onProgressUpdate(Void[] values) {
+
         super.onProgressUpdate(values);
     }
 
