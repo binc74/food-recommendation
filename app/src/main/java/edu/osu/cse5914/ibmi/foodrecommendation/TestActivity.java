@@ -14,6 +14,7 @@ import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 
 import java.io.File;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.util.DiscoveryTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.util.VisualRecTask;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener{
@@ -21,8 +22,10 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     private ImageView mImage;
     private Button mButton;
+    private Button mReport;
     private TextView mTextView;
-
+    private  String result;
+    private VisualRecTask visualRecTask;
     private String filePath;
 
     //private VisualRecognition VisualRecor;
@@ -42,21 +45,26 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mButton = findViewById( R.id.btn_visualrec );
         mButton.setOnClickListener(this);
 
+        mReport = findViewById(R.id.report);
+        mReport.setOnClickListener(this);
+
         Bitmap image = BitmapFactory.decodeFile(filePath);
 
         //new File(filePath).delete();
 
         Log.d(TAG, "file size : " + image.getByteCount());
         mImage.setImageBitmap(image);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.report:
+                new DiscoveryTask(mTextView).execute();
             case R.id.btn_visualrec:
                 // String filePath = "file:" + getIntent().getStringExtra("imagePath");
                 Log.d(TAG, "get path: " + filePath);
-
                 new VisualRecTask( mTextView ).execute(filePath);
                // new File(filePath).delete();
 

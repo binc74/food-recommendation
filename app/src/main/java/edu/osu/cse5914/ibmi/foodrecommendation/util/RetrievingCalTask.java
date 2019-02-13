@@ -40,6 +40,7 @@ public class RetrievingCalTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... objects) {
         InputStream documentStream = new ByteArrayInputStream(documentJson.getBytes());
+
         return null;
     }
     @Override
