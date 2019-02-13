@@ -2,6 +2,7 @@ package edu.osu.cse5914.ibmi.foodrecommendation.util;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.MainActivity;
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 import edu.osu.cse5914.ibmi.foodrecommendation.RecepieListAdapter;
@@ -26,10 +28,12 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
     protected TextView mText;
     protected ListView mList;
     private final Context mContext;
+    protected String maxCal;
 
-    public SuggestionTask(ListView lv, Context ct){
+    public SuggestionTask(ListView lv, Context ct, int cal){
         mList = lv;
         mContext = ct;
+        maxCal=String.valueOf(cal);
 
     }
     @Override
@@ -49,9 +53,9 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
 
         try {
 
-
-            URL url = new URL("http://api.myjson.com/bins/xu8g0");
-//           URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.K.min=3&nutrition.K.max=3.5");
+            //remember to only search those with images
+//            URL url = new URL("http://api.myjson.com/bins/xu8g0");
+            URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.ENERC_KCAL.max="+maxCal);
 
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
@@ -76,10 +80,18 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
 
 
 //                single =  "Recepie Name:" + JO.get("recipeName") + "\n";
-
+                String rating=JO.get("rating").toString();
                 String name=JO.get("recipeName").toString();
+                String prepTime=JO.get("totalTimeInSeconds").toString();
+                int intSec=Integer.parseInt(prepTime);
+                int intMin=intSec/60;
+                prepTime=Integer.toString(intMin);
+                String imgUrl= JO.getJSONArray("smallImageUrls").get(0).toString();
+
+
+//                String rating= JO.get()
 //                rcpParsed = rcpParsed + single +"\n" ;
-                recepieList.add(new Recepie(name,"1","2"));//use rating=1 and prepTime=2 for now and change later
+                recepieList.add(new Recepie(name,rating,prepTime, imgUrl));//use rating=1 and prepTime=2 for now and change later
 
             }
 

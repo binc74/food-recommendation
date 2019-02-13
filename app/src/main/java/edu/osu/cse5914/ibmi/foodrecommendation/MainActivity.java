@@ -41,12 +41,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mButton = findViewById(R.id.translate);
-        mButton.setOnClickListener(this);
-        mTextView = findViewById(R.id.text_trans);
-        mEditText = findViewById(R.id.password);
+//        mButton = findViewById(R.id.translate);
+//        mButton.setOnClickListener(this);
+//        mTextView = findViewById(R.id.text_trans);
+//        mEditText = findViewById(R.id.password);
 
-        tvRecepieJson=findViewById(R.id.tv_recepie_json);
+//        tvRecepieJson=findViewById(R.id.tv_recepie_json);
         btnFetchRecepie=findViewById(R.id.btn_fetch_recepie);
         btnFetchRecepie.setOnClickListener(this);
 
@@ -70,13 +70,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.translate:
-                Log.d(TAG, "Current EditText: " + mEditText.getText().toString());
-                new TranslationTask(mTextView).execute(mEditText.getText().toString(), "en-zh");
-                break;
+//            case R.id.translate:
+//                Log.d(TAG, "Current EditText: " + mEditText.getText().toString());
+//                new TranslationTask(mTextView).execute(mEditText.getText().toString(), "en-zh");
+//                break;
 
             case R.id.btn_fetch_recepie:
-                new SuggestionTask(lvRecepieJson, getApplicationContext()).execute();
+                new SuggestionTask(lvRecepieJson, getApplicationContext(),3).execute();
                 break;
 
         }
