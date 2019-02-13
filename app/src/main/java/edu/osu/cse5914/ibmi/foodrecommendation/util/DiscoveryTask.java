@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.AddCorpusOptions;
 
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
@@ -38,6 +39,7 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected String doInBackground(String... objects) {
+        documentJson = "{\"field\":\"value\"}";
         InputStream documentStream = new ByteArrayInputStream(documentJson.getBytes());
         return null;
     }
