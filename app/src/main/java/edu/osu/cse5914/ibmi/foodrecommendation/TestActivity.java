@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.util.DiscoveryTask;
@@ -25,7 +27,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private Button mButton;
     private Button mReport;
     private TextView mTextView;
-    private  String result;
+    private TextView mDiscovery;
     private VisualRecTask visualRecTask;
     private String filePath;
 
@@ -43,9 +45,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
         mImage = findViewById(R.id.image);
         mTextView = findViewById( R.id.tv_visual_rec );
+        mDiscovery = findViewById(R.id.tv_visual_rec2);
         mButton = findViewById( R.id.btn_visualrec );
         mButton.setOnClickListener(this);
-
         mReport = findViewById(R.id.report);
         mReport.setOnClickListener(this);
 
@@ -62,14 +64,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.report:
-                Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
+                Intent pref_intent = new Intent(this, MainActivity.class);
+                pref_intent.putExtra("id",mTextView.getText().toString());
+                //link to preference view
                 startActivity(pref_intent);
             case R.id.btn_visualrec:
                 // String filePath = "file:" + getIntent().getStringExtra("imagePath");
                 Log.d(TAG, "get path: " + filePath);
-                new VisualRecTask( mTextView ).execute(filePath);
+                new VisualRecTask( mTextView,mDiscovery ).execute(filePath);
                // new File(filePath).delete();
-                break;
         }
     }
 }

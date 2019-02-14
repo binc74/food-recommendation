@@ -7,28 +7,30 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
-import com.ibm.watson.developer_cloud.http.HttpMediaType;
+import com.ibm.watson.developer_cloud.discovery.v1.model.QueryOptions;
+import com.ibm.watson.developer_cloud.discovery.v1.model.QueryResponse;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
-import com.ibm.watson.developer_cloud.discovery.v1.model.*;
-import java.io.InputStream;
-import java.io.ByteArrayInputStream;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
 
 public class DiscoveryTask extends AsyncTask<String, Void, String> {
     protected TextView mText;
+    protected String foodCal;
     protected Discovery mDiscovery;
     protected String environmentId;
     protected String collectionId;
-    protected String documentJson;
 
-    public DiscoveryTask(TextView tv) {
+    public DiscoveryTask(String food, TextView tv) {
         mText = tv;
-        Log.d("DiscoveryTask", "Current File: " + mText.getText().toString());
+        foodCal=food;
         IamOptions options = new IamOptions.Builder()
                 .apiKey("1YJgxYDcHqAH75k-Q3Z1_LKMegZa30d4gKAGEr_hiKKA")
                 .build();
         mDiscovery = new Discovery("2018-12-03",options);
         mDiscovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");
-
 
         mDiscovery.setIamCredentials(options);
         environmentId = "system";
@@ -42,14 +44,12 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected String doInBackground(String... objects) {
-        ListCollectionsOptions listOptions = new ListCollectionsOptions.Builder(environmentId).build();
-        ListCollectionsResponse listResponse = mDiscovery.listCollections(listOptions).execute();
-      //  documentJson = "{\"field\":\"value\"}";
-      //  InputStream documentStream = new ByteArrayInputStream(documentJson.getBytes());
-     //   AddDocumentOptions.Builder builder = new AddDocumentOptions.Builder(environmentId, collectionId);
-       // builder.(documentStream, HttpMediaType.APPLICATION_JSON);
-       // AddDocumentResponse createResponse = mDiscovery.addDocument(builder.build()).execute();
-        return listResponse.getCollections().toString();
+        QueryOptions.Builder builder = new QueryOptions.Builder(environmentId, collectionId);
+        builder.query(foodCal+" unhealthy");
+        QueryResponse result = mDiscovery.query(builder.build()).execute();
+        String str = result.getResults().get(0).get("title").toString();
+            Log.d("DiscoveryTask",str);
+        return str;
     }
     @Override
     protected void onProgressUpdate(Void[] values) {

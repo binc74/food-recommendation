@@ -25,11 +25,12 @@ import edu.osu.cse5914.ibmi.foodrecommendation.CameraActivity;
 
 public class VisualRecTask extends AsyncTask<String, Void, String> {
     public TextView mText;
+    public TextView mdiscovery;
     protected VisualRecognition mVisualRecor;
 
-    public VisualRecTask(TextView tv) {
+    public VisualRecTask(TextView tv,TextView discovery) {
         mText = tv;
-
+        mdiscovery = discovery;
         IamOptions options = new IamOptions.Builder()
                 .apiKey("gqPKKIDPqLEkA0qprEYRT8-spN3QdFTH5tE8SFtvQz_V")
                 .build();
@@ -64,7 +65,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
                 .imagesFile(imagesStream)
                 .imagesFilename(photoFile.getName())
                 //.url("http://e.hiphotos.baidu.com/nuomi/pic/item/b64543a98226cffc07155532b1014a90f603ea77.jpg")
-                .classifierIds(Arrays.asList("food"))
+                .classifierIds(Arrays.asList("DefaultCustomModel_1496929061"))
                 .build();
 
         ClassifiedImages result = mVisualRecor.classify(classifyOptions).execute();
@@ -82,7 +83,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
-
+        new DiscoveryTask(o,mdiscovery).execute();
         mText.setText(o);
     }
 }
