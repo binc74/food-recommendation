@@ -64,9 +64,14 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.report:
+<<<<<<< HEAD
                 Intent pref_intent = new Intent(this, MainActivity.class);
                 pref_intent.putExtra("id",mTextView.getText().toString());
                 //link to preference view
+=======
+                Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
+                pref_intent.putExtra("food_category", mTextView.getText().toString());
+>>>>>>> bda08a5605137df9a90f6af57a5424be5952f1ed
                 startActivity(pref_intent);
             case R.id.btn_visualrec:
                 // String filePath = "file:" + getIntent().getStringExtra("imagePath");

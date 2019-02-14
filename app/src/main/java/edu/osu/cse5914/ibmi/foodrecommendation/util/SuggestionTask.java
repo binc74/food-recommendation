@@ -30,10 +30,10 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
     private final Context mContext;
     protected String maxCal;
 
-    public SuggestionTask(ListView lv, Context ct, int cal){
+    public SuggestionTask(ListView lv, Context ct, String cal){
         mList = lv;
         mContext = ct;
-        maxCal=String.valueOf(cal);
+        maxCal=cal;
 
     }
     @Override

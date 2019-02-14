@@ -26,11 +26,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button getCal;
     private EditText mEditText;
+<<<<<<< HEAD
     private TextView mTextView;
 
     private TextView tvRecepieJson;
     private Button btnFetchRecepie;
     private String text;
+=======
+
+    private String food_category;
+    private TextView tvRecepieJson;
+    private Button btnFetchRecepie;
+    private String maxCalAllowed;
+
+>>>>>>> bda08a5605137df9a90f6af57a5424be5952f1ed
     private LanguageTranslator translator;
     private TranslationTask transTask;
 
@@ -40,6 +49,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
+        food_category= getIntent().getStringExtra("food_category");
+        if (food_category.equals("Steak"))
+            maxCalAllowed="0.5";
+        if (food_category.equals("Pizza"))
+            maxCalAllowed="0.6";
+        if (food_category.equals("Hamburger"))
+            maxCalAllowed="1.5";
+        if (food_category.equals("French Fries"))
+            maxCalAllowed="2";
+        else
+            maxCalAllowed="4";
+
+
+
+
+
         super.onCreate(savedInstanceState);
         text = getIntent().getStringExtra("id");
         setContentView(R.layout.activity_main);
@@ -81,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.btn_fetch_recepie:
-                new SuggestionTask(lvRecepieJson, getApplicationContext(),3).execute();
+                new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed).execute();
                 break;
 
         }
