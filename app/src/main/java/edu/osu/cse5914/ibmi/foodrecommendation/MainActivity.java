@@ -26,20 +26,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button getCal;
     private EditText mEditText;
-<<<<<<< HEAD
     private TextView mTextView;
 
     private TextView tvRecepieJson;
     private Button btnFetchRecepie;
     private String text;
-=======
+
 
     private String food_category;
-    private TextView tvRecepieJson;
-    private Button btnFetchRecepie;
+
     private String maxCalAllowed;
 
->>>>>>> bda08a5605137df9a90f6af57a5424be5952f1ed
     private LanguageTranslator translator;
     private TranslationTask transTask;
 
