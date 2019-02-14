@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         food_category= getIntent().getStringExtra("food_category");
         if (food_category.equals("Steak")||food_category.equals("Pizza")||food_category.equals("Hamburger")||food_category.equals("French Fries")) {
-            maxCalAllowed = "0.5";
-            minCalAllowed = "1.0";
+            minCalAllowed = "0.5";
+            maxCalAllowed = "1.0";
         }
         else{
             minCalAllowed="4";
