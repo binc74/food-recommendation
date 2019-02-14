@@ -74,12 +74,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        mEditText = findViewById(R.id.password);
 
 //        tvRecepieJson=findViewById(R.id.tv_recepie_json);
-        btnFetchRecepie=findViewById(R.id.btn_fetch_recepie);
-        btnFetchRecepie.setOnClickListener(this);
-        getCal=findViewById(R.id.cal_feedback);
-        getCal.setOnClickListener(this);
-        mTextView = findViewById( R.id.cal_feedback );
-        mTextView.setMovementMethod(LinkMovementMethod.getInstance());
+       // btnFetchRecepie=findViewById(R.id.btn_fetch_recepie);
+      //  btnFetchRecepie.setOnClickListener(this);
+        //getCal=findViewById(R.id.cal_feedback);
+       // getCal.setOnClickListener(this);
+        //mTextView = findViewById( R.id.cal_feedback );
+        //mTextView.setMovementMethod(LinkMovementMethod.getInstance());
 
         lvRecepieJson= (ListView) findViewById(R.id.listView);
 
@@ -90,25 +90,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        ArrayList<Recepie> recepieList = new ArrayList<>();
 //        recepieList.add(r1);
 //        recepieList.add(r2);
-
-
-
-
-
+        new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed).execute();
         Log.d(TAG, "Success Init");
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.cal_feedback:
-                new DiscoveryTask(food_category,mTextView).execute();
-                break;
 
-            case R.id.btn_fetch_recepie:
-                new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed).execute();
-                break;
-
-        }
     }
 }

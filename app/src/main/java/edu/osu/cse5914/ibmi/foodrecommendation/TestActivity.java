@@ -24,10 +24,10 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private static String TAG = "TestActivity";
 
     private ImageView mImage;
-    private Button mButton;
+   // private Button mButton;
     private Button mReport;
-    private TextView mTextView;
-    private TextView mDiscovery;
+    private TextView mTextView ;
+    private TextView mDiscovery ;
    // private VisualRecTask visualRecTask;
     private String filePath;
 
@@ -46,8 +46,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mImage = findViewById(R.id.image);
         mTextView = findViewById( R.id.tv_visual_rec );
         mDiscovery = findViewById(R.id.tv_visual_rec2);
-        mButton = findViewById( R.id.btn_visualrec );
-        mButton.setOnClickListener(this);
+        //mButton = findViewById( R.id.btn_visualrec );
+        //mButton.setOnClickListener(this);
         mReport = findViewById(R.id.report);
         mReport.setOnClickListener(this);
 
@@ -55,9 +55,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
         //new File(filePath).delete();
 
+
+
         Log.d(TAG, "file size : " + image.getByteCount());
         mImage.setImageBitmap(image);
-
+        new VisualRecTask( mTextView,mDiscovery ).execute(filePath);
     }
 
     @Override
@@ -68,11 +70,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
                 pref_intent.putExtra("food_category", mTextView.getText().toString());
                 startActivity(pref_intent);
-            case R.id.btn_visualrec:
-                // String filePath = "file:" + getIntent().getStringExtra("imagePath");
-                Log.d(TAG, "get path: " + filePath);
-                new VisualRecTask( mTextView,mDiscovery ).execute(filePath);
-               // new File(filePath).delete();
+                break;
         }
     }
 }

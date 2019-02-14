@@ -22,23 +22,11 @@
 
 
     <!--recepie suggestion-->
-    <Button
-        android:id="@+id/cal_feedback"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Calories Feedback" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="79dp" />
-
-    <Button
-        android:id="@+id/btn_fetch_recepie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Get recepie suggestion" />
-
 
 
     <ListView

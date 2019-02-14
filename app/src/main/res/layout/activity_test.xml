@@ -19,8 +19,8 @@
         android:id="@+id/tv_visual_rec2"
         android:layout_width="197dp"
         android:layout_height="99dp"
-        android:layout_marginStart="196dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginBottom="104dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -38,28 +38,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn_visualrec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginBottom="36dp"
-        android:text="Recognize"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
         android:id="@+id/report"
         android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="206dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="48dp"
         android:text="Report"
-        tools:layout_editor_absoluteX="223dp"
-        tools:layout_editor_absoluteY="647dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
