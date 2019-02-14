@@ -36,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String food_category;
 
     private String maxCalAllowed;
+    private String minCalAllowed;
+
 
     private LanguageTranslator translator;
     private TranslationTask transTask;
@@ -50,16 +52,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         food_category= getIntent().getStringExtra("food_category");
-        if (food_category.equals("Steak"))
-            maxCalAllowed="0.5";
-        if (food_category.equals("Pizza"))
-            maxCalAllowed="0.6";
-        if (food_category.equals("Hamburger"))
-            maxCalAllowed="1.5";
-        if (food_category.equals("French Fries"))
-            maxCalAllowed="2";
+        if (food_category.equals("Steak")||food_category.equals("Pizza")||food_category.equals("Hamburger")||food_category.equals("French Fries")) {
+            maxCalAllowed = "0.5";
+            minCalAllowed = "1.0";
+        }
         else
-            maxCalAllowed="4";
+            minCalAllowed="4";
+        maxCalAllowed = "8";
+
 
 
 
@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        ArrayList<Recepie> recepieList = new ArrayList<>();
 //        recepieList.add(r1);
 //        recepieList.add(r2);
-        new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed).execute();
+        new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed,minCalAllowed).execute();
         Log.d(TAG, "Success Init");
     }
 

@@ -29,11 +29,15 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
     protected ListView mList;
     private final Context mContext;
     protected String maxCal;
+    protected String minCal;
 
-    public SuggestionTask(ListView lv, Context ct, String cal){
+
+    public SuggestionTask(ListView lv, Context ct, String maxcal,String mincal ){
         mList = lv;
         mContext = ct;
-        maxCal=cal;
+        maxCal=maxcal;
+        minCal=mincal;
+
 
     }
     @Override
@@ -55,7 +59,7 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
 
             //remember to only search those with images
 //            URL url = new URL("http://api.myjson.com/bins/xu8g0");
-            URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.ENERC_KCAL.max="+maxCal);
+            URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.ENERC_KCAL.max="+maxCal+"&nutrition.ENERC_KCAL.min="+minCal);
 
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
