@@ -9,11 +9,13 @@ import android.widget.TextView;
 import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
 import com.ibm.watson.developer_cloud.discovery.v1.model.QueryOptions;
 import com.ibm.watson.developer_cloud.discovery.v1.model.QueryResponse;
+import com.ibm.watson.developer_cloud.discovery.v1.model.QueryResult;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.List;
 
 
 public class DiscoveryTask extends AsyncTask<String, Void, String> {
@@ -47,8 +49,12 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
         QueryOptions.Builder builder = new QueryOptions.Builder(environmentId, collectionId);
         builder.query(foodCal+" unhealthy");
         QueryResponse result = mDiscovery.query(builder.build()).execute();
-        String str = result.getResults().get(0).get("title").toString();
-            Log.d("DiscoveryTask",str);
+        List<QueryResult> resultList = result.getResults();
+        String str = "Top notes from discovery:\n";
+        if (resultList.size() > 0) {
+            str += resultList.get(0).get("title").toString();
+        }
+
         return str;
     }
     @Override
