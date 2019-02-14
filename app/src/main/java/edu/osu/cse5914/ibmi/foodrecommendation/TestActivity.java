@@ -63,6 +63,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.report:
                 Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
+                pref_intent.putExtra("food_category", mTextView.getText().toString());
                 startActivity(pref_intent);
             case R.id.btn_visualrec:
                 // String filePath = "file:" + getIntent().getStringExtra("imagePath");
