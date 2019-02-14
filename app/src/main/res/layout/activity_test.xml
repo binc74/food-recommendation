@@ -19,8 +19,8 @@
         android:id="@+id/tv_visual_rec2"
         android:layout_width="197dp"
         android:layout_height="99dp"
-        android:layout_marginStart="212dp"
-        android:layout_marginBottom="104dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginBottom="96dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cal_feedback:
-                new DiscoveryTask(text,mTextView).execute();
+                new DiscoveryTask(food_category,mTextView).execute();
                 break;
 
             case R.id.btn_fetch_recepie:
