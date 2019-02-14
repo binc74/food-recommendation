@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             maxCalAllowed = "0.5";
             minCalAllowed = "1.0";
         }
-        else
+        else{
             minCalAllowed="4";
-        maxCalAllowed = "8";
+        maxCalAllowed = "8";}
 
 
 
