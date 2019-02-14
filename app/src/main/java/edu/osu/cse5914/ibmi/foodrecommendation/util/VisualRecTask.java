@@ -66,13 +66,24 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
                 .imagesFilename(photoFile.getName())
                 //.url("http://e.hiphotos.baidu.com/nuomi/pic/item/b64543a98226cffc07155532b1014a90f603ea77.jpg")
                 .classifierIds(Arrays.asList("DefaultCustomModel_1496929061"))
+                .threshold((float) 0.0)
                 .build();
 
         ClassifiedImages result = mVisualRecor.classify(classifyOptions).execute();
 
 
+        String className = "";
+        float maxScore = 0;
+
+        for(int i = 0; i < result.getCustomClasses(); i++){
+            if(maxScore < result.getImages().get(0).getClassifiers().get(0).getClasses().get(i).getScore()){
+                maxScore = result.getImages().get(0).getClassifiers().get(0).getClasses().get(i).getScore();
+                className = result.getImages().get(0).getClassifiers().get(0).getClasses().get(i).getClassName();
+            }
+        }
+
         Log.d("VisualRecTask", "Current File: " + result.toString());
-        return result.getImages().get(0).getClassifiers().get(0).getClasses().get(0).getClassName();
+        return className;
     }
 
     @Override
