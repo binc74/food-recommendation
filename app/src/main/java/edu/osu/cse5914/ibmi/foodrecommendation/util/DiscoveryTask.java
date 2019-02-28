@@ -29,7 +29,7 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
         mText = tv;
         foodCal=food;
         IamOptions options = new IamOptions.Builder()
-                .apiKey("lnAy4Clzms9gUBQ18vYqnQ3ctfb4YGGhRPTpakiS4kpi")
+                .apiKey("U5YchTlhMNYISHMGcatpiEwk5pj4cmTzOP7cL2JTKnDK")
                 .build();
         mDiscovery = new Discovery("2018-12-03",options);
         mDiscovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");
