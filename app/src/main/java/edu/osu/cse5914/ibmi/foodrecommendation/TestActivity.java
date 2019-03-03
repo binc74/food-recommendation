@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +47,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mImage = findViewById(R.id.image);
         mTextView = findViewById( R.id.tv_visual_rec );
         mDiscovery = findViewById(R.id.tv_visual_rec2);
+        mDiscovery.setMovementMethod(new ScrollingMovementMethod());
         //mButton = findViewById( R.id.btn_visualrec );
         //mButton.setOnClickListener(this);
         mReport = findViewById(R.id.report);
