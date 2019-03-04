@@ -18,9 +18,10 @@
     <TextView
         android:id="@+id/tv_visual_rec2"
         android:layout_width="197dp"
-        android:layout_height="99dp"
+        android:layout_height="170dp"
         android:layout_marginStart="204dp"
         android:layout_marginBottom="104dp"
+        android:scrollbars="vertical"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -40,12 +41,13 @@
     <Button
         android:id="@+id/report"
         android:layout_width="115dp"
-        android:layout_height="wrap_content"
+        android:layout_height="58dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="148dp"
-        android:layout_marginBottom="48dp"
-        android:text="Report"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/roundbutton"
+        android:text="Get Recommendation"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

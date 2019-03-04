@@ -9,11 +9,13 @@ import android.widget.TextView;
 import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
 import com.ibm.watson.developer_cloud.discovery.v1.model.QueryOptions;
 import com.ibm.watson.developer_cloud.discovery.v1.model.QueryResponse;
+import com.ibm.watson.developer_cloud.discovery.v1.model.QueryResult;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.List;
 
 
 public class DiscoveryTask extends AsyncTask<String, Void, String> {
@@ -27,7 +29,7 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
         mText = tv;
         foodCal=food;
         IamOptions options = new IamOptions.Builder()
-                .apiKey("lnAy4Clzms9gUBQ18vYqnQ3ctfb4YGGhRPTpakiS4kpi")
+                .apiKey("U5YchTlhMNYISHMGcatpiEwk5pj4cmTzOP7cL2JTKnDK")
                 .build();
         mDiscovery = new Discovery("2018-12-03",options);
         mDiscovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");
@@ -45,10 +47,14 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... objects) {
         QueryOptions.Builder builder = new QueryOptions.Builder(environmentId, collectionId);
-        builder.query(foodCal+" unhealthy");
+        builder.query(foodCal+"Suggestion");
         QueryResponse result = mDiscovery.query(builder.build()).execute();
-        String str = result.getResults().get(0).get("title").toString();
-            Log.d("DiscoveryTask",str);
+        Log.d("Discovery", result.toString());
+        List<QueryResult> resultList = result.getResults();
+        String str = "Top notes from discovery:\n";
+        if (resultList.size() > 0) {
+            str += resultList.get(0).get("title").toString();
+        }
         return str;
     }
     @Override
