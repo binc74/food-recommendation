@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
@@ -21,10 +22,10 @@ import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
 
 public class VisualRecTask extends AsyncTask<String, Void, String> {
     public TextView mText;
-    public TextView mdiscovery;
+    public Button mdiscovery;
     protected VisualRecognition mVisualRecor;
 
-    public VisualRecTask(TextView tv,TextView discovery) {
+    public VisualRecTask(TextView tv,Button discovery) {
         mText = tv;
         mdiscovery = discovery;
         IamOptions options = new IamOptions.Builder()

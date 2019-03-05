@@ -3,6 +3,7 @@ package edu.osu.cse5914.ibmi.foodrecommendation;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -18,10 +19,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private static String TAG = "TestActivity";
 
     private ImageView mImage;
-   // private Button mButton;
     private Button mReport;
+    private Button mDiscoveryButton;
     private TextView mTextView ;
-    private TextView mDiscovery ;
    // private VisualRecTask visualRecTask;
     private String filePath;
 
@@ -39,8 +39,10 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
         mImage = findViewById(R.id.image);
         mTextView = findViewById( R.id.tv_visual_rec );
-        mDiscovery = findViewById(R.id.tv_visual_rec2);
-        mDiscovery.setMovementMethod(new ScrollingMovementMethod());
+        mDiscoveryButton = findViewById(R.id.DiscoveryButton);
+        mDiscoveryButton.setOnClickListener(this);
+        mDiscoveryButton.setEnabled(false);
+        //mDiscovery.setMovementMethod(new ScrollingMovementMethod());
         //mButton = findViewById( R.id.btn_visualrec );
         //mButton.setOnClickListener(this);
         mReport = findViewById(R.id.report);
@@ -54,7 +56,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.d(TAG, "file size : " + image.getByteCount());
         mImage.setImageBitmap(image);
-        new VisualRecTask( mTextView,mDiscovery ).execute(filePath);
+        new VisualRecTask( mTextView,mDiscoveryButton ).execute(filePath);
     }
 
     @Override
@@ -66,6 +68,13 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 pref_intent.putExtra("food_category", mTextView.getText().toString());
                 startActivity(pref_intent);
                 break;
+            case R.id.DiscoveryButton:
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(mDiscoveryButton.getText().toString()));
+                startActivity(i);
+                break;
+
         }
+
     }
 }
