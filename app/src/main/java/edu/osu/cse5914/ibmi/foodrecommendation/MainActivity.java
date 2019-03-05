@@ -2,7 +2,6 @@ package edu.osu.cse5914.ibmi.foodrecommendation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,16 +9,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.ibm.watson.developer_cloud.discovery.v1.Discovery;
 import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
-import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import edu.osu.cse5914.ibmi.foodrecommendation.util.DiscoveryTask;
-import edu.osu.cse5914.ibmi.foodrecommendation.util.SuggestionTask;
-import edu.osu.cse5914.ibmi.foodrecommendation.util.TranslationTask;
+import edu.osu.cse5914.ibmi.foodrecommendation.tasks.SuggestionTask;
+import edu.osu.cse5914.ibmi.foodrecommendation.tasks.TranslationTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static String TAG = "MainActivity";

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView mTextView;
@@ -24,7 +26,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         msignupButton = findViewById(R.id.email_sign_up);
         msignupButton.setOnClickListener(this);
-
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
     }
 
     @Override

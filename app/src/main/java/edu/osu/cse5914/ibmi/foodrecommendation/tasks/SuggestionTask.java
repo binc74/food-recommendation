@@ -1,8 +1,7 @@
-package edu.osu.cse5914.ibmi.foodrecommendation.util;
+package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -18,7 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.osu.cse5914.ibmi.foodrecommendation.MainActivity;
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 import edu.osu.cse5914.ibmi.foodrecommendation.RecepieListAdapter;

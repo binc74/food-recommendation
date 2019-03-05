@@ -1,6 +1,5 @@
-package edu.osu.cse5914.ibmi.foodrecommendation.util;
+package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -16,12 +15,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
-import java.util.Collections;
 
-import edu.osu.cse5914.ibmi.foodrecommendation.CameraActivity;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
 
 public class VisualRecTask extends AsyncTask<String, Void, String> {

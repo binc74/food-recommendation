@@ -1,8 +1,6 @@
-package edu.osu.cse5914.ibmi.foodrecommendation.util;
+package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;

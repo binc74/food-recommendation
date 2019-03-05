@@ -1,4 +1,4 @@
-package edu.osu.cse5914.ibmi.foodrecommendation.util;
+package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.os.AsyncTask;
 import android.os.Build;

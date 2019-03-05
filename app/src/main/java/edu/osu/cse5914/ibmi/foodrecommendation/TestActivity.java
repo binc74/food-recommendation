@@ -12,14 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
-
-import org.w3c.dom.Text;
-
-import java.io.File;
-
-import edu.osu.cse5914.ibmi.foodrecommendation.util.DiscoveryTask;
-import edu.osu.cse5914.ibmi.foodrecommendation.util.VisualRecTask;
+import edu.osu.cse5914.ibmi.foodrecommendation.tasks.VisualRecTask;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener{
     private static String TAG = "TestActivity";

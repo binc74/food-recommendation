@@ -1,4 +1,4 @@
-package edu.osu.cse5914.ibmi.foodrecommendation.util;
+package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.os.AsyncTask;
 import android.os.Build;
@@ -11,9 +11,6 @@ import com.ibm.watson.developer_cloud.discovery.v1.model.QueryOptions;
 import com.ibm.watson.developer_cloud.discovery.v1.model.QueryResponse;
 import com.ibm.watson.developer_cloud.discovery.v1.model.QueryResult;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.List;
 
