@@ -54,8 +54,6 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
                 Intent pref_intent = new Intent(this, CameraActivity.class); //link to preference view
                 startActivity(pref_intent);
                 break;
-
-
         }
     }
 }

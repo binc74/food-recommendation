@@ -22,8 +22,16 @@ public class UserService extends BaseFirestoreService {
         return COLLECTION;
     }
 
+    public static User getUserFromDocument(DocumentSnapshot ds) {
+        return ds.toObject(User.class);
+    }
+
     public void processUser(User user, OnCompleteListener<DocumentSnapshot> onCompleteListener) {
         getDocument(user, onCompleteListener);
+    }
+
+    public void processUserById(String uid, OnCompleteListener<DocumentSnapshot> onCompleteListener) {
+        getDocument(uid, onCompleteListener);
     }
 
     public void addNewUser(User user) {
