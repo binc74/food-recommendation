@@ -17,6 +17,8 @@ import org.json.JSONObject;
 
 import java.util.List;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
+
 
 public class DiscoveryTask extends AsyncTask<String, Void, String> {
     protected TextView mText;
@@ -29,7 +31,7 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
         mText = tv;
         foodCal=food;
         IamOptions options = new IamOptions.Builder()
-                .apiKey("U5YchTlhMNYISHMGcatpiEwk5pj4cmTzOP7cL2JTKnDK")
+                .apiKey(ProjectApi.DISCOVERY_API1)
                 .build();
         mDiscovery = new Discovery("2018-12-03",options);
         mDiscovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");

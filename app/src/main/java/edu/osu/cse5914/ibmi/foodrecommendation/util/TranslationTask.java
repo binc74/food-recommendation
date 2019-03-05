@@ -10,6 +10,8 @@ import com.ibm.watson.developer_cloud.language_translator.v3.model.TranslateOpti
 import com.ibm.watson.developer_cloud.language_translator.v3.model.TranslationResult;
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
+
 public class TranslationTask extends AsyncTask<String, Void, String> {
     protected TextView mText;
     protected LanguageTranslator mTranslator;
@@ -18,7 +20,7 @@ public class TranslationTask extends AsyncTask<String, Void, String> {
         mText = tv;
 
         IamOptions options = new IamOptions.Builder()
-                .apiKey("K72UBuCjCzNJ352P8iQT4GbDFTuwNqWxGxj9rRiCtXqb")
+                .apiKey(ProjectApi.TRANSLATION_API)
                 .build();
 
         mTranslator = new LanguageTranslator("2018-05-01", options);

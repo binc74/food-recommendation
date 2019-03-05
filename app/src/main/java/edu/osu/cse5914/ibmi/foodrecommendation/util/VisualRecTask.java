@@ -22,6 +22,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.CameraActivity;
+import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
 
 public class VisualRecTask extends AsyncTask<String, Void, String> {
     public TextView mText;
@@ -32,7 +33,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
         mText = tv;
         mdiscovery = discovery;
         IamOptions options = new IamOptions.Builder()
-                .apiKey("QEVVoVRLwMLEulqFXVIQKHDLrZDWXidipZW8VYQNbXA8")
+                .apiKey(ProjectApi.VISUALREC_API)
                 .build();
 
         mVisualRecor = new VisualRecognition("2018-03-19", options);

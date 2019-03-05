@@ -11,6 +11,8 @@ import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
+
 
 public class RetrievingCalTask extends AsyncTask<String, Void, String> {
     protected TextView mText;
@@ -26,7 +28,7 @@ public class RetrievingCalTask extends AsyncTask<String, Void, String> {
         mDiscovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");
 
         IamOptions options = new IamOptions.Builder()
-                .apiKey("1YJgxYDcHqAH75k-Q3Z1_LKMegZa30d4gKAGEr_hiKKA")
+                .apiKey(ProjectApi.DISCOVERY_API2)
                 .build();
         mDiscovery.setIamCredentials(options);
         environmentId = "d73e9ac3-e284-4c40-b672-bb0a228a3e81";
