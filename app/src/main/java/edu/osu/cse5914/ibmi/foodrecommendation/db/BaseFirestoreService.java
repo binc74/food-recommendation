@@ -102,6 +102,14 @@ public abstract class BaseFirestoreService {
     }
 
     protected void getDocument(String id,
+                               OnCompleteListener<DocumentSnapshot> onCompleteListener) {
+        db.collection(getCollection()).document(id)
+                .get()
+                .addOnCompleteListener(onCompleteListener)
+                .addOnFailureListener(getDefaultOnFailureListener());
+    }
+
+    protected void getDocument(String id,
                                OnCompleteListener<DocumentSnapshot> onCompleteListener,
                                OnFailureListener onFailureListener) {
         db.collection(getCollection()).document(id)

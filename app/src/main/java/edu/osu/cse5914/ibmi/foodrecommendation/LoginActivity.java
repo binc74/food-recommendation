@@ -8,21 +8,27 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
 import edu.osu.cse5914.ibmi.foodrecommendation.model.User;
+import edu.osu.cse5914.ibmi.foodrecommendation.util.EditTextUtil;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private static String TAG = "LoginActivity";
+    private static String ERROR_EMPTY = "Should not be empty";
 
-    private TextView mPassword;
+    private EditText mPassword;
     private AutoCompleteTextView mEmail;
     private Button mloginButton;
     private Button msignupButton;
+
+    private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +42,35 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
+
+        userService = new UserService();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.email_sign_in_button:
-                Intent pref_intent = new Intent(this, PrefSetActivity.class); //link to preference view
-                startActivity(pref_intent);
+                if (EditTextUtil.warnIfEmpty(mEmail) || EditTextUtil.warnIfEmpty(mPassword)) {
+                    return;
+                }
+
+                userService.processUserById(mEmail.getText().toString().trim(),
+                        task -> {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot ds = task.getResult();
+                                User user = UserService.getUserFromDocument(ds);
+
+                                String currPw = EditTextUtil.getString(mPassword);
+
+                                if (!currPw.equals(user.getPassword())) {
+                                    Toast.makeText(this, "User ID or Password you enter is incorrect!", Toast.LENGTH_LONG).show();
+                                }
+                                else {
+                                    Intent pref_intent = new Intent(this, PrefSetActivity.class); //link to preference view
+                                    startActivity(pref_intent);
+                                }
+                            }
+                        });
                 break;
 
             case R.id.email_sign_up:

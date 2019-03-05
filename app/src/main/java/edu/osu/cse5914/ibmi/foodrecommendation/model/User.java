@@ -12,6 +12,12 @@ public class User extends BaseModel {
     private List<String> allergies;
     private boolean initProfile;
 
+    public User() {
+        pref = -1;
+        allergies = new ArrayList<>();
+        initProfile = false;
+    }
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;
