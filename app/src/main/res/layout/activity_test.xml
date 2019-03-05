@@ -16,17 +16,6 @@
         app:layout_constraintEnd_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/tv_visual_rec2"
-        android:layout_width="197dp"
-        android:layout_height="170dp"
-        android:layout_marginStart="204dp"
-        android:layout_marginBottom="104dp"
-        android:scrollbars="vertical"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
         android:id="@+id/tv_visual_rec"
         android:layout_width="204dp"
         android:layout_height="99dp"
@@ -39,16 +28,38 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/report"
-        android:layout_width="115dp"
-        android:layout_height="58dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginBottom="44dp"
-        android:background="@drawable/roundbutton"
-        android:text="Get Recommendation"
+        android:id="@+id/DiscoveryButton"
+        android:layout_width="162dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="527dp"
+        android:layout_marginEnd="15dp"
+        android:text="Loading..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="395dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_visual_rec">
+
+        <Button
+            android:id="@+id/report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/roundbutton"
+            android:text="Get Recommendation"
+            tools:layout_conversion_absoluteHeight="48dp"
+            tools:layout_conversion_absoluteWidth="395dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="637dp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
