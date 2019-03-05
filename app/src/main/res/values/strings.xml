@@ -23,4 +23,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="err_user_exist">User already exist</string>
+
 </resources>

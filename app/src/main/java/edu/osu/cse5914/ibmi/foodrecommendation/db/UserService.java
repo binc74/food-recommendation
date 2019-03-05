@@ -1,0 +1,29 @@
+package edu.osu.cse5914.ibmi.foodrecommendation.db;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import edu.osu.cse5914.ibmi.foodrecommendation.model.User;
+
+public class UserService extends BaseFirestoreService {
+    private String TAG = "UserService";
+    private String COLLECTION = "User";
+
+    @Override
+    public String getTAG() {
+        return TAG;
+    }
+
+    @Override
+    protected String getCollection() {
+        return COLLECTION;
+    }
+
+    public void checkNewUser(User user, OnCompleteListener<DocumentSnapshot> onCompleteListener) {
+        getDocument(user, onCompleteListener);
+    }
+
+    public void addNewUser(User user) {
+        addDocument(user);
+    }
+}
