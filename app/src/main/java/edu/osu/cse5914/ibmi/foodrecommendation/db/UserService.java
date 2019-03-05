@@ -1,5 +1,7 @@
 package edu.osu.cse5914.ibmi.foodrecommendation.db;
 
+import android.util.Log;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 
@@ -24,6 +26,8 @@ public class UserService extends BaseFirestoreService {
     }
 
     public void addNewUser(User user) {
-        addDocument(user);
+        addDocument(user, aVoid -> {
+            Log.d(TAG, user.getDocumentId() + " successfully written!");
+        });
     }
 }

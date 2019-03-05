@@ -52,24 +52,24 @@ public abstract class BaseFirestoreService {
     }
 
     protected void addDocument(BaseModel data,
-                               OnSuccessListener<DocumentReference> onSuccessListener,
+                               OnSuccessListener<Void> onSuccessListener,
                                OnFailureListener onFailureListener) {
-        db.collection(getCollection())
-                .add(data)
+        db.collection(getCollection()).document(data.getDocumentId())
+                .set(data)
                 .addOnSuccessListener(onSuccessListener)
                 .addOnFailureListener(onFailureListener);
     }
 
     protected void addDocument(BaseModel data,
-                               OnSuccessListener<DocumentReference> onSuccessListener) {
-        db.collection(getCollection())
-                .add(data)
+                               OnSuccessListener<Void> onSuccessListener) {
+        db.collection(getCollection()).document(data.getDocumentId())
+                .set(data)
                 .addOnSuccessListener(onSuccessListener)
                 .addOnFailureListener(getDefaultOnFailureListener());
     }
 
     protected void addDocument(BaseModel data) {
-        addDocument(data, getDefaultDocRefOnSuccessListener(), getDefaultOnFailureListener());
+        addDocument(data, getDefaultOnSuccessListener(), getDefaultOnFailureListener());
     }
 
     protected void setDocument(BaseModel data, OnSuccessListener<Void> onSuccessListener,
