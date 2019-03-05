@@ -62,12 +62,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                 String currPw = EditTextUtil.getString(mPassword);
 
-                                if (!currPw.equals(user.getPassword())) {
+                                if (user == null || !currPw.equals(user.getPassword())) {
                                     Toast.makeText(this, "User ID or Password you enter is incorrect!", Toast.LENGTH_LONG).show();
                                 }
                                 else {
-                                    Intent pref_intent = new Intent(this, PrefSetActivity.class); //link to preference view
-                                    startActivity(pref_intent);
+                                    if (user.getNeedinit()) {
+                                        Intent pref_intent = new Intent(this, PrefSetActivity.class); //link to preference view
+                                        startActivity(pref_intent);
+                                    }
+                                    else {
+                                        Intent pref_intent = new Intent(this, CameraActivity.class); //link to preference view
+                                        startActivity(pref_intent);
+                                    }
                                 }
                             }
                         });

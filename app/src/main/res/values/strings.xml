@@ -28,5 +28,6 @@
     <string name="prompt_reenter_password">Confirm Password</string>
     <string name="submit_form">Submit</string>
     <string name="back">Back</string>
+    <string name="skip">Skip</string>
 
 </resources>
