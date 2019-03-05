@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private AutoCompleteTextView mEmail;
     private Button mloginButton;
     private Button msignupButton;
-    UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +36,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mEmail = findViewById(R.id.email);
         mPassword = findViewById(R.id.password);
-
-        userService = new UserService();
     }
 
     @Override
@@ -50,23 +47,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.email_sign_up:
-                //Intent signup_intent = new Intent(this, PrefSetActivity.class); //link to signup view
-                //startActivity(signup_intent);
-                User user = new User(mEmail.getText().toString().trim(), mPassword.getText().toString().trim());
-                userService.checkNewUser(user,
-                        task -> {
-                            if (task.isSuccessful()) {
-                                DocumentSnapshot document = task.getResult();
-                                if (document.exists()) {
-                                    Log.d(TAG, "User already exists");
-                                    mEmail.setError(getString(R.string.err_user_exist));
-                                } else {
-                                    userService.addNewUser(user);
-                                }
-                            } else {
-                                Log.d(TAG, "get failed with ", task.getException());
-                            }
-                        });
+                Intent signup_intent = new Intent(this, SignUpActivity.class); //link to signup view
+                startActivity(signup_intent);
                 break;
         }
     }

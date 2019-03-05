@@ -24,5 +24,9 @@
         completions."
     </string>
     <string name="err_user_exist">User already exist</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_reenter_password">Confirm Password</string>
+    <string name="submit_form">Submit</string>
+    <string name="back">Back</string>
 
 </resources>

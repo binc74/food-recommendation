@@ -23,7 +23,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PrefSetActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login">
@@ -33,9 +33,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CameraActivity">
-        </activity>
-        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".CameraActivity"></activity>
+        <activity android:name=".TestActivity" />
+        <activity android:name=".SignUpActivity"></activity>
     </application>
 
 </manifest>
