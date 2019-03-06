@@ -8,12 +8,14 @@ import android.widget.TextView;
 
 import com.yelp.fusion.client.connection.YelpFusionApi;
 import com.yelp.fusion.client.connection.YelpFusionApiFactory;
+import com.yelp.fusion.client.models.Business;
 import com.yelp.fusion.client.models.SearchResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ import org.json.JSONObject;
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 import edu.osu.cse5914.ibmi.foodrecommendation.RecepieListAdapter;
+import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
 import retrofit2.Call;
 import retrofit2.Response;
 
@@ -63,44 +66,13 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
 
 
         try {
-            YelpFusionApiFactory apiFactory = new YelpFusionApiFactory();
-            YelpFusionApi yelpFusionApi = apiFactory.createAPI("VyUWOpFwlRH9qhE-RilSQEEtjkNGgavpYRWxHGaJhIv4lj0bDKdwD5Be4YF0b5KZb7vsNb2vLVvSNwLO99KejKKghHIxWKiJC5hEI1LmEpeucSopR1OgAPjWTAh_XHYx");
-
-            Map<String, String> params = new HashMap<>();
-
-// general params
-            params.put("term", "indian food");
-            params.put("latitude", "40.581140");
-            params.put("longitude", "-111.914184");
-
-            Call<SearchResponse> call = yelpFusionApi.getBusinessSearch(params);
-            Response<SearchResponse> response = call.execute();
-
-            String a="ssss";
-
-
-        }
-        catch (IOException e){
-            e.printStackTrace();
-
-        }
-
-
-
-
-
-        try {
-
-
-
-
 
 
 
 
             //remember to only search those with images
 //            URL url = new URL("http://api.myjson.com/bins/xu8g0");
-            URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.ENERC_KCAL.max="+maxCal+"&nutrition.ENERC_KCAL.min="+minCal);
+            URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.ENERC_KCAL.max="+maxCal+"&nutrition.ENERC_KCAL.min="+minCal+"&allowedCourse[]=course^course-Main Dishes");
 
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
