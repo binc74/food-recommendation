@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_margin="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
     android:weightSum="2"
-    >
+    android:background="@drawable/bkglogin">
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        >
 
     <!--<EditText-->
     <!--android:id="@+id/password"-->
@@ -24,10 +33,11 @@
 
     <!--recepie suggestion-->
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="79dp" />
+        <!--<TextView-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="79dp"-->
+            <!--android:background="@drawable/whitebkg"/>-->
 
     <TextView
         android:id="@+id/kun_pao"
@@ -45,7 +55,7 @@
         android:layout_alignParentStart="true"
         android:id="@+id/listView">
 
-    </ListView>
+        </ListView>
 
     <TextView
         android:id="@+id/kun_pao_chicken"
@@ -108,5 +118,5 @@
         android:text="General Tao's Chicken"
         android:textAlignment="center" />
     -->
-
+    </LinearLayout>
 </LinearLayout>

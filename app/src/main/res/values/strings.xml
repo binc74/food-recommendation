@@ -29,5 +29,7 @@
     <string name="submit_form">Submit</string>
     <string name="back">Back</string>
     <string name="skip">Skip</string>
+    <string name="user_profile">Your Profile</string>
+    <string name="take_photo">Take Photoes</string>
 
 </resources>

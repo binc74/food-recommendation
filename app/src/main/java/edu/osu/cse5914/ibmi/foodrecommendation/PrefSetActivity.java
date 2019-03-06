@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
+
 public class PrefSetActivity extends AppCompatActivity implements View.OnClickListener {
 
    // private TextView mTextView;
@@ -19,6 +21,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
     private Spinner mprefSpinner;
     private Spinner msexSpinner;
 
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +52,19 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
         msexSpinner = super.findViewById(R.id.spinner);
         msexSpinner.setAdapter(sadapter);
 
+        uid = getIntent().getExtras().getString("uid");
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submit_pref:
-
+                new UserService().updateNeedInit(uid, false);
 
             case R.id.skip_pref:
-                Intent pref_intent = new Intent(this, CameraActivity.class); //link to preference view
-                startActivity(pref_intent);
+                Intent cam_intent = new Intent(this, CameraActivity.class); //link to preference view
+                cam_intent.putExtra("uid", uid);
+                startActivity(cam_intent);
                 break;
         }
     }

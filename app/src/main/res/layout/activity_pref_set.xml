@@ -1,114 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:background="@drawable/bkglogin"
     android:orientation="vertical"
     tools:context=".PrefSetActivity">
 
+
     <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="33dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="32dp"
-            android:text="lb"
-            app:layout_constraintStart_toEndOf="@+id/editText2"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="123dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="32dp"
-            android:text="(mm/dd/yy)"
-            app:layout_constraintStart_toEndOf="@+id/editText3"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="16dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="56dp"
-            android:text="in."
-            app:layout_constraintStart_toEndOf="@+id/editText4"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toEndOf="@+id/textView4"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="11dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="56dp"
-            android:text="ft."
-            app:layout_constraintStart_toEndOf="@+id/editText"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="40dp"
-            android:ems="10"
-            android:hint="@string/prompt_height"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/editText2"
+        <LinearLayout
+            android:id="@+id/statusLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/prompt_weight"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            android:layout_marginStart="8dp"
+            android:background="@drawable/settingbkg"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <EditText
-            android:id="@+id/editText3"
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="112dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:ems="10"
+                android:hint="@string/prompt_height"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="11dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="6dp"
+                android:text="ft."
+                app:layout_constraintStart_toEndOf="@+id/editText"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="16dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="10dp"
+                android:text="in."
+                app:layout_constraintStart_toEndOf="@+id/editText4"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/weightLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:ems="10"
-            android:hint="@string/prompt_birthday"
-            android:inputType="textPersonName"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/settingbkg"
+            android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            app:layout_constraintTop_toBottomOf="@+id/statusLayout">
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="239dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="0dp"
+                android:ems="10"
+                android:hint="@string/prompt_weight"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statusLayout" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="10dp"
+                android:text="lb"
+                app:layout_constraintStart_toEndOf="@+id/editText2"
+                app:layout_constraintTop_toBottomOf="@+id/statusLayout" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/birthdayLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/settingbkg"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weightLayout">
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="176dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:ems="10"
+                android:hint="@string/prompt_birthday"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/weightLayout" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="10dp"
+                android:text="(mm/dd/yy)"
+                app:layout_constraintStart_toEndOf="@+id/editText3"
+                app:layout_constraintTop_toBottomOf="@+id/weightLayout" />
+        </LinearLayout>
+
 
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="318dp"
             android:layout_height="37dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/settingbkg"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText3" />
+            app:layout_constraintTop_toBottomOf="@+id/birthdayLayout" />
 
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="318dp"
             android:layout_height="37dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/settingbkg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
@@ -116,8 +156,9 @@
             android:id="@+id/spinner3"
             android:layout_width="318dp"
             android:layout_height="37dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/settingbkg"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner2" />
 
@@ -126,7 +167,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="56dp"
+            android:background="@drawable/buttonbkg"
             android:text="@string/action_start"
+            android:textStyle="bold"
+            android:textColor="#ffc28d"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner3" />
 
@@ -139,4 +183,4 @@
             app:layout_constraintTop_toBottomOf="@+id/spinner3"
             app:layout_constraintLeft_toRightOf="@+id/submit_pref"/>
     </android.support.constraint.ConstraintLayout>
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
