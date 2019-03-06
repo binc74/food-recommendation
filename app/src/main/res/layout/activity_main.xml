@@ -7,6 +7,7 @@
     android:layout_margin="16dp"
     android:orientation="vertical"
     tools:context=".MainActivity"
+    android:weightSum="2"
     >
 
     <!--<EditText-->
@@ -28,16 +29,42 @@
         android:layout_width="match_parent"
         android:layout_height="79dp" />
 
+    <TextView
+        android:id="@+id/kun_pao"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:text="Suggested Recepies"
+        android:textAlignment="center" />
+
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:id="@+id/listView">
 
     </ListView>
 
+    <TextView
+        android:id="@+id/kun_pao_chicken"
+        android:layout_width="match_parent"
+        android:layout_height="27dp"
+        android:text="Suggested Restaurants"
+        android:textAlignment="center" />
+
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentStart="false"
+        android:id="@+id/listView1">
+
+    </ListView>
 
 
     <!--<TextView-->
