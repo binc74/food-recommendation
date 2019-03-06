@@ -17,11 +17,11 @@ import edu.osu.cse5914.ibmi.foodrecommendation.tasks.VisualRecTask;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener{
     private static String TAG = "TestActivity";
-
     private ImageView mImage;
     private Button mReport;
     private Button mDiscoveryButton;
-    private TextView mTextView ;
+    private TextView mTextView;
+    private TextView mDiscoveryView;
    // private VisualRecTask visualRecTask;
     private String filePath;
 
@@ -36,27 +36,19 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         filePath = getIntent().getStringExtra("imagePath");
         Log.d(TAG, "get path1: " + filePath);
 
-
+        mDiscoveryView = findViewById(R.id.textView8);
         mImage = findViewById(R.id.image);
         mTextView = findViewById( R.id.tv_visual_rec );
         mDiscoveryButton = findViewById(R.id.DiscoveryButton);
         mDiscoveryButton.setOnClickListener(this);
         mDiscoveryButton.setEnabled(false);
-        //mDiscovery.setMovementMethod(new ScrollingMovementMethod());
-        //mButton = findViewById( R.id.btn_visualrec );
-        //mButton.setOnClickListener(this);
         mReport = findViewById(R.id.report);
         mReport.setOnClickListener(this);
-
         Bitmap image = BitmapFactory.decodeFile(filePath);
-
-        //new File(filePath).delete();
-
-
-
         Log.d(TAG, "file size : " + image.getByteCount());
         mImage.setImageBitmap(image);
-        new VisualRecTask( mTextView,mDiscoveryButton ).execute(filePath);
+
+        new VisualRecTask(mTextView,mDiscoveryButton,mDiscoveryView).execute(filePath);
     }
 
     @Override
@@ -70,7 +62,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.DiscoveryButton:
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse(mDiscoveryButton.getText().toString()));
+                i.setData(Uri.parse(mDiscoveryView.getText().toString()));
                 startActivity(i);
                 break;
 

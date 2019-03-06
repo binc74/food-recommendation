@@ -24,16 +24,17 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     protected Discovery mDiscovery;
     protected String environmentId;
     protected String collectionId;
+    protected TextView mDiscoveryView;
 
-    public DiscoveryTask(String food, Button tv) {
+    public DiscoveryTask(String food, Button tv,TextView mDiscoveryView) {
         mText = tv;
+        this.mDiscoveryView = mDiscoveryView;
         foodCal=food;
         IamOptions options = new IamOptions.Builder()
-                .apiKey(ProjectApi.DISCOVERY_API1)
+                .apiKey(ProjectApi.DISCOVERY_API2)
                 .build();
         mDiscovery = new Discovery("2018-12-03",options);
         mDiscovery.setEndPoint("https://gateway.watsonplatform.net/discovery/api");
-
         mDiscovery.setIamCredentials(options);
         environmentId = "system";
         collectionId = "news-en";
@@ -59,7 +60,7 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
             url = "https://www.google.com/search?q="+foodCal+"" +
                     "+food+suggestion&oq=+&aqs=chrome.0.69i59j69i57j69i60j35i39j69i60j0.14399j0j7&sourceid=chrome&ie=UTF-8";
         }
-        Log.d("Discovery", url);
+
         return url;
     }
     @Override
@@ -72,7 +73,8 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
         mText.setEnabled(true);
-        mText.setText(o);
+        mText.setText("Discover it!");
+        mDiscoveryView.setText(o);
     }
 
 }
