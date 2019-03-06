@@ -69,9 +69,9 @@ public class SuggestRestaurantTask extends AsyncTask<ArrayList, Void, ArrayList>
             Map<String, String> params = new HashMap<>();
 
 // general params
-            params.put("term", "indian food");
-            params.put("latitude", "40.581140");
-            params.put("longitude", "-111.914184");
+          //  params.put("term", "asian");
+            params.put("latitude", "40.002230");
+            params.put("longitude", "-83.015695");
 
             Call<SearchResponse> call = yelpFusionApi.getBusinessSearch(params);
             Response<SearchResponse> response = call.execute();

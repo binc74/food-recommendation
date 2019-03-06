@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onItemClick(AdapterView<?> parent, View view,
                                     final int position, long id) {
 
-                new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext(),"indian food").execute();
+                new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext(),"asian").execute();
             }
         });
         Log.d(TAG, "Success Init");
