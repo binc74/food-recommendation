@@ -48,19 +48,16 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... objects) {
         QueryOptions.Builder builder = new QueryOptions.Builder(environmentId, collectionId);
-        builder.query(foodCal+"Suggestion");
+        builder.query(foodCal+"suggestions");
         QueryResponse result = mDiscovery.query(builder.build()).execute();
         Log.d("Discovery", result.toString());
         List<QueryResult> resultList = result.getResults();
-        String url;
-        if (resultList.get(0).get("url").toString().length() > 0) {
+        String url = "https://www.google.com/search?source=hp&ei=JBqAXJ_EBYi_jgTCsb2YAg&q="+foodCal+"+food+suggestion&oq=apple+&gs_l=psy-ab.1.0.35i39l2j0l8" +
+                ".5937.6594..8139...3.0..0.182.629.5j2......0....1..gws-wiz.....6..0i131.LR7HiSxV5go";
+        if (resultList.size()>0) {
             url = resultList.get(0).get("url").toString();
         }
-        else{
-            url = "https://www.google.com/search?q="+foodCal+"" +
-                    "+food+suggestion&oq=+&aqs=chrome.0.69i59j69i57j69i60j35i39j69i60j0.14399j0j7&sourceid=chrome&ie=UTF-8";
-        }
-
+        mText.setText("Discover it!");
         return url;
     }
     @Override
@@ -73,7 +70,6 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
         mText.setEnabled(true);
-        mText.setText("Discover it!");
         mDiscoveryView.setText(o);
     }
 
