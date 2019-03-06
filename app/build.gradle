@@ -23,8 +23,16 @@ android {
     }
     lintOptions {
         disable 'InvalidPackage'
+
     }
 }
+
+
+repositories {
+    jcenter()
+}
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -38,6 +46,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.google.firebase:firebase-firestore:18.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.7'
+    compile 'io.github.ranga543:yelp-fusion-client:0.1.4'
 }
 
 apply plugin: 'com.google.gms.google-services'

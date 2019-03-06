@@ -2,8 +2,13 @@ package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.yelp.fusion.client.connection.YelpFusionApi;
+import com.yelp.fusion.client.connection.YelpFusionApiFactory;
+import com.yelp.fusion.client.models.SearchResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +17,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,6 +27,8 @@ import org.json.JSONObject;
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 import edu.osu.cse5914.ibmi.foodrecommendation.RecepieListAdapter;
+import retrofit2.Call;
+import retrofit2.Response;
 
 //referenced website: https://www.codexpedia.com/android/asynctask-and-httpurlconnection-sample-in-android/
 public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
@@ -54,6 +63,40 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
 
 
         try {
+            YelpFusionApiFactory apiFactory = new YelpFusionApiFactory();
+            YelpFusionApi yelpFusionApi = apiFactory.createAPI("VyUWOpFwlRH9qhE-RilSQEEtjkNGgavpYRWxHGaJhIv4lj0bDKdwD5Be4YF0b5KZb7vsNb2vLVvSNwLO99KejKKghHIxWKiJC5hEI1LmEpeucSopR1OgAPjWTAh_XHYx");
+
+            Map<String, String> params = new HashMap<>();
+
+// general params
+            params.put("term", "indian food");
+            params.put("latitude", "40.581140");
+            params.put("longitude", "-111.914184");
+
+            Call<SearchResponse> call = yelpFusionApi.getBusinessSearch(params);
+            Response<SearchResponse> response = call.execute();
+
+            String a="ssss";
+
+
+        }
+        catch (IOException e){
+            e.printStackTrace();
+
+        }
+
+
+
+
+
+        try {
+
+
+
+
+
+
+
 
             //remember to only search those with images
 //            URL url = new URL("http://api.myjson.com/bins/xu8g0");
