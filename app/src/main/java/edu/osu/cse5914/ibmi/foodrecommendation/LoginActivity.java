@@ -72,9 +72,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                         startActivity(pref_intent);
                                     }
                                     else {
-                                        Intent pref_intent = new Intent(this, CameraActivity.class); //link to preference view
-                                        pref_intent.putExtra("uid", user.getDocumentId());
-                                        startActivity(pref_intent);
+                                        Intent opt_intent = new Intent(this, OptionActivity.class); //link to preference view
+                                        opt_intent.putExtra("uid", user.getDocumentId());
+                                        startActivity(opt_intent);
                                     }
                                 }
                             }

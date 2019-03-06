@@ -62,9 +62,9 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
                 new UserService().updateNeedInit(uid, false);
 
             case R.id.skip_pref:
-                Intent cam_intent = new Intent(this, CameraActivity.class); //link to preference view
-                cam_intent.putExtra("uid", uid);
-                startActivity(cam_intent);
+                Intent opt_intent = new Intent(this, OptionActivity.class); //link to preference view
+                opt_intent.putExtra("uid", uid);
+                startActivity(opt_intent);
                 break;
         }
     }
