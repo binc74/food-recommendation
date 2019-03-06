@@ -48,12 +48,11 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... objects) {
         QueryOptions.Builder builder = new QueryOptions.Builder(environmentId, collectionId);
-        builder.query(foodCal+"suggestions");
+        builder.query(foodCal+" suggestion");
         QueryResponse result = mDiscovery.query(builder.build()).execute();
         Log.d("Discovery", result.toString());
         List<QueryResult> resultList = result.getResults();
-        String url = "https://www.google.com/search?source=hp&ei=JBqAXJ_EBYi_jgTCsb2YAg&q="+foodCal+"+food+suggestion&oq=apple+&gs_l=psy-ab.1.0.35i39l2j0l8" +
-                ".5937.6594..8139...3.0..0.182.629.5j2......0....1..gws-wiz.....6..0i131.LR7HiSxV5go";
+        String url = "https://www.google.com/search?q="+foodCal+"+food+suggestion&ei=zxqAXIvAIMfojgSD6I3YBA&start=10&sa=N&ved=0ahUKEwjL4-TIm-7gAhVHtIMKHQN0A0sQ8NMDCJ0C&biw=1322&bih=711";
         if (resultList.size()>0) {
             url = resultList.get(0).get("url").toString();
         }
