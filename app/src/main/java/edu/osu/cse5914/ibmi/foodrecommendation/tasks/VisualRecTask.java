@@ -4,12 +4,15 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.service.security.IamOptions;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifiedImages;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyOptions;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,12 +24,14 @@ import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
 
 public class VisualRecTask extends AsyncTask<String, Void, String> {
     public TextView mText;
-    public TextView mdiscovery;
+    public Button mdiscovery;
     protected VisualRecognition mVisualRecor;
+    protected TextView mDiscoveryView;
 
-    public VisualRecTask(TextView tv,TextView discovery) {
+    public VisualRecTask(TextView tv,Button discovery,TextView mDiscoveryView) {
         mText = tv;
         mdiscovery = discovery;
+        this.mDiscoveryView = mDiscoveryView;
         IamOptions options = new IamOptions.Builder()
                 .apiKey(ProjectApi.VISUALREC_API)
                 .build();
@@ -90,7 +95,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
-        new DiscoveryTask(o,mdiscovery).execute();
+        new DiscoveryTask(o,mdiscovery,mDiscoveryView).execute();
         mText.setText(o);
     }
 }

@@ -14,6 +14,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
 
    // private TextView mTextView;
     private Button msubmitButton;
+    private Button mSkip;
     private Spinner mdietSpinner;
     private Spinner mprefSpinner;
     private Spinner msexSpinner;
@@ -26,6 +27,9 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
         // = findViewById(R.id.text1);
         msubmitButton = findViewById(R.id.submit_pref);
         msubmitButton.setOnClickListener(this);
+
+        mSkip = findViewById(R.id.skip_pref);
+        mSkip.setOnClickListener(this);
 
         String[] dtype = new String[]{"Lose Weight", "Gain Weight", "Keep Healthy", "Build Muscle"};
         String[] ptype = new String[]{"Vegetarian", "Vegan", "Nondairy", "None"};
@@ -51,11 +55,12 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submit_pref:
+
+
+            case R.id.skip_pref:
                 Intent pref_intent = new Intent(this, CameraActivity.class); //link to preference view
                 startActivity(pref_intent);
                 break;
-
-
         }
     }
 }

@@ -10,14 +10,20 @@ public class User extends BaseModel {
     private String password;
     private int pref;
     private List<String> allergies;
-    private boolean initProfile;
+    private boolean needinit;
+
+    public User() {
+        pref = -1;
+        allergies = new ArrayList<>();
+        needinit = true;
+    }
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
         pref = -1;
         allergies = new ArrayList<>();
-        initProfile = false;
+        needinit = true;
     }
 
     public void setUsername(String username) {
@@ -36,8 +42,8 @@ public class User extends BaseModel {
         this.allergies = allergies;
     }
 
-    public void setInitProfile(boolean initProfile) {
-        this.initProfile = initProfile;
+    public void setNeedinit(boolean needinit) {
+        this.needinit = needinit;
     }
 
     public int getPref() {
@@ -56,9 +62,7 @@ public class User extends BaseModel {
         return username;
     }
 
-    public boolean getInitProfile() {
-        return initProfile;
-    }
+    public boolean getNeedinit() { return needinit; }
 
     @Override
     @Exclude

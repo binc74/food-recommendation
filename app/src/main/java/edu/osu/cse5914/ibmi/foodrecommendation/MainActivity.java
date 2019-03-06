@@ -14,6 +14,27 @@ import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.SuggestionTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.TranslationTask;
 
+import okhttp3.Dispatcher;
+import okhttp3.OkHttpClient;
+import retrofit2.Call;
+import retrofit2.Response;
+
+import com.yelp.fusion.client.connection.YelpFusionApi;
+import com.yelp.fusion.client.connection.YelpFusionApiFactory;
+import com.yelp.fusion.client.models.SearchResponse;
+
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.AbstractExecutorService;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
+
+import static java.net.Proxy.Type.HTTP;
+
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private static String TAG = "MainActivity";
 
@@ -39,10 +60,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ListView lvRecepieJson;
 
+
+
+
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
-
-
 
         food_category= getIntent().getStringExtra("food_category");
         if (food_category.equals("Steak")||food_category.equals("Pizza")||food_category.equals("Hamburger")||food_category.equals("French Fries")) {
@@ -52,10 +76,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else{
             minCalAllowed="4";
         maxCalAllowed = "8";}
-
-
-
-
 
 
         super.onCreate(savedInstanceState);
