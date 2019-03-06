@@ -27,6 +27,7 @@ import java.util.Map;
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
 import edu.osu.cse5914.ibmi.foodrecommendation.RecepieListAdapter;
 import edu.osu.cse5914.ibmi.foodrecommendation.RestaurantListAdapter;
+import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
 import retrofit2.Call;
@@ -63,7 +64,7 @@ public class SuggestRestaurantTask extends AsyncTask<ArrayList, Void, ArrayList>
 
         try {
             YelpFusionApiFactory apiFactory = new YelpFusionApiFactory();
-            YelpFusionApi yelpFusionApi = apiFactory.createAPI("VyUWOpFwlRH9qhE-RilSQEEtjkNGgavpYRWxHGaJhIv4lj0bDKdwD5Be4YF0b5KZb7vsNb2vLVvSNwLO99KejKKghHIxWKiJC5hEI1LmEpeucSopR1OgAPjWTAh_XHYx");
+            YelpFusionApi yelpFusionApi = apiFactory.createAPI(ProjectApi.YELP_API);
 
             Map<String, String> params = new HashMap<>();
 
