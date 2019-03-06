@@ -69,7 +69,7 @@ public class SuggestRestaurantTask extends AsyncTask<ArrayList, Void, ArrayList>
             Map<String, String> params = new HashMap<>();
 
 // general params
-          //  params.put("term", "asian");
+            params.put("term", "Perfect Eye of Round Roast");
             params.put("latitude", "40.002230");
             params.put("longitude", "-83.015695");
 
