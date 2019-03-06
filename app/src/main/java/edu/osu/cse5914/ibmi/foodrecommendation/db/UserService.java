@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.model.User;
@@ -42,5 +43,10 @@ public class UserService extends BaseFirestoreService {
 
     public void addNewUser(User user, OnSuccessListener<Void> onSuccessListener) {
         addDocument(user, onSuccessListener);
+    }
+
+    public void updateNeedInit(String uid, boolean newNeedInit) {
+        DocumentReference dr = db.collection(COLLECTION).document(uid);
+        dr.update("needinit", newNeedInit);
     }
 }

@@ -34,11 +34,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CameraActivity"></activity>
-        <activity android:name=".TestActivity" />
+        <activity android:name=".TestActivity"></activity>
 
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/bgk1" />
         <activity android:name=".SignUpActivity"></activity>
     </application>
 
