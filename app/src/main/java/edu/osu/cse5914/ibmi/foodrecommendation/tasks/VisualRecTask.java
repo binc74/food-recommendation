@@ -95,7 +95,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
-       // new DiscoveryTask(o,mdiscovery,mDiscoveryView).execute();
+        new DiscoveryTask(o,mdiscovery,mDiscoveryView).execute();
         mText.setText(o);
     }
 }

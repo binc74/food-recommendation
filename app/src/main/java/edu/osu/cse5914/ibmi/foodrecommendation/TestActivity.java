@@ -62,9 +62,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(pref_intent);
                 break;
             case R.id.DiscoveryButton:
-               /* Intent i = new Intent(Intent.ACTION_VIEW);
+                Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(mDiscoveryView.getText().toString()));
-                startActivity(i); **/
+                startActivity(i);
                 break;
 
         }
