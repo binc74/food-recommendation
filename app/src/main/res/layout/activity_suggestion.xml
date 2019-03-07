@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:weightSum="2"
-    android:background="@drawable/bkglogin">
-
+    tools:context=".SuggestionActivity">
 
     <TextView
         android:id="@+id/kun_pao"
         android:layout_width="match_parent"
         android:layout_height="34dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:text="Suggested Recepies"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="549dp"
+        android:id="@+id/listView1"
+        android:layout_width="413dp"
+        android:layout_height="502dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="47dp"
-        android:layout_weight="1">
+        android:layout_marginTop="48dp"
+        android:layout_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     </ListView>
 
@@ -36,11 +37,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="43dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/roundbutton"
-        android:text="Recipe" />
+        android:text="Recipe"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/restaurant"
@@ -48,11 +50,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="43dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/roundbutton"
-        android:text="Restaurant" />
-
-
-</RelativeLayout>
+        android:text="Restaurant"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>
