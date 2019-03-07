@@ -1,5 +1,6 @@
 package edu.osu.cse5914.ibmi.foodrecommendation;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -118,6 +119,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                     final int position, long id) {
                 TextView textView = view.findViewById(R.id.textView2);
                 String foodType = textView.getText().toString();
+
+                //Intent sugg_intent = new Intent(MainActivity.this, SuggestionActivity.class); //link to preference view
+                Log.d("Main", "1");
+                //sugg_intent.putExtra("foodType", foodType);
+                Log.d("Main", "2");
+                //startActivity(sugg_intent);
+                Log.d("Main", "3");
                 new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext()).execute(foodType);
             }
         });
