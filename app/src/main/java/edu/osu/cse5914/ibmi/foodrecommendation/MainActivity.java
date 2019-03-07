@@ -36,6 +36,8 @@ import java.util.Map;
 import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static java.net.Proxy.Type.HTTP;
 
@@ -120,6 +122,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 TextView textView = view.findViewById(R.id.textView2);
                 String foodType = textView.getText().toString();
 
+                String testreg = "[^a-zA-Z\\s-]";
+                Pattern matchsip = Pattern.compile(testreg);
+                Matcher mp = matchsip.matcher(foodType);
+                foodType = mp.replaceAll("");
+                foodType = foodType.toLowerCase().replaceAll( "slow cooker |how to |cook |from the guys at robertas|make |easy athome | - ", "" );
                 Intent sugg_intent = new Intent(MainActivity.this, SuggestionActivity.class); //link to preference view
                 Log.d("Main", "1");
                 sugg_intent.putExtra("foodType", foodType);
