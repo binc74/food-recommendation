@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModel;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,12 +12,17 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Const;
 import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
 import edu.osu.cse5914.ibmi.foodrecommendation.util.EditTextUtil;
 import edu.osu.cse5914.ibmi.foodrecommendation.util.SpinnerUtil;
 
 public class PrefSetActivity extends AppCompatActivity implements View.OnClickListener {
+    private static String TAG = "PreferenceTest";
 
    // private TextView mTextView;
     private Button msubmitButton;
@@ -25,6 +31,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
     private Spinner mprefSpinner;
     private Spinner msexSpinner;
 
+    private EditText mAllergies;
     private EditText mBirthday;
     private EditText mWeight;
 
@@ -42,21 +49,22 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
 
         mBirthday = findViewById(R.id.editText3);
         mWeight = findViewById(R.id.editText2);
+        mAllergies = findViewById(R.id.allergies);
 
         mSkip = findViewById(R.id.skip_pref);
         mSkip.setOnClickListener(this);
 
-        ArrayAdapter<String> dadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.dtype);
-        ArrayAdapter<String> padapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.ptype);
-        ArrayAdapter<String> sadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.stype);
+        ArrayAdapter<String> dadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.diets);
+        ArrayAdapter<String> padapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.prefs);
+        ArrayAdapter<String> sadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.genders);
 
         dadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         padapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        mprefSpinner = super.findViewById(R.id.spinner3);
+        mprefSpinner = super.findViewById(R.id.spinner2);
         mprefSpinner.setAdapter(padapter);
-        mdietSpinner = super.findViewById(R.id.spinner2);
+        mdietSpinner = super.findViewById(R.id.spinner3);
         mdietSpinner.setAdapter(dadapter);
         msexSpinner = super.findViewById(R.id.spinner);
         msexSpinner.setAdapter(sadapter);
@@ -70,7 +78,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
             int gender = extra.getInt("gender");
             int pref = extra.getInt("gender");
             int diet = extra.getInt("gender");
-            float wweight = extra.getFloat("weight");
+            float weight = extra.getFloat("weight");
 
 
         }
@@ -88,12 +96,21 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
                 }
 
                 if (!EditTextUtil.isEmpty(mBirthday)) {
-                    userService.updateBirthday(EditTextUtil.getString(mWeight));
+                    userService.updateBirthday(EditTextUtil.getString(mBirthday));
+                }
+
+                if (!EditTextUtil.isEmpty(mAllergies)) {
+                    String[] vals = EditTextUtil.getString(mAllergies).split(" ");
+                    userService.updateAllergies(Arrays.asList(vals));
                 }
 
                 int genderPos = SpinnerUtil.getOption(msexSpinner),
                     prefPos = SpinnerUtil.getOption(mprefSpinner),
                     dietPos = SpinnerUtil.getOption(mdietSpinner);
+
+                Log.d(TAG, "gender: " + genderPos + " " + Const.genders[genderPos]);
+                Log.d(TAG, "prefs: " + prefPos + " " + Const.prefs[prefPos]);
+                Log.d(TAG, "diets: " + dietPos + " " + Const.diets[dietPos]);
 
                 if (genderPos != 0) {
                     userService.updateGender(genderPos);

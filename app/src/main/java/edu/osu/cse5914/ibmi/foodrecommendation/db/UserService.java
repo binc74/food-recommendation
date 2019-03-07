@@ -7,6 +7,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.List;
+
 import edu.osu.cse5914.ibmi.foodrecommendation.model.User;
 
 public class UserService extends BaseFirestoreService {
@@ -67,6 +69,9 @@ public class UserService extends BaseFirestoreService {
 
     public void updateHealthOpt(int healthOpt) {
         dr.update("healthoption", healthOpt);
+    }
 
+    public void updateAllergies(List<String> allergies) {
+        dr.update("allergies", allergies);
     }
 }

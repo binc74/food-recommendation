@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.Arrays;
+
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Const;
 import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
 import edu.osu.cse5914.ibmi.foodrecommendation.model.User;
@@ -42,7 +44,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         else {
                             int gender = user.getGender();
                             if (gender > 0) {
-                                mGender.setText(Const.stype[gender]);
+                                mGender.setText(Const.genders[gender]);
                             }
 
                             float weight = user.getWeight();
@@ -57,12 +59,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                             int pref = user.getHealthoption();
                             if (pref > 0) {
-                                mPref.setText(Const.dtype[pref]);
+                                mPref.setText(Const.prefs[pref]);
                             }
 
                             int diet = user.getDietoption();
                             if (diet > 0) {
-                                mDiet.setText(Const.ptype[diet]);
+                                mDiet.setText(Const.diets[diet]);
                             }
                         }
                     }
@@ -110,6 +112,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 pref_intent.putExtra("birthday", user.getBirthday());
                 pref_intent.putExtra("pref", user.getHealthoption());
                 pref_intent.putExtra("diet", user.getDietoption());
+                pref_intent.putStringArrayListExtra("allergies", user.getAllergies());
 
                 startActivity(pref_intent);
                 break;
