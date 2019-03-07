@@ -7,10 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
+import edu.osu.cse5914.ibmi.foodrecommendation.util.EditTextUtil;
+import edu.osu.cse5914.ibmi.foodrecommendation.util.SpinnerUtil;
 
 public class PrefSetActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,6 +23,13 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
     private Spinner mdietSpinner;
     private Spinner mprefSpinner;
     private Spinner msexSpinner;
+
+    private EditText mBirthday;
+    private EditText mWeight;
+
+    private String[] dtype;
+    private String[] ptype;
+    private String[] stype;
 
     private String uid;
 
@@ -31,12 +41,15 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
         msubmitButton = findViewById(R.id.submit_pref);
         msubmitButton.setOnClickListener(this);
 
+        mBirthday = findViewById(R.id.editText3);
+        mWeight = findViewById(R.id.editText2);
+
         mSkip = findViewById(R.id.skip_pref);
         mSkip.setOnClickListener(this);
 
-        String[] dtype = new String[]{"Lose Weight", "Gain Weight", "Keep Healthy", "Build Muscle"};
-        String[] ptype = new String[]{"Vegetarian", "Vegan", "Nondairy", "None"};
-        String[] stype = new String[]{"Male", "Female"};
+        dtype = new String[]{ "Please Select", "Lose Weight", "Gain Weight", "Keep Healthy", "Build Muscle"};
+        ptype = new String[]{ "Please Select", "Vegetarian", "Vegan", "Nondairy", "None"};
+        stype = new String[]{ "Please Select", "Male", "Female"};
         ArrayAdapter<String> dadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dtype);
         ArrayAdapter<String> padapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ptype);
         ArrayAdapter<String> sadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, stype);
@@ -59,7 +72,34 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.submit_pref:
-                new UserService().updateNeedInit(uid, false);
+                UserService userService = new UserService();
+                userService.getDocumentReference(uid);
+
+                if (!EditTextUtil.isEmpty(mWeight)) {
+                    userService.updateWeight(Float.parseFloat(EditTextUtil.getString(mWeight)));
+                }
+
+                if (!EditTextUtil.isEmpty(mBirthday)) {
+                    userService.updateBirthday(EditTextUtil.getString(mWeight));
+                }
+
+                int genderPos = SpinnerUtil.getOption(msexSpinner),
+                    prefPos = SpinnerUtil.getOption(mprefSpinner),
+                    dietPos = SpinnerUtil.getOption(mdietSpinner);
+
+                if (genderPos != 0) {
+                    userService.updateGender(genderPos);
+                }
+
+                if (prefPos != 0) {
+                    userService.updateHealthOpt(prefPos);
+                }
+
+                if (dietPos != 0) {
+                    userService.updateDietOpt(dietPos);
+                }
+
+                userService.updateNeedInit(false);
 
             case R.id.skip_pref:
                 Intent opt_intent = new Intent(this, OptionActivity.class); //link to preference view

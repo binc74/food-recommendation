@@ -8,18 +8,20 @@ import java.util.List;
 public class User extends BaseModel {
     private String username;
     private String password;
-    private int pref;
     private List<String> allergies;
     private boolean needinit;
     private int gender;
     private int healthoption;
     private int dietoption;
+    private float weight;
+    private String birthday;
 
     public User() {
+        birthday = "";
         gender = -1;
-        pref = -1;
         dietoption = -1;
         healthoption = -1;
+        weight = -1;
         allergies = new ArrayList<>();
         needinit = true;
     }
@@ -27,10 +29,12 @@ public class User extends BaseModel {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        pref = -1;
-        gender = -1;
-        dietoption = -1;
-        healthoption = -1;
+
+       birthday = "";
+        gender = 0;
+        dietoption = 0;
+        healthoption = 0;
+        weight = -1;
         allergies = new ArrayList<>();
         needinit = true;
     }
@@ -41,10 +45,6 @@ public class User extends BaseModel {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public void setPref(int pref) {
-        this.pref = pref;
     }
 
     public void setAllergies(List<String> allergies) {
@@ -67,8 +67,12 @@ public class User extends BaseModel {
         this.healthoption = healthoption;
     }
 
-    public int getPref() {
-        return pref;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
     public List<String> getAllergies() {
@@ -93,6 +97,14 @@ public class User extends BaseModel {
 
     public int getHealthoption() {
         return healthoption;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public String getBirthday() {
+        return birthday;
     }
 
     @Override
