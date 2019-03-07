@@ -2,6 +2,7 @@ package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,17 +34,17 @@ import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
 import retrofit2.Call;
 import retrofit2.Response;
 
-public class SuggestRestaurantTask extends AsyncTask<ArrayList, Void, ArrayList> {
+public class SuggestRestaurantTask extends AsyncTask<String, Void, ArrayList> {
     protected TextView mText;
     protected ListView mList;
     private final Context mContext;
-    private String foodType;
+   // private String foodType;
 
 
-    public SuggestRestaurantTask(ListView lv,Context ct,String foodType ){
+    public SuggestRestaurantTask(ListView lv,Context ct){
         mList = lv;
         mContext = ct;
-        foodType=foodType;
+       // foodType=foodType;
 
     }
 
@@ -54,7 +55,7 @@ public class SuggestRestaurantTask extends AsyncTask<ArrayList, Void, ArrayList>
     }
 
 
-    protected ArrayList<Restaurant> doInBackground(ArrayList... objects) {
+    protected ArrayList<Restaurant> doInBackground(String... objects) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String recipieJsonStr = null;
@@ -69,7 +70,9 @@ public class SuggestRestaurantTask extends AsyncTask<ArrayList, Void, ArrayList>
             Map<String, String> params = new HashMap<>();
 
 // general params
-            params.put("term", "Perfect Eye of Round Roast");
+            Log.d("RestaurantTask", "Current File: " + objects[0]);
+            params.put("term", objects[0]);
+           // Log.d("RestaurantTask", "Current File: " + foodType);
             params.put("latitude", "40.002230");
             params.put("longitude", "-83.015695");
 
