@@ -68,16 +68,26 @@ public class SuggestRestaurantTask extends AsyncTask<String, Void, ArrayList> {
             YelpFusionApi yelpFusionApi = apiFactory.createAPI(ProjectApi.YELP_API);
 
             Map<String, String> params = new HashMap<>();
+            Map<String, String> params2 = new HashMap<>();
 
 // general params
             Log.d("RestaurantTask", "Current File: " + objects[0]);
             params.put("term", objects[0]);
-           // Log.d("RestaurantTask", "Current File: " + foodType);
+            // Log.d("RestaurantTask", "Current File: " + foodType);
             params.put("latitude", "40.002230");
             params.put("longitude", "-83.015695");
 
+            params2.put("term", "america");
+            // Log.d("RestaurantTask", "Current File: " + foodType);
+            params2.put("latitude", "40.002230");
+            params2.put("longitude", "-83.015695");
+
             Call<SearchResponse> call = yelpFusionApi.getBusinessSearch(params);
             Response<SearchResponse> response = call.execute();
+            if(response.body().getBusinesses().size() <= 0){
+                call = yelpFusionApi.getBusinessSearch(params2);
+                response = call.execute();
+            }
             ArrayList<Business> business=response.body().getBusinesses();
             String a="s";
             for (int x=0; x<business.size(); x++){
