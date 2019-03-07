@@ -92,7 +92,7 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
             JSONArray rcpArr = jsreader.getJSONArray("matches");
 
 
-            for(int i =0 ;i <rcpArr.length(); i++){
+            for(int i =0 ;i <= rcpArr.length(); i++){
                 JSONObject JO = (JSONObject) rcpArr.get(i);
 
 
@@ -108,7 +108,8 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
 
 //                String rating= JO.get()
 //                rcpParsed = rcpParsed + single +"\n" ;
-                recepieList.add(new Recepie(name,rating,prepTime, imgUrl));//use rating=1 and prepTime=2 for now and change later
+                recepieList.add( new Recepie( name, rating, prepTime, imgUrl ) );//use rating=1 and prepTime=2 for now and change later
+
 
             }
 

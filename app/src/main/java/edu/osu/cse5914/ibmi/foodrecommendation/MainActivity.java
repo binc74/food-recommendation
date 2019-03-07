@@ -1,5 +1,7 @@
 package edu.osu.cse5914.ibmi.foodrecommendation;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -114,8 +116,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     final int position, long id) {
-
-                new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext(),"cheese burger").execute();
+                TextView textView = view.findViewById(R.id.textView2);
+                String foodType = textView.getText().toString();
+                new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext()).execute(foodType);
             }
         });
         Log.d(TAG, "Success Init");
