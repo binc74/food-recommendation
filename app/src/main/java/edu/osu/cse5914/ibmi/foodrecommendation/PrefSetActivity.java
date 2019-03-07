@@ -30,6 +30,8 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
 
     private String uid;
 
+    private boolean needExit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,19 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
         msexSpinner = super.findViewById(R.id.spinner);
         msexSpinner.setAdapter(sadapter);
 
-        uid = getIntent().getExtras().getString("uid");
+        Bundle extra = getIntent().getExtras();
+
+        uid = extra.getString("uid");
+        needExit = extra.getBoolean("needExit");
+
+        if (needExit) {
+            int gender = extra.getInt("gender");
+            int pref = extra.getInt("gender");
+            int diet = extra.getInt("gender");
+            float wweight = extra.getFloat("weight");
+
+
+        }
     }
 
     @Override
@@ -96,9 +110,14 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
                 userService.updateNeedInit(false);
 
             case R.id.skip_pref:
-                Intent opt_intent = new Intent(this, OptionActivity.class); //link to preference view
-                opt_intent.putExtra("uid", uid);
-                startActivity(opt_intent);
+                if (needExit) {
+                    finish();
+                }
+                else {
+                    Intent opt_intent = new Intent(this, OptionActivity.class); //link to preference view
+                    opt_intent.putExtra("uid", uid);
+                    startActivity(opt_intent);
+                }
                 break;
         }
     }

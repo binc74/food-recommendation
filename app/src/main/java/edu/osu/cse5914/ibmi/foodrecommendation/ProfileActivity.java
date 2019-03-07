@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,29 +24,17 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private EditText mPref;
     private EditText mDiet;
 
+    private Button mUpdate;
+
+    private User user;
     private String uid;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
-
-        uid = getIntent().getExtras().getString("uid");
-
-        mUsername = findViewById(R.id.username);
-        mGender = findViewById(R.id.gender);
-        mWeight = findViewById(R.id.weight);
-        mBirthday = findViewById(R.id.birthday);
-        mPref = findViewById(R.id.preference);
-        mDiet = findViewById(R.id.diet_opt);
-
-        mUsername.setText(uid);
-
+    private void updateText() {
         new UserService().processUserById(uid,
                 task -> {
                     if (task.isSuccessful()) {
                         DocumentSnapshot ds = task.getResult();
-                        User user = UserService.getUserFromDocument(ds);
+                        user = UserService.getUserFromDocument(ds);
 
                         if (user == null) {
                             Toast.makeText(this, "User not exists!", Toast.LENGTH_LONG).show();
@@ -81,9 +70,49 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_profile);
+
+        uid = getIntent().getExtras().getString("uid");
+
+        mUsername = findViewById(R.id.username);
+        mGender = findViewById(R.id.gender);
+        mWeight = findViewById(R.id.weight);
+        mBirthday = findViewById(R.id.birthday);
+        mPref = findViewById(R.id.preference);
+        mDiet = findViewById(R.id.diet_opt);
+
+        mUpdate = findViewById(R.id.edit_profile);
+        mUpdate.setOnClickListener(this);
+
+        mUsername.setText(uid);
+
+        updateText();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        updateText();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.edit_profile:
+                Intent pref_intent = new Intent(this, PrefSetActivity.class); //link to preference view
+                pref_intent.putExtra("uid", uid);
+                pref_intent.putExtra("needExit", true);
+                pref_intent.putExtra("gender", user.getGender());
+                pref_intent.putExtra("weight", user.getWeight());
+                pref_intent.putExtra("birthday", user.getBirthday());
+                pref_intent.putExtra("pref", user.getHealthoption());
+                pref_intent.putExtra("diet", user.getDietoption());
 
+                startActivity(pref_intent);
+                break;
         }
     }
 }
