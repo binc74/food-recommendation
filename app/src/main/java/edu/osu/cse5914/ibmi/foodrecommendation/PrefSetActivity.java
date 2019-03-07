@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.data.Const;
 import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
 import edu.osu.cse5914.ibmi.foodrecommendation.util.EditTextUtil;
 import edu.osu.cse5914.ibmi.foodrecommendation.util.SpinnerUtil;
@@ -26,10 +27,6 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
 
     private EditText mBirthday;
     private EditText mWeight;
-
-    private String[] dtype;
-    private String[] ptype;
-    private String[] stype;
 
     private String uid;
 
@@ -47,12 +44,9 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
         mSkip = findViewById(R.id.skip_pref);
         mSkip.setOnClickListener(this);
 
-        dtype = new String[]{ "Please Select", "Lose Weight", "Gain Weight", "Keep Healthy", "Build Muscle"};
-        ptype = new String[]{ "Please Select", "Vegetarian", "Vegan", "Nondairy", "None"};
-        stype = new String[]{ "Please Select", "Male", "Female"};
-        ArrayAdapter<String> dadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, dtype);
-        ArrayAdapter<String> padapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ptype);
-        ArrayAdapter<String> sadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, stype);
+        ArrayAdapter<String> dadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.dtype);
+        ArrayAdapter<String> padapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.ptype);
+        ArrayAdapter<String> sadapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Const.stype);
 
         dadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         padapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
