@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.yelp.fusion.client.connection.YelpFusionApi;
 import com.yelp.fusion.client.connection.YelpFusionApiFactory;
 import com.yelp.fusion.client.models.Business;
+import com.yelp.fusion.client.models.Coordinates;
 import com.yelp.fusion.client.models.SearchResponse;
 
 import org.json.JSONArray;
@@ -99,7 +100,8 @@ public class SuggestRestaurantTask extends AsyncTask<String, Void, ArrayList> {
                 String rating=Double.toString(b.getRating());
                 String displayedPhone=b.getDisplayPhone();
                 String imgUrl=b.getImageUrl();
-                restaurantList.add(new Restaurant(name,rating, imgUrl,displayedPhone));//use rating=1 and prepTime=2 for now and change later
+                Coordinates coord=b.getCoordinates();
+                restaurantList.add(new Restaurant(name,rating, imgUrl,displayedPhone,coord));//use rating=1 and prepTime=2 for now and change later
 
             }
 

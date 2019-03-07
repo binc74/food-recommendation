@@ -1,9 +1,21 @@
 package edu.osu.cse5914.ibmi.foodrecommendation.data;
 
+import com.yelp.fusion.client.models.Coordinates;
+
 public class Restaurant {
 
     private String name;
     private String imgUrl;
+
+    public Coordinates getCoord() {
+        return coord;
+    }
+
+    public void setCoord(Coordinates coord) {
+        this.coord = coord;
+    }
+
+    private Coordinates coord;
 
     public String getDisplayPhone() {
         return displayPhone;
@@ -33,11 +45,12 @@ public class Restaurant {
         this.imgUrl = url;
     }
 
-    public Restaurant(String name, String rating,  String imgUrl,String displayPhone) {
+    public Restaurant(String name, String rating,  String imgUrl,String displayPhone,Coordinates coord) {
         this.name = name;
         this.imgUrl=imgUrl;
         this.rating=rating;
         this.displayPhone=displayPhone;
+        this.coord=coord;
     }
 
 

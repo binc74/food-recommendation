@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import com.bumptech.glide.Glide;
+import com.yelp.fusion.client.models.Coordinates;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
@@ -51,9 +52,9 @@ public class RestaurantListAdapter extends ArrayAdapter<Restaurant> {
         String rating = getItem(position).getRating();
         String displayPhone = getItem(position).getDisplayPhone();
         String imgUrl = getItem(position).getImgUrl();
+        Coordinates cd= getItem(position).getCoord();
 
-
-        Restaurant restaurant = new Restaurant(name,rating,displayPhone,imgUrl);
+        Restaurant restaurant = new Restaurant(name,rating,displayPhone,imgUrl,cd);
 
         final View result;
 
