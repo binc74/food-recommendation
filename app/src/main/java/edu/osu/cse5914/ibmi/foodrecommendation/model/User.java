@@ -8,12 +8,20 @@ import java.util.List;
 public class User extends BaseModel {
     private String username;
     private String password;
-    private int pref;
     private List<String> allergies;
     private boolean needinit;
+    private int gender;
+    private int healthoption;
+    private int dietoption;
+    private float weight;
+    private String birthday;
 
     public User() {
-        pref = -1;
+        birthday = "";
+        gender = -1;
+        dietoption = -1;
+        healthoption = -1;
+        weight = -1;
         allergies = new ArrayList<>();
         needinit = true;
     }
@@ -21,7 +29,12 @@ public class User extends BaseModel {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        pref = -1;
+
+       birthday = "";
+        gender = 0;
+        dietoption = 0;
+        healthoption = 0;
+        weight = -1;
         allergies = new ArrayList<>();
         needinit = true;
     }
@@ -34,10 +47,6 @@ public class User extends BaseModel {
         this.password = password;
     }
 
-    public void setPref(int pref) {
-        this.pref = pref;
-    }
-
     public void setAllergies(List<String> allergies) {
         this.allergies = allergies;
     }
@@ -46,8 +55,24 @@ public class User extends BaseModel {
         this.needinit = needinit;
     }
 
-    public int getPref() {
-        return pref;
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public void setDietoption(int dietoption) {
+        this.dietoption = dietoption;
+    }
+
+    public void setHealthoption(int healthoption) {
+        this.healthoption = healthoption;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
     public List<String> getAllergies() {
@@ -63,6 +88,24 @@ public class User extends BaseModel {
     }
 
     public boolean getNeedinit() { return needinit; }
+
+    public int getGender() { return gender; }
+
+    public int getDietoption() {
+        return dietoption;
+    }
+
+    public int getHealthoption() {
+        return healthoption;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
 
     @Override
     @Exclude

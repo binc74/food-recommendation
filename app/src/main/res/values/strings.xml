@@ -28,6 +28,15 @@
     <string name="prompt_reenter_password">Confirm Password</string>
     <string name="submit_form">Submit</string>
     <string name="back">Back</string>
-    <string name="skip">Skip</string>
+    <string name="skip">Later</string>
+    <string name="user_profile">Your Profile</string>
+    <string name="take_photo">Take Photos</string>
+    <string name="preference">Preference</string>
+    <string name="gender">Gender</string>
+    <string name="weight">Weight</string>
+    <string name="birthday">Birthday</string>
+    <string name="diet_opt">Diet</string>
+    <string name="update">Update</string>
+    <string name="prompt_allergies">Allergies</string>
 
 </resources>

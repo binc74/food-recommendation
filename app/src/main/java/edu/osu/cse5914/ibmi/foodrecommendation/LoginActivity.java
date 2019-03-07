@@ -68,11 +68,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 else {
                                     if (user.getNeedinit()) {
                                         Intent pref_intent = new Intent(this, PrefSetActivity.class); //link to preference view
+                                        pref_intent.putExtra("uid", user.getDocumentId());
+                                        pref_intent.putExtra("needExit", false);
                                         startActivity(pref_intent);
                                     }
                                     else {
-                                        Intent pref_intent = new Intent(this, CameraActivity.class); //link to preference view
-                                        startActivity(pref_intent);
+                                        Intent opt_intent = new Intent(this, OptionActivity.class); //link to preference view
+                                        opt_intent.putExtra("uid", user.getDocumentId());
+                                        startActivity(opt_intent);
                                     }
                                 }
                             }

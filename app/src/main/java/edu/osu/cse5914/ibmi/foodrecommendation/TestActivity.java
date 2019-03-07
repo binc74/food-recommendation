@@ -37,6 +37,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "get path1: " + filePath);
 
         mDiscoveryView = findViewById(R.id.textView8);
+        mDiscoveryView.setVisibility(View.GONE);
         mImage = findViewById(R.id.image);
         mTextView = findViewById( R.id.tv_visual_rec );
         mDiscoveryButton = findViewById(R.id.DiscoveryButton);
@@ -61,9 +62,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(pref_intent);
                 break;
             case R.id.DiscoveryButton:
-                Intent i = new Intent(Intent.ACTION_VIEW);
+               /* Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(mDiscoveryView.getText().toString()));
-                startActivity(i);
+                startActivity(i); **/
                 break;
 
         }

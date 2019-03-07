@@ -33,13 +33,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CameraActivity"></activity>
+        <activity android:name=".CameraActivity" />
         <activity android:name=".TestActivity" />
-
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/bgk1" />
-        <activity android:name=".SignUpActivity"></activity>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".OptionActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
