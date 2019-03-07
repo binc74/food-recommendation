@@ -28,8 +28,8 @@
     <string name="prompt_reenter_password">Confirm Password</string>
     <string name="submit_form">Submit</string>
     <string name="back">Back</string>
-    <string name="skip">Skip</string>
+    <string name="skip">Later</string>
     <string name="user_profile">Your Profile</string>
-    <string name="take_photo">Take Photoes</string>
-
+    <string name="take_photo">Take Photos</string>
+    <string name="preference">Preference</string>
 </resources>

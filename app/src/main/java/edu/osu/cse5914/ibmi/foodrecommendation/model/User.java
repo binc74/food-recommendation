@@ -11,9 +11,15 @@ public class User extends BaseModel {
     private int pref;
     private List<String> allergies;
     private boolean needinit;
+    private int gender;
+    private int healthoption;
+    private int dietoption;
 
     public User() {
+        gender = -1;
         pref = -1;
+        dietoption = -1;
+        healthoption = -1;
         allergies = new ArrayList<>();
         needinit = true;
     }
@@ -22,6 +28,9 @@ public class User extends BaseModel {
         this.username = username;
         this.password = password;
         pref = -1;
+        gender = -1;
+        dietoption = -1;
+        healthoption = -1;
         allergies = new ArrayList<>();
         needinit = true;
     }
@@ -46,6 +55,18 @@ public class User extends BaseModel {
         this.needinit = needinit;
     }
 
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public void setDietoption(int dietoption) {
+        this.dietoption = dietoption;
+    }
+
+    public void setHealthoption(int healthoption) {
+        this.healthoption = healthoption;
+    }
+
     public int getPref() {
         return pref;
     }
@@ -63,6 +84,16 @@ public class User extends BaseModel {
     }
 
     public boolean getNeedinit() { return needinit; }
+
+    public int getGender() { return gender; }
+
+    public int getDietoption() {
+        return dietoption;
+    }
+
+    public int getHealthoption() {
+        return healthoption;
+    }
 
     @Override
     @Exclude
