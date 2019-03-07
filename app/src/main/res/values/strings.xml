@@ -32,4 +32,10 @@
     <string name="user_profile">Your Profile</string>
     <string name="take_photo">Take Photos</string>
     <string name="preference">Preference</string>
+    <string name="gender">Gender</string>
+    <string name="weight">Weight</string>
+    <string name="birthday">Birthday</string>
+    <string name="diet_opt">Diet</string>
+    <string name="update">Update</string>
+
 </resources>
