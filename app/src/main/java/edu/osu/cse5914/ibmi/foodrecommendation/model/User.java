@@ -8,7 +8,7 @@ import java.util.List;
 public class User extends BaseModel {
     private String username;
     private String password;
-    private List<String> allergies;
+    private ArrayList<String> allergies;
     private boolean needinit;
     private int gender;
     private int healthoption;
@@ -47,7 +47,7 @@ public class User extends BaseModel {
         this.password = password;
     }
 
-    public void setAllergies(List<String> allergies) {
+    public void setAllergies(ArrayList<String> allergies) {
         this.allergies = allergies;
     }
 
@@ -75,7 +75,7 @@ public class User extends BaseModel {
         this.weight = weight;
     }
 
-    public List<String> getAllergies() {
+    public ArrayList<String> getAllergies() {
         return allergies;
     }
 
