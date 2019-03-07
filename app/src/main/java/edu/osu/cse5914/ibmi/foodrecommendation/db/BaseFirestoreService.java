@@ -15,9 +15,14 @@ import edu.osu.cse5914.ibmi.foodrecommendation.model.BaseModel;
 
 public abstract class BaseFirestoreService {
     protected FirebaseFirestore db;
+    protected DocumentReference dr;
 
     public BaseFirestoreService() {
         db = FirebaseFirestore.getInstance();
+    }
+
+    public void getDocumentReference(String uid) {
+        dr = db.collection(getCollection()).document(uid);
     }
 
     protected abstract String getTAG();

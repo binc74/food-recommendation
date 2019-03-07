@@ -45,8 +45,28 @@ public class UserService extends BaseFirestoreService {
         addDocument(user, onSuccessListener);
     }
 
-    public void updateNeedInit(String uid, boolean newNeedInit) {
-        DocumentReference dr = db.collection(COLLECTION).document(uid);
+    public void updateNeedInit(boolean newNeedInit) {
         dr.update("needinit", newNeedInit);
+    }
+
+    public void updateBirthday(String birthday) {
+        dr.update("birthday", birthday);
+    }
+
+    public void updateGender(int gender) {
+        dr.update("gender", gender);
+    }
+
+    public void updateWeight(float weight) {
+        dr.update("weight", weight);
+    }
+
+    public void updateDietOpt(int dietOpt) {
+        dr.update("dietoption", dietOpt);
+    }
+
+    public void updateHealthOpt(int healthOpt) {
+        dr.update("healthoption", healthOpt);
+
     }
 }
