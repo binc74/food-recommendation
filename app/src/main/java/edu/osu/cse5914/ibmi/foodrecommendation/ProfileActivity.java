@@ -68,12 +68,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                             int pref = user.getHealthoption();
                             if (pref > 0) {
-                                mGender.setText(Const.dtype[pref]);
+                                mPref.setText(Const.dtype[pref]);
                             }
 
                             int diet = user.getDietoption();
                             if (diet > 0) {
-                                mGender.setText(Const.ptype[diet]);
+                                mDiet.setText(Const.ptype[diet]);
                             }
                         }
                     }
