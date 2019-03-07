@@ -17,9 +17,10 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="570dp"
         android:background="@drawable/bgoverlay"
-        android:visibility="visible" />
+        android:visibility="visible"
+        tools:layout_editor_absoluteY="-3dp" />
 
     <TextView
         android:id="@+id/tv_visual_rec"
