@@ -48,7 +48,7 @@ public class DiscoveryTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... objects) {
         QueryOptions.Builder builder = new QueryOptions.Builder(environmentId, collectionId);
-        builder.query(foodCal+" suggestion");
+        builder.query(foodCal+" food suggestion");
         QueryResponse result = mDiscovery.query(builder.build()).execute();
         Log.d("Discovery", result.toString());
         List<QueryResult> resultList = result.getResults();

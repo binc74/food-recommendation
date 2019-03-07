@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bkglogin"
     tools:context=".SignUpActivity">
 
     <AutoCompleteTextView
@@ -43,13 +44,21 @@
             android:id="@+id/submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/buttonbkg"
+            android:layout_marginStart="20dp"
+            android:textColor="#ffc28d"
+            android:textStyle="bold"
             android:text="@string/submit_form" />
 
         <Button
             android:id="@+id/back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/back" />
+            android:background="@drawable/buttonbkg"
+            android:layout_marginStart="20dp"
+            android:text="@string/back"
+            android:textColor="#ffc28d"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </LinearLayout>
