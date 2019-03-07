@@ -36,7 +36,8 @@
         <activity android:name=".CameraActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".OptionActivity"></activity>
+        <activity android:name=".OptionActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
