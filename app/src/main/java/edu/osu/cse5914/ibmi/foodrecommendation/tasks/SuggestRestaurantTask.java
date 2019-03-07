@@ -77,7 +77,7 @@ public class SuggestRestaurantTask extends AsyncTask<String, Void, ArrayList> {
             params.put("latitude", "40.002230");
             params.put("longitude", "-83.015695");
 
-            params2.put("term", "america");
+
             // Log.d("RestaurantTask", "Current File: " + foodType);
             params2.put("latitude", "40.002230");
             params2.put("longitude", "-83.015695");
@@ -85,14 +85,17 @@ public class SuggestRestaurantTask extends AsyncTask<String, Void, ArrayList> {
             Call<SearchResponse> call = yelpFusionApi.getBusinessSearch(params);
             Response<SearchResponse> response = call.execute();
             if(response.body().getBusinesses().size() <= 0){
+                params2.put("term", objects[0].substring( 0,10 ));
                 call = yelpFusionApi.getBusinessSearch(params2);
                 response = call.execute();
             }
             ArrayList<Business> business=response.body().getBusinesses();
             String a="s";
             for (int x=0; x<business.size(); x++){
+                Log.d("RestaurantTask", "Current File: " +"123");
                 Business b=business.get(x);
                 String name=b.getName();
+                Log.d("RestaurantTask", "Current File: " +name);
                 String rating=Double.toString(b.getRating());
                 String displayedPhone=b.getDisplayPhone();
                 String imgUrl=b.getImageUrl();

@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 TextView textView = view.findViewById(R.id.textView2);
                 String foodType = textView.getText().toString();
 
-                //Intent sugg_intent = new Intent(MainActivity.this, SuggestionActivity.class); //link to preference view
+                Intent sugg_intent = new Intent(MainActivity.this, SuggestionActivity.class); //link to preference view
                 Log.d("Main", "1");
-                //sugg_intent.putExtra("foodType", foodType);
+                sugg_intent.putExtra("foodType", foodType);
                 Log.d("Main", "2");
-                //startActivity(sugg_intent);
+                startActivity(sugg_intent);
                 Log.d("Main", "3");
-                new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext()).execute(foodType);
+                //new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext()).execute(foodType);
             }
         });
         Log.d(TAG, "Success Init");
