@@ -39,5 +39,6 @@
     <string name="update">Update</string>
     <string name="prompt_allergies">Allergies</string>
     <string name="action_update">Update</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
