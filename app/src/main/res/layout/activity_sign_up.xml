@@ -38,6 +38,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
 
         <Button
@@ -45,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonbkg"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="79dp"
             android:textColor="#ffc28d"
             android:textStyle="bold"
             android:text="@string/submit_form" />
@@ -55,7 +56,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonbkg"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="44dp"
             android:text="@string/back"
             android:textColor="#ffc28d"
             android:textStyle="bold" />

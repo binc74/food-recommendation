@@ -71,6 +71,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:orientation="horizontal">
 
             <Button
@@ -79,6 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginStart="68dp"
                 android:background="@drawable/buttonbkg"
                 android:text="@string/action_sign_in"
                 android:textColor="#ffc28d"
@@ -87,7 +89,7 @@
             <Button
                 android:id="@+id/email_sign_up"
                 style="?android:textAppearanceSmall"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="44dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
