@@ -39,45 +39,45 @@
             <!--android:layout_height="79dp"-->
             <!--android:background="@drawable/whitebkg"/>-->
 
-    <TextView
-        android:id="@+id/kun_pao"
-        android:layout_width="match_parent"
-        android:layout_height="27dp"
-        android:text="Suggested Recepies"
-        android:textAlignment="center" />
+        <TextView
+            android:id="@+id/kun_pao"
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:text="We recommend these dishes to you~"
+            android:textAlignment="center" />
 
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/listView">
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1">
 
         </ListView>
-
-    <TextView
-        android:id="@+id/kun_pao_chicken"
-        android:layout_width="match_parent"
-        android:layout_height="27dp"
-        android:text="Suggested Restaurants"
-        android:textAlignment="center" />
-
-
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentStart="false"
-        android:id="@+id/listView1">
-
-    </ListView>
+        <!--
+            <TextView
+                android:id="@+id/kun_pao_chicken"
+                android:layout_width="match_parent"
+                android:layout_height="27dp"
+                android:text="Suggested Restaurants"
+                android:textAlignment="center" />
 
 
-    <!--<TextView-->
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentStart="false"
+                android:id="@+id/listView1">
+
+            </ListView>
+         -->
+
+            <!--<TextView-->
     <!--android:id="@+id/tv_recepie_json"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="828dp"-->

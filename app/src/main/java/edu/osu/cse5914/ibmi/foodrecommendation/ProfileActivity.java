@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Const;
 import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
 import edu.osu.cse5914.ibmi.foodrecommendation.model.User;
@@ -23,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private EditText mBirthday;
     private EditText mPref;
     private EditText mDiet;
+    private EditText mAllergies;
 
     private Button mUpdate;
 
@@ -42,7 +46,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         else {
                             int gender = user.getGender();
                             if (gender > 0) {
-                                mGender.setText(Const.stype[gender]);
+                                mGender.setText(Const.genders[gender]);
                             }
 
                             float weight = user.getWeight();
@@ -57,12 +61,21 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
                             int pref = user.getHealthoption();
                             if (pref > 0) {
-                                mPref.setText(Const.dtype[pref]);
+                                mPref.setText(Const.prefs[pref]);
                             }
 
                             int diet = user.getDietoption();
                             if (diet > 0) {
-                                mDiet.setText(Const.ptype[diet]);
+                                mDiet.setText(Const.diets[diet]);
+                            }
+
+                            ArrayList<String> as = user.getAllergies();
+                            if (as.size() > 0) {
+                                String str = as.get(0);
+                                for (int i = 1; i < as.size(); ++i) {
+                                    str += ", " + as.get(i);
+                                }
+                                mAllergies.setText(str);
                             }
                         }
                     }
@@ -82,6 +95,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         mBirthday = findViewById(R.id.birthday);
         mPref = findViewById(R.id.preference);
         mDiet = findViewById(R.id.diet_opt);
+        mAllergies = findViewById(R.id.allergies);
 
         mUpdate = findViewById(R.id.edit_profile);
         mUpdate.setOnClickListener(this);
@@ -110,6 +124,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 pref_intent.putExtra("birthday", user.getBirthday());
                 pref_intent.putExtra("pref", user.getHealthoption());
                 pref_intent.putExtra("diet", user.getDietoption());
+                pref_intent.putStringArrayListExtra("allergies", user.getAllergies());
 
                 startActivity(pref_intent);
                 break;
