@@ -42,28 +42,36 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
         lvJson = findViewById( R.id.listView1 );
         Log.d("Suggest", "6");
 
+        Log.d("Suggest", "566");
 
+    }
 
-            Log.d("Suggest", "566");
-            lvJson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    private void setRecipeOnClick() {
+        lvJson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view,
-                                        final int position, long id) {
-                    Log.d("Suggest", "233");
-                    TextView textView = view.findViewById(R.id.textView3);
-                    String url = textView.getText().toString().substring( 8 );
-                    if(url.toLowerCase().contains("http")) {
-                        Log.d( "Suggest", url );
-                        Intent i = new Intent( Intent.ACTION_VIEW );
-                        i.setData( Uri.parse( url ) );
-                        startActivity( i );
-                    }
-                    //new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext()).execute(foodType);
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    final int position, long id) {
+                Log.d("Suggest", "233");
+                TextView textView = view.findViewById(R.id.textView3);
+                String url = textView.getText().toString().substring( 8 );
+                if(url.toLowerCase().contains("http")) {
+                    Log.d( "Suggest", url );
+                    Intent i = new Intent( Intent.ACTION_VIEW );
+                    i.setData( Uri.parse( url ) );
+                    startActivity( i );
                 }
-            });
-        }
+                //new SuggestRestaurantTask(lvRestaurantJson,getApplicationContext()).execute(foodType);
+            }
+        });
+    }
 
+    private void setRestaurantOnClick() {
+        lvJson.setOnItemClickListener(((parent, view, position, id) -> {
+            Intent map_intent = new Intent(this, MapsActivity.class); //link to signup view
+            startActivity(map_intent);
+        }));
+    }
 
     @Override
     public void onClick(View v) {
@@ -75,12 +83,14 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
                 Log.d("Suggest", foodType);
                 new SuggestRestaurantTask(lvJson,getApplicationContext()).execute(foodType);
                 mTextView.setText("Suggested Restaurants");
+                setRestaurantOnClick();
                 break;
             case R.id.recipe:
                 flag = true;
                 Log.d("Suggest", foodType);
                 new SuggestRecipeTask(lvJson,getApplicationContext()).execute(foodType);
                 mTextView.setText("Suggested Recipe");
+                setRecipeOnClick();
                 break;
 
         }
