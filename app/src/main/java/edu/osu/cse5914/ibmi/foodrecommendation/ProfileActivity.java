@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Const;
@@ -25,6 +26,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private EditText mBirthday;
     private EditText mPref;
     private EditText mDiet;
+    private EditText mAllergies;
 
     private Button mUpdate;
 
@@ -66,6 +68,15 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             if (diet > 0) {
                                 mDiet.setText(Const.diets[diet]);
                             }
+
+                            ArrayList<String> as = user.getAllergies();
+                            if (as.size() > 0) {
+                                String str = as.get(0);
+                                for (int i = 1; i < as.size(); ++i) {
+                                    str += ", " + as.get(i);
+                                }
+                                mAllergies.setText(str);
+                            }
                         }
                     }
                 });
@@ -84,6 +95,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         mBirthday = findViewById(R.id.birthday);
         mPref = findViewById(R.id.preference);
         mDiet = findViewById(R.id.diet_opt);
+        mAllergies = findViewById(R.id.allergies);
 
         mUpdate = findViewById(R.id.edit_profile);
         mUpdate.setOnClickListener(this);

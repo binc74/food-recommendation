@@ -76,11 +76,41 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
 
         if (needExit) {
             int gender = extra.getInt("gender");
-            int pref = extra.getInt("gender");
-            int diet = extra.getInt("gender");
+            int pref = extra.getInt("pref");
+            int diet = extra.getInt("diet");
             float weight = extra.getFloat("weight");
 
+            String birthday = extra.getString("birthday");
+            ArrayList<String> allergies = extra.getStringArrayList("allergies");
 
+            if (!birthday.equals("")) {
+                mBirthday.setText(birthday);
+            }
+
+            if (allergies.size() > 0) {
+                String ta = "";
+                for (String str: allergies) {
+                    ta += str + " ";
+                }
+
+                mAllergies.setText(ta);
+            }
+
+            if (weight > 0) {
+                mWeight.setText(Float.toString(weight));
+            }
+
+            if (gender > 0) {
+                msexSpinner.setSelection(gender);
+            }
+
+            if (pref > 0) {
+                mprefSpinner.setSelection(pref);
+            }
+
+            if (diet > 0) {
+                mdietSpinner.setSelection(diet);
+            }
         }
     }
 
