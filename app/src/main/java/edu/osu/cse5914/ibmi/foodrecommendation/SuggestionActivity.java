@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.yelp.fusion.client.models.Coordinates;
+
+import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.SuggestRecipeTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.SuggestRestaurantTask;
 
@@ -68,7 +71,16 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
 
     private void setRestaurantOnClick() {
         lvJson.setOnItemClickListener(((parent, view, position, id) -> {
+            Restaurant res = (Restaurant) parent.getItemAtPosition(position);
+            Coordinates coord = res.getCoord();
+            String name = res.getName();
+
             Intent map_intent = new Intent(this, MapsActivity.class); //link to signup view
+
+            map_intent.putExtra("lat", coord.getLatitude());
+            map_intent.putExtra("lng", coord.getLongitude());
+            map_intent.putExtra("name", name);
+
             startActivity(map_intent);
         }));
     }
