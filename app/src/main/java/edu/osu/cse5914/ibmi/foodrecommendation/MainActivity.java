@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.tasks.NutrionixTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.SuggestRestaurantTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.SuggestionTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.TranslationTask;
@@ -34,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.AbstractExecutorService;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
@@ -42,7 +44,7 @@ import java.util.regex.Pattern;
 import static java.net.Proxy.Type.HTTP;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AsyncResponse {
     private static String TAG = "MainActivity";
 
     private Button getCal;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnFetchRecepie;
     private String text;
 
-
+    private String food_cal="0";
     private String food_category;
 
     private String maxCalAllowed;
@@ -77,9 +79,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
 
         food_category= getIntent().getStringExtra("food_category");
-        if (food_category.equals("Steak")||food_category.equals("Pizza")||food_category.equals("Hamburger")||food_category.equals("French Fries")) {
+        String cal="0";
+        //get the precise calorie of the food use nutritionix api
+        try{
+        cal=new NutrionixTask(food_category).execute().get();
+        }
+        catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        catch(ExecutionException e){
+            e.printStackTrace();
+        }
+
+        int int_cal=Integer.parseInt(cal);
+        int a=2;
+        if (int_cal>800) {
             minCalAllowed = "0.5";
             maxCalAllowed = "1.0";
+        }
+        else if(200<int_cal&&int_cal<800){
+            minCalAllowed = "1.0";
+            maxCalAllowed = "4.0";
         }
         else{
             minCalAllowed="4";
@@ -89,18 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         text = getIntent().getStringExtra("id");
         setContentView(R.layout.activity_main);
-//        mButton = findViewById(R.id.translate);
-//        mButton.setOnClickListener(this);
-//        mTextView = findViewById(R.id.text_trans);
-//        mEditText = findViewById(R.id.password);
 
-//        tvRecepieJson=findViewById(R.id.tv_recepie_json);
-       // btnFetchRecepie=findViewById(R.id.btn_fetch_recepie);
-      //  btnFetchRecepie.setOnClickListener(this);
-        //getCal=findViewById(R.id.cal_feedback);
-       // getCal.setOnClickListener(this);
-        //mTextView = findViewById( R.id.cal_feedback );
-        //mTextView.setMovementMethod(LinkMovementMethod.getInstance());
 
         lvRecepieJson= (ListView) findViewById(R.id.listView);
         lvRestaurantJson= (ListView) findViewById(R.id.listView1);
@@ -138,6 +147,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         Log.d(TAG, "Success Init");
     }
+
+    //this override the implemented method from asyncTask
+    @Override
+    public void processFinish(String output){
+        //Here you will receive the result fired from async class
+        //of onPostExecute(result) method.
+        food_cal=output;
+    }
+
 
     @Override
     public void onClick(View v) {
