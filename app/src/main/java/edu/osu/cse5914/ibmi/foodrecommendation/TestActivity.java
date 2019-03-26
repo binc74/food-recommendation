@@ -49,6 +49,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "file size : " + image.getByteCount());
         mImage.setImageBitmap(image);
 
+        // Compress bitmap
+        Bitmap compressedImage = Bitmap.createScaledBitmap(image, 300, 300,true);
+        Log.d(TAG, "" + image.getByteCount() + " : " + compressedImage.getByteCount());
+
+
         new VisualRecTask(mTextView,mDiscoveryButton,mDiscoveryView).execute(filePath);
     }
 

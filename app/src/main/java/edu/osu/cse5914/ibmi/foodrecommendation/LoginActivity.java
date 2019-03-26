@@ -47,6 +47,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+
+        mEmail.setText("");
+        mPassword.setText("");
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.email_sign_in_button:
