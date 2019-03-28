@@ -81,30 +81,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         food_category= getIntent().getStringExtra("food_category");
         String cal="0";
         //get the precise calorie of the food use nutritionix api
-        try{
-        cal=new NutrionixTask(food_category).execute().get();
-        }
-        catch (InterruptedException e){
-            e.printStackTrace();
-        }
-        catch(ExecutionException e){
-            e.printStackTrace();
-        }
+//        try{
+//        cal=new NutrionixTask(food_category).execute().get();
+//        }
+//        catch (InterruptedException e){
+//            e.printStackTrace();
+//        }
+//        catch(ExecutionException e){
+//            e.printStackTrace();
+//        }
+//
+//        int int_cal=Integer.parseInt(cal);
+//        int a=2;
+//        if (int_cal>800) {
+//            minCalAllowed = "0.5";
+//            maxCalAllowed = "1.0";
+//        }
+//        else if(200<int_cal&&int_cal<800){
+//            minCalAllowed = "1.0";
+//            maxCalAllowed = "4.0";
+//        }
+//        else{
+//            minCalAllowed="4";
+//        maxCalAllowed = "8";}
 
-        int int_cal=Integer.parseInt(cal);
-        int a=2;
-        if (int_cal>800) {
+        if (food_category.equals("Steak")||food_category.equals("Pizza")||food_category.equals("Hamburger")||food_category.equals("French Fries")) {
             minCalAllowed = "0.5";
             maxCalAllowed = "1.0";
         }
-        else if(200<int_cal&&int_cal<800){
-            minCalAllowed = "1.0";
-            maxCalAllowed = "4.0";
-        }
         else{
             minCalAllowed="4";
-        maxCalAllowed = "8";}
-
+            maxCalAllowed = "8";}
 
         super.onCreate(savedInstanceState);
         text = getIntent().getStringExtra("id");
