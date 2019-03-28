@@ -77,59 +77,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
-
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         food_category= getIntent().getStringExtra("food_category");
         String cal="0";
-        //get the precise calorie of the food use nutritionix api
-//        try{
-//        cal=new NutrionixTask(food_category).execute().get();
-//        }
-//        catch (InterruptedException e){
-//            e.printStackTrace();
-//        }
-//        catch(ExecutionException e){
-//            e.printStackTrace();
-//        }
-//
-//        int int_cal=Integer.parseInt(cal);
-//        int a=2;
-//        if (int_cal>800) {
-//            minCalAllowed = "0.5";
-//            maxCalAllowed = "1.0";
-//        }
-//        else if(200<int_cal&&int_cal<800){
-//            minCalAllowed = "1.0";
-//            maxCalAllowed = "4.0";
-//        }
-//        else{
-//            minCalAllowed="4";
-//        maxCalAllowed = "8";}
-
-        if (food_category.equals("Steak")||food_category.equals("Pizza")||food_category.equals("Hamburger")||food_category.equals("French Fries")) {
-            minCalAllowed = "0.5";
-            maxCalAllowed = "1.0";
-        }
-        else{
-            minCalAllowed="4";
-            maxCalAllowed = "8";}
-
-        super.onCreate(savedInstanceState);
-        text = getIntent().getStringExtra("id");
-        setContentView(R.layout.activity_main);
-
-
         lvRecepieJson= (ListView) findViewById(R.id.listView);
+
+        //get the precise calorie of the food use nutritionix api
+        new NutrionixTask(food_category,getApplicationContext(),lvRecepieJson).execute();
+
+
+        text = getIntent().getStringExtra("id");
+
+
         lvRestaurantJson= (ListView) findViewById(R.id.listView1);
-
-
-//        Recepie r1 = new Recepie("r1","1","2" );
-//        Recepie r2 = new Recepie("r2","2", "3");
-//
-//
-//        ArrayList<Recepie> recepieList = new ArrayList<>();
-//        recepieList.add(r1);
-//        recepieList.add(r2);
-        new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed,minCalAllowed).execute();
         lvRecepieJson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override

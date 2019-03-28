@@ -2,6 +2,7 @@ package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,11 +30,14 @@ import retrofit2.Response;
 public class NutrionixTask  extends AsyncTask<String, Void,String> {
 
     private String foodType;
-
+    protected ListView mList;
+    private final Context mContext;
     public AsyncResponse delegate = null;
-    public NutrionixTask(String foodType){
-        foodType=foodType;
 
+    public NutrionixTask(String foodType,Context ct,ListView lv){
+        foodType=foodType;
+        mContext = ct;
+        mList = lv;
     }
 
 
@@ -106,7 +110,23 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
     }
     @Override
     protected void onPostExecute(String o) {
-        delegate.processFinish(o);
+//        delegate.processFinish(o);
+        String minCalAllowed;
+        String maxCalAllowed;
+        int int_cal=Integer.parseInt(o);
+        int a=2;
+        if (int_cal>800) {
+            minCalAllowed = "0.5";
+            maxCalAllowed = "1.0";
+        }
+        else if(200<int_cal&&int_cal<800){
+            minCalAllowed = "1.0";
+            maxCalAllowed = "4.0";
+        }
+        else{
+            minCalAllowed="4";
+            maxCalAllowed = "8";}
+        new SuggestionTask(mList, mContext,maxCalAllowed,minCalAllowed).execute();
     }
 
 }
