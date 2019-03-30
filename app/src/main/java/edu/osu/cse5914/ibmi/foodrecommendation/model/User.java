@@ -9,6 +9,7 @@ public class User extends BaseModel {
     private String username;
     private String password;
     private ArrayList<String> allergies;
+    private ArrayList<String> history;
     private boolean needinit;
     private int gender;
     private int healthoption;
@@ -75,6 +76,10 @@ public class User extends BaseModel {
         this.weight = weight;
     }
 
+    public void setHistory(ArrayList<String> history) {
+        this.history = history;
+    }
+
     public ArrayList<String> getAllergies() {
         return allergies;
     }
@@ -88,6 +93,10 @@ public class User extends BaseModel {
     }
 
     public boolean getNeedinit() { return needinit; }
+
+    public ArrayList<String> getHistory() {
+        return history;
+    }
 
     public int getGender() { return gender; }
 

@@ -74,4 +74,6 @@ public class UserService extends BaseFirestoreService {
     public void updateAllergies(List<String> allergies) {
         dr.update("allergies", allergies);
     }
+
+    public void updateHistory() {}
 }
