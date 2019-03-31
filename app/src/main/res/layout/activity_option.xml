@@ -11,27 +11,39 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bgoverlay"></View>
+        android:background="@drawable/bgoverlay" />
 
     <Button
         android:id="@+id/profile"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="492dp"
+        android:layout_marginBottom="84dp"
         android:background="@drawable/buttonbkg"
         android:text="@string/user_profile"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/history"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+         />
 
     <Button
         android:id="@+id/photo"
         android:layout_width="270dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="428dp"
+        android:layout_marginBottom="84dp"
         android:background="@drawable/buttonbkg"
         android:text="@string/take_photo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/history"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/buttonbkg"
+        android:text="@string/view_history"
+        app:layout_constraintBottom_toTopOf="@+id/photo"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 </android.support.constraint.ConstraintLayout>

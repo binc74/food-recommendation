@@ -9,6 +9,7 @@ import android.widget.Button;
 public class OptionActivity extends AppCompatActivity implements View.OnClickListener {
     Button mProfile;
     Button mTakePhoto;
+    Button mHistButton;
 
     String uid;
 
@@ -22,6 +23,9 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
 
         mTakePhoto = findViewById(R.id.photo);
         mTakePhoto.setOnClickListener(this);
+
+        mHistButton = findViewById(R.id.history);
+        mHistButton.setOnClickListener(this);
 
         uid = getIntent().getExtras().getString("uid");
     }
@@ -39,6 +43,12 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
                 Intent cam_intent = new Intent(this, CameraActivity.class); //link to preference view
                 cam_intent.putExtra("uid", uid);
                 startActivity(cam_intent);
+                break;
+
+            case R.id.history:
+                Intent hist_intent = new Intent(this, HistoryActivity.class); //link to preference view
+                hist_intent.putExtra("uid", uid);
+                startActivity(hist_intent);
                 break;
         }
     }

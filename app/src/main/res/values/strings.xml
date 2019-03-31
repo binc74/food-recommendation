@@ -40,5 +40,6 @@
     <string name="prompt_allergies">Allergies</string>
     <string name="action_update">Update</string>
     <string name="title_activity_maps">Map</string>
+    <string name="view_history">View History</string>
 
 </resources>
