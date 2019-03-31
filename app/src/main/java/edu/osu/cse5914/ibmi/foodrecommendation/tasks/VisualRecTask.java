@@ -17,12 +17,15 @@ import org.w3c.dom.Text;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
 
 public class VisualRecTask extends AsyncTask<String, Void, String> {
+    private static final String TAG = "VisualRecTask";
+
     public TextView mText;
     public Button mdiscovery;
     protected VisualRecognition mVisualRecor;
@@ -72,6 +75,21 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
 
         ClassifiedImages result = mVisualRecor.classify(classifyOptions).execute();
 
+        // Close image stream
+        try {
+            imagesStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Remove image from the phone
+        if (photoFile.exists()) {
+            if (photoFile.delete()) {
+                Log.d(TAG, "file Deleted :" + photoFile);
+            } else {
+                Log.d(TAG, "file not Deleted :" + photoFile);
+            }
+        }
 
         String className = "";
         float maxScore = 0;

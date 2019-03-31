@@ -56,7 +56,9 @@ public abstract class BaseFirestoreService {
         };
     }
 
-    protected void addDocument(BaseModel data,
+    // Create
+
+    protected void addDocumentWithId(BaseModel data,
                                OnSuccessListener<Void> onSuccessListener,
                                OnFailureListener onFailureListener) {
         db.collection(getCollection()).document(data.getDocumentId())
@@ -65,7 +67,7 @@ public abstract class BaseFirestoreService {
                 .addOnFailureListener(onFailureListener);
     }
 
-    protected void addDocument(BaseModel data,
+    protected void addDocumentWithId(BaseModel data,
                                OnSuccessListener<Void> onSuccessListener) {
         db.collection(getCollection()).document(data.getDocumentId())
                 .set(data)
@@ -73,8 +75,29 @@ public abstract class BaseFirestoreService {
                 .addOnFailureListener(getDefaultOnFailureListener());
     }
 
-    protected void addDocument(BaseModel data) {
-        addDocument(data, getDefaultOnSuccessListener(), getDefaultOnFailureListener());
+    protected void addDocumentWithId(BaseModel data) {
+        addDocumentWithId(data, getDefaultOnSuccessListener(), getDefaultOnFailureListener());
+    }
+
+    protected void addDocumentWithoutId(BaseModel data,
+                                     OnSuccessListener<DocumentReference> onSuccessListener,
+                                     OnFailureListener onFailureListener) {
+        db.collection(getCollection())
+                .add(data)
+                .addOnSuccessListener(onSuccessListener)
+                .addOnFailureListener(onFailureListener);
+    }
+
+    protected void addDocumentWithoutId(BaseModel data,
+                                     OnSuccessListener<DocumentReference> onSuccessListener) {
+        db.collection(getCollection())
+                .add(data)
+                .addOnSuccessListener(onSuccessListener)
+                .addOnFailureListener(getDefaultOnFailureListener());
+    }
+
+    protected void addDocumentWithoutId(BaseModel data) {
+        addDocumentWithoutId(data, getDefaultDocRefOnSuccessListener(), getDefaultOnFailureListener());
     }
 
     protected void setDocument(BaseModel data, OnSuccessListener<Void> onSuccessListener,

@@ -1,6 +1,6 @@
 package edu.osu.cse5914.ibmi.foodrecommendation;
 
-import android.arch.lifecycle.ViewModel;
+//import android.arch.lifecycle.ViewModel;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

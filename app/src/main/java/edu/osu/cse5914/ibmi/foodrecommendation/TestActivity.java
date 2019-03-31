@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.db.MealService;
+import edu.osu.cse5914.ibmi.foodrecommendation.model.Meal;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.VisualRecTask;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener{
@@ -28,10 +30,14 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     //private VisualRecognition VisualRecor;
     //private VisualRecTask visualRecTaskTask;
 
+    private MealService mealService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
+
+        mealService = new MealService();
 
         filePath = getIntent().getStringExtra("imagePath");
         Log.d(TAG, "get path1: " + filePath);
@@ -50,8 +56,8 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mImage.setImageBitmap(image);
 
         // Compress bitmap
-        Bitmap compressedImage = Bitmap.createScaledBitmap(image, 300, 300,true);
-        Log.d(TAG, "" + image.getByteCount() + " : " + compressedImage.getByteCount());
+        //Bitmap compressedImage = Bitmap.createScaledBitmap(image, 300, 300,true);
+        //Log.d(TAG, "" + image.getByteCount() + " : " + compressedImage.getByteCount());
 
 
         new VisualRecTask(mTextView,mDiscoveryButton,mDiscoveryView).execute(filePath);
@@ -61,9 +67,12 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.report:
+                String fc = mTextView.getText().toString();
+                Meal m = new Meal(fc);
+                mealService.addNewMeal(m);
 
                 Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
-                pref_intent.putExtra("food_category", mTextView.getText().toString());
+                pref_intent.putExtra("food_category", fc);
                 startActivity(pref_intent);
                 break;
             case R.id.DiscoveryButton:

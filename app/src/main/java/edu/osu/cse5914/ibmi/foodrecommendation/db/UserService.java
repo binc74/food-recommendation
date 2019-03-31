@@ -6,6 +6,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 
 import java.util.List;
 
@@ -38,13 +39,13 @@ public class UserService extends BaseFirestoreService {
     }
 
     public void addNewUser(User user) {
-        addDocument(user, aVoid -> {
+        addDocumentWithId(user, aVoid -> {
             Log.d(TAG, user.getDocumentId() + " successfully written!");
         });
     }
 
     public void addNewUser(User user, OnSuccessListener<Void> onSuccessListener) {
-        addDocument(user, onSuccessListener);
+        addDocumentWithId(user, onSuccessListener);
     }
 
     public void updateNeedInit(boolean newNeedInit) {
@@ -75,5 +76,7 @@ public class UserService extends BaseFirestoreService {
         dr.update("allergies", allergies);
     }
 
-    public void updateHistory() {}
+    public void updateHistory(String mealId) {
+        dr.update("history", FieldValue.arrayUnion(mealId));
+    }
 }

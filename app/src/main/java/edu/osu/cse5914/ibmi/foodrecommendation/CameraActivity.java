@@ -226,12 +226,13 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                         } finally {
                             Intent intent = new Intent(CameraActivity.this, TestActivity.class);
                             intent.putExtra("imagePath", file.getAbsolutePath());
-                            Log.d(TAG, "file path: " + file.getAbsolutePath());
-                            startActivity(intent);
 
                             if (outputStream != null) {
                                 outputStream.close();
                             }
+
+                            Log.d(TAG, "file path: " + file.getAbsolutePath());
+                            startActivity(intent);
                         }
                     }
                 };

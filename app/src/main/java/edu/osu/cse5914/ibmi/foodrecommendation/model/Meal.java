@@ -1,16 +1,28 @@
 package edu.osu.cse5914.ibmi.foodrecommendation.model;
 
 import com.google.firebase.firestore.ServerTimestamp;
-import com.google.type.Date;
+import java.util.Date;
 
 import java.util.ArrayList;
 
 public class Meal extends BaseModel {
     private ArrayList<String> food;
-    private int calorie;
+    private float calorie;
+    private float protein;
 
     @ServerTimestamp
-    Date time;
+    private Date time;
+
+    public Meal(String f, float calorie) {
+        food = new ArrayList<>();
+        food.add(f);
+        this.calorie = calorie;
+    }
+
+    public Meal(String f) {
+        food = new ArrayList<>();
+        food.add(f);
+    }
 
     public ArrayList<String> getFood() {
         return food;
@@ -20,11 +32,27 @@ public class Meal extends BaseModel {
         this.food = food;
     }
 
-    public int getCalorie() {
+    public float getCalorie() {
         return calorie;
     }
 
-    public void setCalorie(int calorie) {
+    public void setCalorie(float calorie) {
         this.calorie = calorie;
+    }
+
+    public float getProtein() {
+        return protein;
+    }
+
+    public void setProtein(float protein) {
+        this.protein = protein;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
     }
 }
