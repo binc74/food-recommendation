@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.db.MealService;
+import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
 import edu.osu.cse5914.ibmi.foodrecommendation.model.Meal;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.VisualRecTask;
 
@@ -26,20 +27,27 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mDiscoveryView;
    // private VisualRecTask visualRecTask;
     private String filePath;
+    private String uid;
 
     //private VisualRecognition VisualRecor;
     //private VisualRecTask visualRecTaskTask;
 
     private MealService mealService;
+    private UserService userService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        mealService = new MealService();
+        Bundle extra = getIntent().getExtras();
+        filePath = extra.getString("imagePath");
+        uid = extra.getString("uid");
 
-        filePath = getIntent().getStringExtra("imagePath");
+        mealService = new MealService();
+        userService = new UserService();
+        userService.getDocumentReference(uid);
+
         Log.d(TAG, "get path1: " + filePath);
 
         mDiscoveryView = findViewById(R.id.textView8);
@@ -69,7 +77,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.report:
                 String fc = mTextView.getText().toString();
                 Meal m = new Meal(fc);
-                mealService.addNewMeal(m);
+                mealService.addNewMeal(m, task -> {
+                    String mid = task.getId();
+
+                    userService.updateHistory(mid);
+                });
 
                 Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
                 pref_intent.putExtra("food_category", fc);

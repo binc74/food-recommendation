@@ -75,6 +75,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     private Handler mBackgroundHandler;
     private HandlerThread mBackgroundThread;
 
+    private String uid;
+
     CameraDevice.StateCallback stateCallBack = new CameraDevice.StateCallback() {
         @Override
         public void onOpened(@NonNull CameraDevice camera) {
@@ -120,6 +122,9 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+        Bundle extra = getIntent().getExtras();
+        uid = extra.getString("uid");
 
         mTakePhotoButton = findViewById(R.id.btn_takepicture);
         mTakePhotoButton.setOnClickListener(this);
@@ -226,6 +231,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                         } finally {
                             Intent intent = new Intent(CameraActivity.this, TestActivity.class);
                             intent.putExtra("imagePath", file.getAbsolutePath());
+                            intent.putExtra("uid", uid);
 
                             if (outputStream != null) {
                                 outputStream.close();
