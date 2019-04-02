@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toStartOf="parent" />
 
 
-    <TextView
+    <EditText
         android:id="@+id/tv_visual_rec"
         android:layout_width="265dp"
         android:layout_height="99dp"
