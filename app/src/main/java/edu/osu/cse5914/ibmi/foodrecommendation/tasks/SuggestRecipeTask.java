@@ -13,6 +13,11 @@ import com.yelp.fusion.client.models.Business;
 import com.yelp.fusion.client.models.Coordinates;
 import com.yelp.fusion.client.models.SearchResponse;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
@@ -80,6 +85,27 @@ public class SuggestRecipeTask extends AsyncTask<String, Void, ArrayList> {
         String url6 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUDJMmhx57ggx8CQvqLx6Cl5GvrPF9qAKwsOTyFdI5IjWFS7C";
         Coordinates cd6=new Coordinates();
         String displayedPhone = "12345";
+
+        String url = "https://stackoverflow.com/questions/2835505";
+        Document document;
+        Log.d("Recipe", "Current File: 1" );
+        try {
+            document = Jsoup.connect(url).get();
+            String question = document.select("#question .post-text").text();
+            Log.d("Recipe", "Current File: " + question );
+            System.out.println("Question: " + question);
+
+            Log.d("Recipe", "Current File: 8" );
+            Elements answerers = document.select("#answers .user-details a");
+            for (Element answerer : answerers) {
+                System.out.println("Answerer: " + answerer.text());
+                Log.d("Recipe", "Current File: " + answerer.text());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Log.d("Recipe", "Current File: 2" );
 
         restaurantList.add( new Restaurant( name1, rcp1.replaceAll( "\\s+","%20" ), url1, displayedPhone,cd1) );//use rating=1 and prepTime=2 for now and change later
         restaurantList.add( new Restaurant( name2, rcp2.replaceAll( "\\s+","%20" ), url2, displayedPhone ,cd2) );
