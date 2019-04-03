@@ -10,6 +10,7 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
     Button mProfile;
     Button mTakePhoto;
     Button mHistButton;
+    Button mBack;
 
     String uid;
 
@@ -26,6 +27,9 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
 
         mHistButton = findViewById(R.id.history);
         mHistButton.setOnClickListener(this);
+
+        mBack = findViewById(R.id.back);
+        mBack.setOnClickListener(this);
 
         uid = getIntent().getExtras().getString("uid");
     }
@@ -49,6 +53,9 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
                 Intent hist_intent = new Intent(this, HistoryActivity.class); //link to preference view
                 hist_intent.putExtra("uid", uid);
                 startActivity(hist_intent);
+                break;
+            case R.id.back:
+                finish();
                 break;
         }
     }

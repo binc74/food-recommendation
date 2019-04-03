@@ -9,6 +9,7 @@
     tools:context=".OptionActivity">
 
     <View
+        android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bgoverlay"
@@ -24,8 +25,7 @@
         android:text="@string/user_profile"
         app:layout_constraintBottom_toTopOf="@+id/history"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-         />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/photo"
@@ -34,7 +34,7 @@
         android:layout_marginBottom="84dp"
         android:background="@drawable/buttonbkg"
         android:text="@string/take_photo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/back"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
@@ -48,4 +48,16 @@
         app:layout_constraintBottom_toTopOf="@+id/photo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/buttonbkg"
+        android:text="@string/back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

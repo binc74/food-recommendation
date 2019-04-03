@@ -7,4 +7,17 @@
     android:orientation="vertical"
     tools:context=".HistoryActivity">
 
+    <Button
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="580dp"
+        android:background="@drawable/buttonbkg"
+        android:text="@string/back"
+        android:textColor="#ffc28d"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

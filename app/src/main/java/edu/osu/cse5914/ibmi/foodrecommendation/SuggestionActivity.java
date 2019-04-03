@@ -21,6 +21,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
 
     private Button mRestaurantButton;
     private Button mRecipeButton;
+    private Button mBack;
     private ListView lvJson;
     private String foodType;
     private TextView mTextView;
@@ -46,6 +47,9 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
         Log.d("Suggest", "6");
 
         Log.d("Suggest", "566");
+
+        mBack = findViewById( R.id.back );
+        mBack.setOnClickListener(this);
 
     }
 
@@ -103,6 +107,9 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
                 new SuggestRecipeTask(lvJson,getApplicationContext()).execute(foodType);
                 mTextView.setText("Suggested Recipe");
                 setRecipeOnClick();
+                break;
+            case R.id.back:
+                finish();
                 break;
 
         }
