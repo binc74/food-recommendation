@@ -10,6 +10,7 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,13 +18,14 @@ import edu.osu.cse5914.ibmi.foodrecommendation.db.MealService;
 import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
 import edu.osu.cse5914.ibmi.foodrecommendation.model.Meal;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.VisualRecTask;
+import edu.osu.cse5914.ibmi.foodrecommendation.util.EditTextUtil;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener{
     private static String TAG = "TestActivity";
     private ImageView mImage;
     private Button mReport;
     private Button mDiscoveryButton;
-    private TextView mTextView;
+    private EditText mTextView;
     private TextView mDiscoveryView;
    // private VisualRecTask visualRecTask;
     private String filePath;
@@ -75,7 +77,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.report:
-                String fc = mTextView.getText().toString();
+                String fc = EditTextUtil.getString(mTextView);
                 Meal m = new Meal(fc);
                 mealService.addNewMeal(m, task -> {
                     String mid = task.getId();
@@ -92,6 +94,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 i.setData(Uri.parse(mDiscoveryView.getText().toString()));
                 startActivity(i);
                 break;
+
 
         }
 

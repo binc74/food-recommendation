@@ -35,7 +35,7 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
     public AsyncResponse delegate = null;
 
     public NutrionixTask(String foodType,Context ct,ListView lv){
-        foodType=foodType;
+        this.foodType=foodType;
         mContext = ct;
         mList = lv;
     }
@@ -58,7 +58,6 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
         String cal="0";
 
         try {
-
 
             //remember to only search those with images
 //            URL url = new URL("http://api.myjson.com/bins/xu8g0");
@@ -113,13 +112,13 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
 //        delegate.processFinish(o);
         String minCalAllowed;
         String maxCalAllowed;
-        int int_cal=Integer.parseInt(o);
+        float flt_cal=Float.parseFloat(o);
         int a=2;
-        if (int_cal>800) {
+        if (flt_cal>800) {
             minCalAllowed = "0.5";
             maxCalAllowed = "1.0";
         }
-        else if(200<int_cal&&int_cal<800){
+        else if(200<flt_cal&&flt_cal<800){
             minCalAllowed = "1.0";
             maxCalAllowed = "4.0";
         }
