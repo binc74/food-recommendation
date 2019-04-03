@@ -29,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private EditText mAllergies;
 
     private Button mUpdate;
+    private Button mBack;
 
     private User user;
     private String uid;
@@ -100,6 +101,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         mUpdate = findViewById(R.id.edit_profile);
         mUpdate.setOnClickListener(this);
 
+        mBack = findViewById(R.id.back);
+        mBack.setOnClickListener(this);
+
         mUsername.setText(uid);
 
         updateText();
@@ -127,6 +131,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 pref_intent.putStringArrayListExtra("allergies", user.getAllergies());
 
                 startActivity(pref_intent);
+                break;
+            case R.id.back:
+                finish();
                 break;
         }
     }

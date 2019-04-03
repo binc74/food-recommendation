@@ -14,6 +14,18 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/photolayout"
         android:layout_alignParentTop="true"/>
+    <Button
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="560dp"
+        android:background="@drawable/buttonbkg"
+        android:text="@string/back"
+        android:textColor="#ffc28d"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -26,7 +38,6 @@
         android:layout_marginBottom="24dp"
         android:background="@drawable/snapicon"
         android:orientation="vertical">
-
         <Button
             android:id="@+id/btn_takepicture"
             android:layout_width="60dp"

@@ -51,6 +51,7 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     private static String TAG = "CameraActivity";
 
     private Button mTakePhotoButton;
+    private Button mBack;
     private TextureView mTextureView;
 
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
@@ -128,6 +129,9 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
         mTakePhotoButton = findViewById(R.id.btn_takepicture);
         mTakePhotoButton.setOnClickListener(this);
+
+        mBack = findViewById(R.id.back);
+        mBack.setOnClickListener(this);
 
         mTextureView = findViewById(R.id.texture);
         mTextureView.setSurfaceTextureListener(textureListener);
@@ -359,6 +363,10 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_takepicture:
                 takePicture();
                 break;
+            case R.id.back:
+                finish();
+                break;
+
         }
     }
 }

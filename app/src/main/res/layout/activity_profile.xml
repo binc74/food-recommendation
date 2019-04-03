@@ -92,13 +92,26 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/edit_profile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="484dp"
+    android:id="@+id/edit_profile"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="136dp"
+    android:layout_marginTop="484dp"
+    android:background="@drawable/buttonbkg"
+    android:text="@string/update"
+    android:textColor="#ffc28d"
+    android:textStyle="bold"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/linearLayout2" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="550dp"
         android:background="@drawable/buttonbkg"
-        android:text="@string/update"
+        android:text="@string/back"
         android:textColor="#ffc28d"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
