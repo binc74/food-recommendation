@@ -73,7 +73,7 @@
         android:text="back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
+<!--
     <Button
         android:id="@+id/hint"
         android:layout_width="40dp"
@@ -84,5 +84,5 @@
         android:text="i"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
+-->
 </android.support.constraint.ConstraintLayout>

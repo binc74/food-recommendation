@@ -24,7 +24,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
     private Button mRestaurantButton;
     private Button mRecipeButton;
     private Button mBack;
-    private Button mHint;
+   // private Button mHint;
     private ListView lvJson;
     private String foodType;
     private TextView mTextView;
@@ -57,13 +57,14 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
         mBack = findViewById( R.id.back );
         mBack.setOnClickListener(this);
 
-        mHint = findViewById( R.id.hint );
-        mHint.setOnClickListener(this);
+        //mHint = findViewById( R.id.hint );
+        //mHint.setOnClickListener(this);
 
         new SuggestRestaurantTask(lvJson,getApplicationContext()).execute(foodType);
         mTextView.setText("Restaurants Serve the Food");
         mTextHint.setText("Click Items above for More Information!");
         setRestaurantOnClick();
+        Toast.makeText( this,"Press the RESTAURANT button to find the restaurants serve the food! Press the RECIPE button to find the recipes for the food!", Toast.LENGTH_LONG ).show();
 
     }
 
@@ -132,10 +133,10 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
             case R.id.back:
                 finish();
                 break;
-            case R.id.hint:
+            /*case R.id.hint:
                 Toast.makeText( this,"Press the RESTAURANT button to find the restaurants serve the food! Press the RECIPE button to find the recipes for the food!", Toast.LENGTH_LONG ).show();
                 break;
-
+*/
         }
     }
 
