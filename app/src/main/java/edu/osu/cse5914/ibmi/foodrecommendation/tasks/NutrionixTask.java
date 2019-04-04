@@ -14,18 +14,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.AsyncResponse;
-import edu.osu.cse5914.ibmi.foodrecommendation.R;
-import edu.osu.cse5914.ibmi.foodrecommendation.RestaurantListAdapter;
-import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
-import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
-import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
-import retrofit2.Call;
-import retrofit2.Response;
 
 public class NutrionixTask  extends AsyncTask<String, Void,String> {
 

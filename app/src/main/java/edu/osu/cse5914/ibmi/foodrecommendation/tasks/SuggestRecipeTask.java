@@ -6,12 +6,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.fasterxml.jackson.databind.JsonSerializer;
-import com.yelp.fusion.client.connection.YelpFusionApi;
-import com.yelp.fusion.client.connection.YelpFusionApiFactory;
-import com.yelp.fusion.client.models.Business;
 import com.yelp.fusion.client.models.Coordinates;
-import com.yelp.fusion.client.models.SearchResponse;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -22,15 +17,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
-import edu.osu.cse5914.ibmi.foodrecommendation.RestaurantListAdapter;
-import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
+import edu.osu.cse5914.ibmi.foodrecommendation.adapters.RestaurantListAdapter;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
-import retrofit2.Call;
-import retrofit2.Response;
 
 public class SuggestRecipeTask extends AsyncTask<String, Void, ArrayList> {
 

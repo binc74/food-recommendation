@@ -2,25 +2,16 @@ package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.yelp.fusion.client.connection.YelpFusionApi;
-import com.yelp.fusion.client.connection.YelpFusionApiFactory;
-import com.yelp.fusion.client.models.Business;
-import com.yelp.fusion.client.models.SearchResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,10 +19,7 @@ import org.json.JSONObject;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
-import edu.osu.cse5914.ibmi.foodrecommendation.RecepieListAdapter;
-import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
-import retrofit2.Call;
-import retrofit2.Response;
+import edu.osu.cse5914.ibmi.foodrecommendation.adapters.RecepieListAdapter;
 
 //referenced website: https://www.codexpedia.com/android/asynctask-and-httpurlconnection-sample-in-android/
 public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {

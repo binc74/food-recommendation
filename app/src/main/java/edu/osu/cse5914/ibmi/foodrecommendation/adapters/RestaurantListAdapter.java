@@ -1,4 +1,4 @@
-package edu.osu.cse5914.ibmi.foodrecommendation;
+package edu.osu.cse5914.ibmi.foodrecommendation.adapters;
 //referenced: https://github.com/mitchtabian/ListViews
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -14,13 +14,16 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 
 import com.bumptech.glide.Glide;
+import com.yelp.fusion.client.models.Coordinates;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.R;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
+import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
 
 
-public class RecepieListAdapter extends ArrayAdapter<Recepie> {
+public class RestaurantListAdapter extends ArrayAdapter<Restaurant> {
 
-    private static final String TAG = "RecepieListAdapter";
+    private static final String TAG = "RestaurantListAdapter";
 
     private Context mContext;
     private int mResource;
@@ -29,7 +32,7 @@ public class RecepieListAdapter extends ArrayAdapter<Recepie> {
     private static class ViewHolder {
         ImageView mImageView;
         TextView name;
-        TextView prepTime;
+        TextView rating;
 
 //                    holder. mImageView = (ImageView) convertView.findViewById(R.id.imageView0);
 //            holder.name = (TextView) convertView.findViewById(R.id.textView2);
@@ -38,7 +41,7 @@ public class RecepieListAdapter extends ArrayAdapter<Recepie> {
     }
 
 
-    public RecepieListAdapter(Context context, int resource, ArrayList<Recepie> objects) {
+    public RestaurantListAdapter(Context context, int resource, ArrayList<Restaurant> objects) {
         super(context, resource, objects);
         mContext = context;
         mResource = resource;
@@ -48,11 +51,11 @@ public class RecepieListAdapter extends ArrayAdapter<Recepie> {
     public View getView(int position, View convertView, ViewGroup parent) {
         String name = getItem(position).getName();
         String rating = getItem(position).getRating();
-        String prepTime = getItem(position).getPrepTime();
+        String displayPhone = getItem(position).getDisplayPhone();
         String imgUrl = getItem(position).getImgUrl();
+        Coordinates cd= getItem(position).getCoord();
 
-
-        Recepie recepie = new Recepie(name,rating,prepTime,imgUrl);
+        Restaurant restaurant = new Restaurant(name,rating,displayPhone,imgUrl,cd);
 
         final View result;
 
@@ -65,7 +68,7 @@ public class RecepieListAdapter extends ArrayAdapter<Recepie> {
             holder= new ViewHolder();
             holder. mImageView = (ImageView) convertView.findViewById(R.id.imageView0);
             holder.name = (TextView) convertView.findViewById(R.id.textView2);
-            holder.prepTime = (TextView) convertView.findViewById(R.id.textView3);
+            holder.rating = (TextView) convertView.findViewById(R.id.textView3);
 
             result = convertView;
 
@@ -79,8 +82,8 @@ public class RecepieListAdapter extends ArrayAdapter<Recepie> {
 
 
         lastPosition = position;
-        holder.name.setText(recepie.getName());
-        holder.prepTime.setText("Preparation time: "+recepie.getPrepTime()+" minutes");
+        holder.name.setText(restaurant.getName());
+        holder.rating.setText("Rating: "+restaurant.getRating());
 /*
          BitmapFactory.decodeStream(url.openConnection().getInputStream());
 */
