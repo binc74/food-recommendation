@@ -1,6 +1,7 @@
 package edu.osu.cse5914.ibmi.foodrecommendation.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.osu.cse5914.ibmi.foodrecommendation.R;
@@ -40,10 +42,25 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
             Meal currMeal = mealList.get(position);
 
             TextView date = listItem.findViewById(R.id.date);
-            date.setText(currMeal.getTime().toString());
+            Date d = currMeal.getTime();
+            String time = "";
+            String hour = "" + d.getHours();
+            String min = "" + d.getMinutes();
+            if (hour.length() == 1) {
+                hour = "0" + hour;
+            }
+            if (min.length() == 1) {
+                min = "0" + min;
+            }
+
+            time += d.getMonth() + "/" + d.getDay() + "/" + (d.getYear() + 1900) + "  " + hour + ":" + min;
+
+            date.setText("Date: " + time);
+            date.setTextColor(Color.GREEN);
 
             TextView calorie = listItem.findViewById(R.id.calorie);
-            calorie.setText(Float.toString(currMeal.getCalorie()));
+            calorie.setText("Total Calorie: " + Float.toString(currMeal.getCalorie()));
+            calorie.setTextColor(Color.BLUE);
 
             // Add the food list
             ArrayList<String> foodList = currMeal.getFood();
