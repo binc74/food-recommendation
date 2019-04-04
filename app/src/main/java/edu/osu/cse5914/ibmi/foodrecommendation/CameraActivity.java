@@ -23,6 +23,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -77,6 +78,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
     private HandlerThread mBackgroundThread;
 
     private String uid;
+
+    private ArrayList<String> prevFood;
 
     CameraDevice.StateCallback stateCallBack = new CameraDevice.StateCallback() {
         @Override
@@ -135,6 +138,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
 
         mTextureView = findViewById(R.id.texture);
         mTextureView.setSurfaceTextureListener(textureListener);
+
+        prevFood = new ArrayList<>();
     }
 
     @Override
@@ -236,13 +241,14 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                             Intent intent = new Intent(CameraActivity.this, TestActivity.class);
                             intent.putExtra("imagePath", file.getAbsolutePath());
                             intent.putExtra("uid", uid);
+                            intent.putExtra("prevFood", prevFood);
 
                             if (outputStream != null) {
                                 outputStream.close();
                             }
 
                             Log.d(TAG, "file path: " + file.getAbsolutePath());
-                            startActivity(intent);
+                            startActivityForResult(intent, 1);
                         }
                     }
                 };
@@ -367,6 +373,19 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
                 finish();
                 break;
 
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+            case 1:
+                if(resultCode == RESULT_OK) {
+                    prevFood = data.getStringArrayListExtra("prevFood");
+                }
+                break;
         }
     }
 }

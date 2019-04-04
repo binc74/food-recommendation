@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.DocumentSnapshot;
+
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -29,11 +31,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView mImage;
     private Button mReport;
     private Button mDiscoveryButton;
+    private Button mAddFoodButton;
     private EditText mTextView;
     private TextView mDiscoveryView;
+    private TextView mPrevFoodView;
     // private VisualRecTask visualRecTask;
     private String filePath;
     private String uid;
+
+    private ArrayList<String> prevFood;
 
     //private VisualRecognition VisualRecor;
     //private VisualRecTask visualRecTaskTask;
@@ -49,6 +55,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         Bundle extra = getIntent().getExtras();
         filePath = extra.getString("imagePath");
         uid = extra.getString("uid");
+        prevFood = extra.getStringArrayList("prevFood");
 
         mealService = new MealService();
         userService = new UserService();
@@ -56,6 +63,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
         Log.d(TAG, "get path1: " + filePath);
 
+        mPrevFoodView = findViewById(R.id.prev_food);
+        mAddFoodButton = findViewById(R.id.add_food);
+        mAddFoodButton.setOnClickListener(this);
         mDiscoveryView = findViewById(R.id.textView8);
         mDiscoveryView.setVisibility(View.GONE);
         mImage = findViewById(R.id.image);
@@ -72,9 +82,24 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         // Compress bitmap
         //Bitmap compressedImage = Bitmap.createScaledBitmap(image, 300, 300,true);
         //Log.d(TAG, "" + image.getByteCount() + " : " + compressedImage.getByteCount());
-
+        updatePrevFoodView();
 
         new VisualRecTask(mTextView,mDiscoveryButton,mDiscoveryView).execute(filePath);
+    }
+
+    private void updatePrevFoodView() {
+        String str = "Current food:\n";
+        if (prevFood.size() != 0) {
+            str += prevFood.get(0);
+            for (int i = 1; i < prevFood.size(); ++i) {
+                str += ", " + prevFood.get(i);
+            }
+        }
+        else {
+            str += "None";
+        }
+
+        mPrevFoodView.setText(str);
     }
 
     @Override
@@ -82,7 +107,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.report:
                 String fc = EditTextUtil.getString(mTextView);
-                Meal m = new Meal(fc);
+
                 String cal="0",minCalAllowed,maxCalAllowed;
 
                 float flt_cal=Float.parseFloat(cal);
@@ -103,6 +128,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 min_max_cal.add(minCalAllowed);
                 min_max_cal.add(maxCalAllowed);
 
+                Meal m = new Meal();
+                for (String str: prevFood) {
+                    m.getFood().add(str);
+                }
+                m.getFood().add(fc);
                 mealService.addNewMeal(m, task -> {
                     String mid = task.getId();
 
@@ -114,17 +144,26 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                     new NutrionixTask(m,this).execute();
                 });
 
+
 //                pref_intent.putExtra("food_category", fc);
 //                pref_intent.putStringArrayListExtra("min_max", min_max_cal);
 
                 break;
+
+            case R.id.add_food:
+                prevFood.add(EditTextUtil.getString(mTextView));
+
+                Intent intent = new Intent();
+                intent.putExtra("prevFood", prevFood);
+                setResult(RESULT_OK, intent);
+                finish();
+                break;
+
             case R.id.DiscoveryButton:
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(mDiscoveryView.getText().toString()));
                 startActivity(i);
                 break;
-
-
         }
 
     }
