@@ -27,14 +27,15 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
     private static final String TAG = "VisualRecTask";
 
     public TextView mText;
-    public Button mdiscovery;
+    public Button madd;
     public Button msuggest;
     protected VisualRecognition mVisualRecor;
     protected TextView mDiscoveryView;
 
-    public VisualRecTask(TextView tv,Button discovery,TextView mDiscoveryView) {
+    public VisualRecTask(Button madd,Button msuggest, TextView tv,TextView mDiscoveryView) {
         mText = tv;
-        mdiscovery = discovery;
+        this.madd = madd;
+        this.msuggest = msuggest;
         this.mDiscoveryView = mDiscoveryView;
         IamOptions options = new IamOptions.Builder()
                 .apiKey(ProjectApi.VISUALREC_API)
@@ -120,6 +121,8 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
         //new DiscoveryTask(o,mdiscovery,mDiscoveryView).execute();
         mText.setText(o);
         mText.setEnabled(true);
+        madd.setEnabled(true);
+        msuggest.setEnabled(true);
     }
 }
 
