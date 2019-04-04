@@ -31,6 +31,7 @@ import com.yelp.fusion.client.models.SearchResponse;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,16 +80,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        food_category= getIntent().getStringExtra("food_category");
+//        food_category= getIntent().getStringExtra("food_category");
         String cal="0";
         lvRecepieJson= (ListView) findViewById(R.id.listView);
+        ArrayList<String> min_max_cal=getIntent().getStringArrayListExtra("min_max");
+
+        minCalAllowed=min_max_cal.get(0);
+        maxCalAllowed=min_max_cal.get(1);
+
+
 
         //get the precise calorie of the food use nutritionix api
-        new NutrionixTask(food_category,getApplicationContext(),lvRecepieJson).execute();
-
 
         text = getIntent().getStringExtra("id");
 
+        new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed,minCalAllowed).execute();
 
         lvRestaurantJson= (ListView) findViewById(R.id.listView1);
         lvRecepieJson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
