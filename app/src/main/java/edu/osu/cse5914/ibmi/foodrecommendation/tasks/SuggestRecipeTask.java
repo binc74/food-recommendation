@@ -49,7 +49,7 @@ public class SuggestRecipeTask extends AsyncTask<String, Void, ArrayList> {
         String single ="";
         String rcpParsed = "";
         ArrayList<Restaurant> restaurantList = new ArrayList<>();
-
+/*
         String name1 = "Allrecipes";
         String rcp1 = "https://www.allrecipes.com/search/results/?wt="+objects[0]+"&sort=re";
         String url1 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQbL5iIx8SVc6ca4n_KysNrTFpBzkpROwoYPYIAAEUqrx8FD7NV";
@@ -75,35 +75,60 @@ public class SuggestRecipeTask extends AsyncTask<String, Void, ArrayList> {
         String url6 = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiUDJMmhx57ggx8CQvqLx6Cl5GvrPF9qAKwsOTyFdI5IjWFS7C";
         Coordinates cd6=new Coordinates();
         String displayedPhone = "12345";
+*/
+        String url = "https://www.allrecipes.com/search/results/?wt=" + objects[0] + "&sort=re";
+        String url1 = "https://www.foodnetwork.com/search/" + objects[0] + "-";
+        String[] Name = new String[10];
+        String[] Rcp = new String[10];
+        String[] Url = new String[10];
+        String[] Rate = new String[10];
 
-        String url = "https://stackoverflow.com/questions/2835505";
-        Document document;
         Log.d("Recipe", "Current File: 1" );
         try {
-            document = Jsoup.connect(url).get();
-            String question = document.select("#question .post-text").text();
-            Log.d("Recipe", "Current File: " + question );
-            System.out.println("Question: " + question);
-
-            Log.d("Recipe", "Current File: 8" );
-            Elements answerers = document.select("#answers .user-details a");
-            for (Element answerer : answerers) {
-                System.out.println("Answerer: " + answerer.text());
-                Log.d("Recipe", "Current File: " + answerer.text());
+            Document document = Jsoup.connect(url).get();
+            Elements recipe = document.select(".fixed-recipe-card");
+            for (int i = 0; i < 8; i++){
+                Name[i] = recipe.get(i).select(".fixed-recipe-card__title-link").get(0).text();
+                Url[i] = recipe.get(i).select(".fixed-recipe-card__img").attr("data-original-src");
+                String rate = recipe.get(i).select(".fixed-recipe-card__ratings").get(0).select("span").get(0).attr("data-ratingstars");
+                if(rate.length()>4){rate = rate.substring(0,4);}
+                Rate[i] = rate;
+                Rcp[i] = recipe.get(i).select("a").get(0).attr("abs:href");
+            }
+            /*
+            Log.d("Recipe", "Current File: 2" );
+            Document document1 = Jsoup.connect(url1).get();
+            Log.d("Recipe", "Current File: 3" );
+            Elements recipe1 = document1.select(".o-SearchStatistics").get(0).select(".o-RecipeResult o-ResultCard");
+            Log.d("Recipe", "Current File: 4" );
+            for (int i = 0; i < 5; i++){
+                Log.d("Recipe", recipe1.get(i).toString());
+                Name[i+5] = recipe1.get(i).select(".m-MediaBlock__m-MediaWrap").get(0).select("a").get(0).attr("title");
+                Log.d("Recipe", Name[i+5]);
+                Url[i+5] = recipe1.get(i).select(".m-MediaBlock__m-MediaWrap").get(0).select("a").get(0).select("img").get(0).attr("src");
+                Log.d("Recipe", Url[i+5]);
+                String rate = recipe1.get(i).select(".m-MediaBlock__m-Rating ").get(0).select("a").get(0).select("span").get(0).attr("title");
+                if(rate.length()>3){rate = rate.substring(0,3);}
+                Rate[i+5] = rate;
+                Log.d("Recipe", Rate[i+5]);
+                Rcp[i+5] = recipe1.get(i).select(".m-MediaBlock__m-MediaWrap").get(0).select("a").get(0).attr("abs:href");
+                Log.d("Recipe", Rcp[i+5]);
+            }*/
+            for (int i = 0; i < 8; i++){
+                restaurantList.add( new Restaurant( Name[i], Rate[i], Url[i], Rcp[i], new Coordinates()) );
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        Log.d("Recipe", "Current File: 2" );
-
+/*
         restaurantList.add( new Restaurant( name1, rcp1.replaceAll( "\\s+","%20" ), url1, displayedPhone,cd1) );//use rating=1 and prepTime=2 for now and change later
         restaurantList.add( new Restaurant( name2, rcp2.replaceAll( "\\s+","%20" ), url2, displayedPhone ,cd2) );
         restaurantList.add( new Restaurant( name3, rcp3.replaceAll( "\\s+","%20" ), url3, displayedPhone,cd3 ) );
         restaurantList.add( new Restaurant( name4, rcp4.replaceAll( "\\s+","%20" ), url4, displayedPhone,cd4 ) );//use rating=1 and prepTime=2 for now and change later
         restaurantList.add( new Restaurant( name5, rcp5.replaceAll( "\\s+","%20" ), url5, displayedPhone ,cd5) );
         restaurantList.add( new Restaurant( name6, rcp6.replaceAll( "\\s+","%20" ), url6, displayedPhone,cd6 ) );
-
+*/
 
 
 

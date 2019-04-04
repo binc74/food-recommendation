@@ -60,8 +60,10 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
             public void onItemClick(AdapterView<?> parent, View view,
                                     final int position, long id) {
                 Log.d("Suggest", "233");
-                TextView textView = view.findViewById(R.id.textView3);
-                String url = textView.getText().toString().substring( 8 );
+                /*TextView textView = view.findViewById(R.id.textView3);
+                String url = textView.getText().toString().substring( 8 );*/
+                Restaurant res = (Restaurant) parent.getItemAtPosition(position);
+                String url = res.getDisplayPhone();
                 if(url.toLowerCase().contains("http")) {
                     Log.d( "Suggest", url );
                     Intent i = new Intent( Intent.ACTION_VIEW );
