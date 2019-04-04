@@ -40,11 +40,12 @@
     <string name="prompt_allergies">Allergies (Separate by space)</string>
     <string name="action_update">Update</string>
     <string name="title_activity_maps">Map</string>
-    <string name="view_history">View History</string>
+    <string name="view_history">View Diet History</string>
     <string name="add_food">Add Another Food</string>
     <string name="get_recommendation">Finish</string>
     <string name="food_cate_notice">Current food category\n(You can edit it if it is wrong)</string>
     <string name="to_update_page">Go Update</string>
     <string name="show_alleges">Allergies</string>
     <string name="get_recomm">Get Recommendation</string>
+    <string name="logout">Log Out</string>
 </resources>
