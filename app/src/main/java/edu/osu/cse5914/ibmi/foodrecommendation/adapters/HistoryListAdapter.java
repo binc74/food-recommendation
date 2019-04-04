@@ -30,10 +30,6 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
         super(context, 0, objects);
         mContext = context;
         mealList = objects;
-
-        if (objects!= null && objects.size() == 0) {
-            Toast.makeText(context, "No history yet!", Toast.LENGTH_LONG).show();
-        }
     }
 
     @NonNull

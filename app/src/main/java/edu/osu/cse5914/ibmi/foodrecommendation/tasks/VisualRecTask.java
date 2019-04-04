@@ -51,7 +51,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected String doInBackground(String... objects) {
-        mText.setText("Recognizing food category...");
+        mText.setText("Recognizing...");
         mText.setEnabled(false);
 
         Log.d("VisualRecTask", "File Place: " + objects[0]);

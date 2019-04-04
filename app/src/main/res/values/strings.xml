@@ -3,7 +3,7 @@
     <string name="str1">Go to take a photo</string>
     <string name="title_activity_login">Log in</string>
     <string name="title_activity_signup">Sign up</string>
-    <string name="title_activity_takephoto">Take photo</string>
+    <string name="title_activity_takephoto">Take Photo</string>
     <string name="result_page_back">Back</string>
     <string name="prompt_height">Height</string>
     <string name="prompt_weight">Weight</string>
@@ -46,4 +46,5 @@
     <string name="food_cate_notice">Current food category\n(You can edit it if it is wrong)</string>
     <string name="to_update_page">Go Update</string>
     <string name="show_alleges">Allergies</string>
+    <string name="get_recomm">Get Recommendation</string>
 </resources>

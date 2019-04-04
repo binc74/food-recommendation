@@ -140,6 +140,8 @@ public class CameraActivity extends AppCompatActivity implements View.OnClickLis
         mTextureView.setSurfaceTextureListener(textureListener);
 
         prevFood = new ArrayList<>();
+
+        Toast.makeText(this, "Take the food photo one at a time!", Toast.LENGTH_LONG).show();
     }
 
     @Override
