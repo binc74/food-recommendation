@@ -7,6 +7,15 @@
     android:orientation="vertical"
     tools:context=".HistoryActivity">
 
+    <ListView
+        android:id="@+id/histList"
+        android:layout_width="413dp"
+        android:layout_height="502dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="48dp"
+        android:layout_weight="1" />
+
     <Button
         android:id="@+id/back"
         android:layout_width="60dp"

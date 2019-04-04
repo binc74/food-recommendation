@@ -13,6 +13,10 @@ public class Meal extends BaseModel {
     @ServerTimestamp
     private Date time;
 
+    public Meal() {
+        food = new ArrayList<>();
+    }
+
     public Meal(String f, float calorie) {
         food = new ArrayList<>();
         food.add(f);
