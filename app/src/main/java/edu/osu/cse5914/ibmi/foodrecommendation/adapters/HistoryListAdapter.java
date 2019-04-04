@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
     private static final String TAG = "HistoryListAdapter";
 
     private Context mContext;
-    private List<Meal> mealList = new ArrayList<>();
+    private List<Meal> mealList;
 
     public HistoryListAdapter(Context context, ArrayList<Meal> objects) {
         super(context, 0, objects);
@@ -43,7 +44,16 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
 
             TextView calorie = listItem.findViewById(R.id.calorie);
             calorie.setText(Float.toString(currMeal.getCalorie()));
-            Log.d(TAG, "Here");
+
+            // Add the food list
+            ArrayList<String> foodList = currMeal.getFood();
+            LinearLayout foodContainer = listItem.findViewById(R.id.foodList);
+
+            for (String food : foodList) {
+                TextView tv = new TextView(mContext);
+                tv.setText(food);
+                foodContainer.addView(tv);
+            }
         }
 
         return listItem;
