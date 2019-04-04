@@ -103,7 +103,7 @@
             android:textSize="21dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="2dp"
-            android:text="@string/prompt_allergies" />
+            android:text="@string/show_alleges" />
 
         <TextView
             android:id="@+id/allergies"

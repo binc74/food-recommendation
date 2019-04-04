@@ -45,4 +45,5 @@
     <string name="get_recommendation">Finish</string>
     <string name="food_cate_notice">Current food category\n(You can edit it if it is wrong)</string>
     <string name="to_update_page">Go Update</string>
+    <string name="show_alleges">Allergies</string>
 </resources>
