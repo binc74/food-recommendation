@@ -39,6 +39,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
         Log.d("Suggest", "3");
         mRestaurantButton = findViewById( R.id.restaurant );
         mRestaurantButton.setOnClickListener(this);
+        mRestaurantButton.setEnabled(false);
         Log.d("Suggest", "4");
         mRecipeButton = findViewById( R.id.recipe );
         mRecipeButton.setOnClickListener(this);
@@ -50,6 +51,10 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
 
         mBack = findViewById( R.id.back );
         mBack.setOnClickListener(this);
+
+        new SuggestRestaurantTask(lvJson,getApplicationContext()).execute(foodType);
+        mTextView.setText("Suggested Restaurants");
+        setRestaurantOnClick();
 
     }
 
@@ -91,6 +96,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
         }));
     }
 
+
     @Override
     public void onClick(View v) {
         Log.d("Suggest", "888");
@@ -102,6 +108,8 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
                 new SuggestRestaurantTask(lvJson,getApplicationContext()).execute(foodType);
                 mTextView.setText("Suggested Restaurants");
                 setRestaurantOnClick();
+                mRestaurantButton.setEnabled( false );
+                mRecipeButton.setEnabled( true );
                 break;
             case R.id.recipe:
                 flag = true;
@@ -109,6 +117,8 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
                 new SuggestRecipeTask(lvJson,getApplicationContext()).execute(foodType);
                 mTextView.setText("Suggested Recipe");
                 setRecipeOnClick();
+                mRestaurantButton.setEnabled( true );
+                mRecipeButton.setEnabled( false );
                 break;
             case R.id.back:
                 finish();
