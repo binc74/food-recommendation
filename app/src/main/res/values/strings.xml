@@ -3,7 +3,7 @@
     <string name="str1">Go to take a photo</string>
     <string name="title_activity_login">Log in</string>
     <string name="title_activity_signup">Sign up</string>
-    <string name="title_activity_takephoto">Take photo</string>
+    <string name="title_activity_takephoto">Take Photo</string>
     <string name="result_page_back">Back</string>
     <string name="prompt_height">Height</string>
     <string name="prompt_weight">Weight</string>
@@ -29,7 +29,7 @@
     <string name="submit_form">Submit</string>
     <string name="back">Back</string>
     <string name="skip">Later</string>
-    <string name="user_profile">Your Profile</string>
+    <string name="user_profile">Edit Your Profile</string>
     <string name="take_photo">Take Photos</string>
     <string name="preference">Preference</string>
     <string name="gender">Gender</string>
@@ -37,11 +37,14 @@
     <string name="birthday">Birthday</string>
     <string name="diet_opt">Diet</string>
     <string name="update">Update</string>
-    <string name="prompt_allergies">Allergies</string>
+    <string name="prompt_allergies">Allergies (Separate by space)</string>
     <string name="action_update">Update</string>
     <string name="title_activity_maps">Map</string>
     <string name="view_history">View History</string>
     <string name="add_food">Add Another Food</string>
     <string name="get_recommendation">Finish</string>
     <string name="food_cate_notice">Current food category\n(You can edit it if it is wrong)</string>
+    <string name="to_update_page">Go Update</string>
+    <string name="show_alleges">Allergies</string>
+    <string name="get_recomm">Get Recommendation</string>
 </resources>
