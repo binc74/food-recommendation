@@ -1,7 +1,11 @@
 package edu.osu.cse5914.ibmi.foodrecommendation;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,13 +14,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
     private double lat;
     private double lng;
     private String name;
+    private Button mBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +34,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         Bundle extra = getIntent().getExtras();
+
+        mBack = findViewById(R.id.back);
+        mBack.setOnClickListener((View v) -> {
+            finish();
+        });
 
         lat = extra.getDouble("lat");
         lng = extra.getDouble("lng");
@@ -55,4 +66,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         mMap.setOnCameraIdleListener(null);
     }
-}
+    }
+

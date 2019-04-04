@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SuggestionActivity">
-<!--
+    <!--
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -38,36 +38,37 @@
 
     <!--recepie suggestion-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/textView"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="79dp"-->
-            <!--android:background="@drawable/whitebkg"/>-->
+    <!--<TextView-->
+    <!--android:id="@+id/textView"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="79dp"-->
+    <!--android:background="@drawable/whitebkg"/>-->
 
     <TextView
         android:id="@+id/kun_pao"
         android:layout_width="291dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="22dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="55dp"
         android:text="Recommended Food for You~"
         android:textAlignment="center"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:typeface="serif"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/listView"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/hint_text"
         android:layout_width="260dp"
         android:layout_height="29dp"
-        android:layout_marginStart="72dp"
+        android:layout_marginTop="5dp"
         android:text="Click Items Above for More Information!"
         android:textAlignment="center"
         android:textSize="13sp"
         android:typeface="serif"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView" />
 
 
     <ListView
@@ -88,12 +89,18 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="648dp"
         android:background="@drawable/roundbutton"
         android:text="back"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/listView"
         app:layout_constraintStart_toStartOf="parent" />
-        <!--
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+    <!--
             <TextView
                 android:id="@+id/kun_pao_chicken"
                 android:layout_width="match_parent"
@@ -114,7 +121,7 @@
             </ListView>
          -->
 
-            <!--<TextView-->
+    <!--<TextView-->
     <!--android:id="@+id/tv_recepie_json"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="828dp"-->
