@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +30,10 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
         super(context, 0, objects);
         mContext = context;
         mealList = objects;
+
+        if (objects!= null && objects.size() == 0) {
+            Toast.makeText(context, "No history yet!", Toast.LENGTH_LONG).show();
+        }
     }
 
     @NonNull

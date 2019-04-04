@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -112,6 +113,7 @@ public class PrefSetActivity extends AppCompatActivity implements View.OnClickLi
                 mdietSpinner.setSelection(diet);
             }
         }
+        Toast.makeText(this, "Fill out your info to get recommendation that best fits your situation!", Toast.LENGTH_LONG).show();
     }
 
     @Override

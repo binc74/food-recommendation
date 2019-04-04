@@ -1,11 +1,13 @@
 package edu.osu.cse5914.ibmi.foodrecommendation;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -19,14 +21,15 @@ import edu.osu.cse5914.ibmi.foodrecommendation.model.User;
 import edu.osu.cse5914.ibmi.foodrecommendation.util.EditTextUtil;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
+    private String NOT_SET = "Not Set Yet!";
 
-    private EditText mUsername;
-    private EditText mGender;
-    private EditText mWeight;
-    private EditText mBirthday;
-    private EditText mPref;
-    private EditText mDiet;
-    private EditText mAllergies;
+    private TextView mUsername;
+    private TextView mGender;
+    private TextView mWeight;
+    private TextView mBirthday;
+    private TextView mPref;
+    private TextView mDiet;
+    private TextView mAllergies;
 
     private Button mUpdate;
     private Button mBack;
@@ -48,26 +51,51 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             int gender = user.getGender();
                             if (gender > 0) {
                                 mGender.setText(Const.genders[gender]);
+                                mGender.setTextColor(Color.GRAY);
+                            }
+                            else {
+                                mGender.setText(NOT_SET);
+                                mGender.setTextColor(Color.RED);
                             }
 
                             float weight = user.getWeight();
                             if (weight > 0) {
                                 mWeight.setText(Float.toString(weight));
+                                mWeight.setTextColor(Color.GRAY);
+                            }
+                            else {
+                                mWeight.setText(NOT_SET);
+                                mWeight.setTextColor(Color.RED);
                             }
 
                             String birthday = user.getBirthday();
                             if (!birthday.equals("")) {
                                 mBirthday.setText(birthday);
+                                mBirthday.setTextColor(Color.GRAY);
+                            }
+                            else {
+                                mBirthday.setText(NOT_SET);
+                                mBirthday.setTextColor(Color.RED);
                             }
 
                             int pref = user.getHealthoption();
                             if (pref > 0) {
                                 mPref.setText(Const.prefs[pref]);
+                                mPref.setTextColor(Color.GRAY);
+                            }
+                            else {
+                                mPref.setText(NOT_SET);
+                                mPref.setTextColor(Color.RED);
                             }
 
                             int diet = user.getDietoption();
                             if (diet > 0) {
                                 mDiet.setText(Const.diets[diet]);
+                                mDiet.setTextColor(Color.GRAY);
+                            }
+                            else {
+                                mDiet.setText(NOT_SET);
+                                mDiet.setTextColor(Color.RED);
                             }
 
                             ArrayList<String> as = user.getAllergies();
@@ -77,6 +105,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                                     str += ", " + as.get(i);
                                 }
                                 mAllergies.setText(str);
+                                mAllergies.setTextColor(Color.GRAY);
+                            }
+                            else {
+                                mAllergies.setText(NOT_SET);
+                                mAllergies.setTextColor(Color.RED);
                             }
                         }
                     }
