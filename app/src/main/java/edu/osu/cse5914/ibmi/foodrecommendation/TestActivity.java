@@ -84,7 +84,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         //Log.d(TAG, "" + image.getByteCount() + " : " + compressedImage.getByteCount());
         updatePrevFoodView();
 
-        new VisualRecTask(mTextView,mDiscoveryButton,mDiscoveryView).execute(filePath);
+        new VisualRecTask(mTextView,mDiscoveryButton,mDiscoveryView,mReport).execute(filePath);
     }
 
     private void updatePrevFoodView() {

@@ -28,12 +28,14 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
 
     public TextView mText;
     public Button mdiscovery;
+    public Button msuggest;
     protected VisualRecognition mVisualRecor;
     protected TextView mDiscoveryView;
 
-    public VisualRecTask(TextView tv,Button discovery,TextView mDiscoveryView) {
+    public VisualRecTask(TextView tv,Button discovery,TextView mDiscoveryView,Button mreport) {
         mText = tv;
         mdiscovery = discovery;
+        msuggest=mreport;
         this.mDiscoveryView = mDiscoveryView;
         IamOptions options = new IamOptions.Builder()
                 .apiKey(ProjectApi.VISUALREC_API)
@@ -50,7 +52,9 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected String doInBackground(String... objects) {
-
+        mText.setText("Recognizing food category...");
+        msuggest.setClickable(false);
+        msuggest.setText("Waiting response");
         Log.d("VisualRecTask", "File Place: " + objects[0]);
         //final File photoFile = new File( (Uri.parse(objects[0])).getPath());
         final File photoFile = new File(objects[0]);
@@ -108,10 +112,13 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
     @Override
     protected void onProgressUpdate(Void[] values) {
         super.onProgressUpdate(values);
+
     }
 
     @Override
     protected void onPostExecute(String o) {
+        msuggest.setClickable(true);
+        msuggest.setText("Finish");
         super.onPostExecute(o);
         //new DiscoveryTask(o,mdiscovery,mDiscoveryView).execute();
         mText.setText(o);
