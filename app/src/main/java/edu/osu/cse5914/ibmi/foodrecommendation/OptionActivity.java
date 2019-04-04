@@ -55,7 +55,9 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
                 startActivity(hist_intent);
                 break;
             case R.id.back:
-                finish();
+                Intent i = new Intent(this, LoginActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
                 break;
         }
     }

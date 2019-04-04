@@ -52,6 +52,14 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
+        mReport = findViewById(R.id.report);
+        mReport.setOnClickListener(this);
+        mAddFoodButton = findViewById(R.id.add_food);
+        mAddFoodButton.setOnClickListener(this);
+
+        mAddFoodButton.setEnabled(false);
+        mReport.setEnabled(false);
+
         Bundle extra = getIntent().getExtras();
         filePath = extra.getString("imagePath");
         uid = extra.getString("uid");
@@ -64,8 +72,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "get path1: " + filePath);
 
         mPrevFoodView = findViewById(R.id.prev_food);
-        mAddFoodButton = findViewById(R.id.add_food);
-        mAddFoodButton.setOnClickListener(this);
+
         mDiscoveryView = findViewById(R.id.textView8);
         mDiscoveryView.setVisibility(View.GONE);
         mImage = findViewById(R.id.image);
@@ -73,14 +80,10 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         //mDiscoveryButton = findViewById(R.id.DiscoveryButton);
         //mDiscoveryButton.setOnClickListener(this);
         //mDiscoveryButton.setEnabled(false);
-        mReport = findViewById(R.id.report);
-        mReport.setOnClickListener(this);
+
         Bitmap image = BitmapFactory.decodeFile(filePath);
         Log.d(TAG, "file size : " + image.getByteCount());
         mImage.setImageBitmap(image);
-
-        mAddFoodButton.setEnabled(false);
-        mReport.setEnabled(false);
 
         // Compress bitmap
         //Bitmap compressedImage = Bitmap.createScaledBitmap(image, 300, 300,true);
