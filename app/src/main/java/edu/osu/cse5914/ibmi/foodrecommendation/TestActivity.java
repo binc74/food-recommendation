@@ -79,12 +79,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         Log.d(TAG, "file size : " + image.getByteCount());
         mImage.setImageBitmap(image);
 
+        mAddFoodButton.setEnabled(false);
+        mReport.setEnabled(false);
+
         // Compress bitmap
         //Bitmap compressedImage = Bitmap.createScaledBitmap(image, 300, 300,true);
         //Log.d(TAG, "" + image.getByteCount() + " : " + compressedImage.getByteCount());
         updatePrevFoodView();
 
-        new VisualRecTask(mTextView,mAddFoodButton,mDiscoveryView).execute(filePath);
+        new VisualRecTask(mAddFoodButton, mReport, mTextView, mDiscoveryView).execute(filePath);
     }
 
     private void updatePrevFoodView() {
@@ -141,7 +144,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                     m.setDocumentId(mid);
                     userService.updateHistory(mid);
 
-                    new NutrionixTask(m,this).execute();
+                    new NutrionixTask(uid, m,this).execute();
                 });
 
 

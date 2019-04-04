@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button mBack;
 
-
+    private String uid;
 
     @Override
 
@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //get the precise calorie of the food use nutritionix api
 
         text = getIntent().getStringExtra("id");
+        uid = getIntent().getStringExtra("uid");
 
         new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed,minCalAllowed).execute();
 
@@ -132,12 +133,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         food_cal=output;
     }
 
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.back:
-                finish();
+                Intent i = new Intent(this, OptionActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.putExtra("uid", uid);
+                startActivity(i);
                 break;
 
         }

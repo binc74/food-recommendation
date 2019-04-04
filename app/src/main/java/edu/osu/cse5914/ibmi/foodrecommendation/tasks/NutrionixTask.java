@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Button;
 
 
 import org.json.JSONArray;
@@ -40,10 +41,14 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
     private static final String TAG = "NutrionixTask";
 
     private Meal meal;
+    private String uid;
+
 
     private Context ct;
-    public NutrionixTask(Meal m, Context ctxt){
+
+    public NutrionixTask(String uid, Meal m, Context ctxt){
         ct=ctxt;
+        this.uid = uid;
         meal=m;
     }
 
@@ -112,8 +117,8 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
     }
     @Override
     protected void onPostExecute(String o) {
+        super.onPostExecute(o);
 
-        Intent pref_intent = new Intent(ct, MainActivity.class); //link to preference view
         ArrayList<String> min_max_cal=new ArrayList<String>();
         float cal=Float.parseFloat(o);
         String minCalAllowed,maxCalAllowed;
@@ -136,10 +141,11 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
             maxCalAllowed = "8";}
         min_max_cal.add(minCalAllowed);
         min_max_cal.add(maxCalAllowed);
+
+        Intent pref_intent = new Intent(ct, MainActivity.class); //link to preference view
         pref_intent.putStringArrayListExtra("min_max",min_max_cal);
+        pref_intent.putExtra("uid", uid);
         ct.startActivity(pref_intent);
-
-
     }
 
 }
