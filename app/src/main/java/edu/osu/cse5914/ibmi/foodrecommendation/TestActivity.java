@@ -14,9 +14,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
+
 import edu.osu.cse5914.ibmi.foodrecommendation.db.MealService;
 import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
 import edu.osu.cse5914.ibmi.foodrecommendation.model.Meal;
+import edu.osu.cse5914.ibmi.foodrecommendation.tasks.NutrionixTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.VisualRecTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.util.EditTextUtil;
 
@@ -27,7 +31,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private Button mDiscoveryButton;
     private EditText mTextView;
     private TextView mDiscoveryView;
-   // private VisualRecTask visualRecTask;
+    // private VisualRecTask visualRecTask;
     private String filePath;
     private String uid;
 
@@ -79,15 +83,39 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.report:
                 String fc = EditTextUtil.getString(mTextView);
                 Meal m = new Meal(fc);
+                String cal="0",minCalAllowed,maxCalAllowed;
+                new NutrionixTask(m,this).execute();
+
+
+
+                float flt_cal=Float.parseFloat(cal);
+                int a=2;
+                if (flt_cal>800) {
+                    minCalAllowed = "0.5";
+                    maxCalAllowed = "1.0";
+                }
+                else if(200<flt_cal&&flt_cal<800){
+                    minCalAllowed = "1.0";
+                    maxCalAllowed = "4.0";
+                }
+                else{
+
+                    minCalAllowed="4";
+                    maxCalAllowed = "8";}
+                ArrayList<String> min_max_cal=new ArrayList<String>();
+                min_max_cal.add(minCalAllowed);
+                min_max_cal.add(maxCalAllowed);
+
+
                 mealService.addNewMeal(m, task -> {
                     String mid = task.getId();
 
                     userService.updateHistory(mid);
                 });
 
-                Intent pref_intent = new Intent(this, MainActivity.class); //link to preference view
-                pref_intent.putExtra("food_category", fc);
-                startActivity(pref_intent);
+//                pref_intent.putExtra("food_category", fc);
+//                pref_intent.putStringArrayListExtra("min_max", min_max_cal);
+
                 break;
             case R.id.DiscoveryButton:
                 Intent i = new Intent(Intent.ACTION_VIEW);
