@@ -46,23 +46,26 @@
 
     <TextView
         android:id="@+id/kun_pao"
-        android:layout_width="260dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginBottom="640dp"
+        android:layout_width="291dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="22dp"
         android:text="Recommended Food for You~"
         android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="22sp"
+        android:typeface="serif"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/hint_text"
         android:layout_width="260dp"
         android:layout_height="29dp"
         android:layout_marginStart="72dp"
-        android:layout_marginBottom="4dp"
-        android:text="Click Items for More Information!"
+        android:text="Click Items Above for More Information!"
         android:textAlignment="center"
+        android:textSize="13sp"
+        android:typeface="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -84,8 +87,8 @@
         android:id="@+id/back"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="664dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="648dp"
         android:background="@drawable/roundbutton"
         android:text="back"
         app:layout_constraintBottom_toBottomOf="parent"

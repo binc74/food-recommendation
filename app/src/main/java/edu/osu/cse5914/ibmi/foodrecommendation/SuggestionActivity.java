@@ -62,7 +62,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
 
         new SuggestRestaurantTask(lvJson,getApplicationContext()).execute(foodType);
         mTextView.setText("Restaurants Serve the Food");
-        mTextHint.setText("Click Items for More Information!");
+        mTextHint.setText("Click Items above for More Information!");
         setRestaurantOnClick();
 
     }
