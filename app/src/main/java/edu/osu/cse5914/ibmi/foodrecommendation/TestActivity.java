@@ -141,7 +141,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                     m.setDocumentId(mid);
                     userService.updateHistory(mid);
 
-                    new NutrionixTask(m,this).execute();
+                    new NutrionixTask(uid, m,this).execute();
                 });
 
 
