@@ -23,6 +23,7 @@ public class User extends BaseModel {
         dietoption = -1;
         healthoption = -1;
         weight = -1;
+        history = new ArrayList<>();
         allergies = new ArrayList<>();
         needinit = true;
     }
@@ -36,6 +37,7 @@ public class User extends BaseModel {
         dietoption = 0;
         healthoption = 0;
         weight = -1;
+        history = new ArrayList<>();
         allergies = new ArrayList<>();
         needinit = true;
     }

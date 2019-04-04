@@ -5,7 +5,6 @@ import com.google.firebase.firestore.Exclude;
 public class BaseModel {
     private String documentId;
 
-    @Exclude
     public String getDocumentId() {
         return documentId;
     }

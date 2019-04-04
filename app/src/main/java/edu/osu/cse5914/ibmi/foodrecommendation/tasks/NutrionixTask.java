@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 
 import org.json.JSONArray;
@@ -29,13 +30,14 @@ import edu.osu.cse5914.ibmi.foodrecommendation.data.ProjectApi;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Recepie;
 import edu.osu.cse5914.ibmi.foodrecommendation.data.Restaurant;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.db.MealService;
 import edu.osu.cse5914.ibmi.foodrecommendation.model.Meal;
 import retrofit2.Call;
 import retrofit2.Response;
 
 
 public class NutrionixTask  extends AsyncTask<String, Void,String> {
-
+    private static final String TAG = "NutrionixTask";
 
     private Meal meal;
 
@@ -115,6 +117,12 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
         ArrayList<String> min_max_cal=new ArrayList<String>();
         float cal=Float.parseFloat(o);
         String minCalAllowed,maxCalAllowed;
+        meal.setCalorie(cal);
+        MealService mealService = new MealService();
+        Log.d(TAG, "ID: " + meal.getDocumentId());
+        mealService.getDocumentReference(meal.getDocumentId());
+        mealService.updateCalorie(cal);
+
         if (cal>800) {
             minCalAllowed = "0.5";
             maxCalAllowed = "1.0";

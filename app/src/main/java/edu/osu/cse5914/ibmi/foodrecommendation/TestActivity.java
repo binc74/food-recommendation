@@ -84,9 +84,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 String fc = EditTextUtil.getString(mTextView);
                 Meal m = new Meal(fc);
                 String cal="0",minCalAllowed,maxCalAllowed;
-                new NutrionixTask(m,this).execute();
-
-
 
                 float flt_cal=Float.parseFloat(cal);
                 int a=2;
@@ -106,11 +103,15 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 min_max_cal.add(minCalAllowed);
                 min_max_cal.add(maxCalAllowed);
 
-
                 mealService.addNewMeal(m, task -> {
                     String mid = task.getId();
 
+                    mealService.getDocumentReference(mid);
+                    mealService.setDocumentId(mid);
+                    m.setDocumentId(mid);
                     userService.updateHistory(mid);
+
+                    new NutrionixTask(m,this).execute();
                 });
 
 //                pref_intent.putExtra("food_category", fc);

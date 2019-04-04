@@ -49,4 +49,10 @@ public class MealService extends BaseFirestoreService {
     public void updateFood(String food) {
         dr.update("history", FieldValue.arrayUnion(food));
     }
+
+    public void updateCalorie(float calorie)  {
+        dr.update("calorie", calorie);
+    }
+
+    public void setDocumentId(String uid) { dr.update("documentId", uid); }
 }
