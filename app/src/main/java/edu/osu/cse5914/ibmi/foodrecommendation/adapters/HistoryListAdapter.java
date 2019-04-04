@@ -49,10 +49,12 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
             ArrayList<String> foodList = currMeal.getFood();
             LinearLayout foodContainer = listItem.findViewById(R.id.foodList);
 
-            for (String food : foodList) {
-                TextView tv = new TextView(mContext);
-                tv.setText(food);
-                foodContainer.addView(tv);
+            if (foodContainer.getChildCount() == 0) {
+                for (String food : foodList) {
+                    TextView tv = new TextView(mContext);
+                    tv.setText(food);
+                    foodContainer.addView(tv);
+                }
             }
         }
 
