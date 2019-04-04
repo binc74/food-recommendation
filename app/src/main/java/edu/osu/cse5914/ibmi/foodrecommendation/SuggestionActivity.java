@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yelp.fusion.client.models.Coordinates;
 
@@ -53,8 +54,11 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
         mBack = findViewById( R.id.back );
         mBack.setOnClickListener(this);
 
+        mHint = findViewById( R.id.hint );
+        mHint.setOnClickListener(this);
+
         new SuggestRestaurantTask(lvJson,getApplicationContext()).execute(foodType);
-        mTextView.setText("Suggested Restaurants");
+        mTextView.setText("Restaurants may Serve the Food");
         setRestaurantOnClick();
 
     }
@@ -107,7 +111,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
                 flag = false;
                 Log.d("Suggest", foodType);
                 new SuggestRestaurantTask(lvJson,getApplicationContext()).execute(foodType);
-                mTextView.setText("Suggested Restaurants");
+                mTextView.setText("Restaurants may Serve the Food");
                 setRestaurantOnClick();
                 mRestaurantButton.setEnabled( false );
                 mRecipeButton.setEnabled( true );
@@ -116,13 +120,16 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
                 flag = true;
                 Log.d("Suggest", foodType);
                 new SuggestRecipeTask(lvJson,getApplicationContext()).execute(foodType);
-                mTextView.setText("Suggested Recipe");
+                mTextView.setText("Recipe for the Food");
                 setRecipeOnClick();
                 mRestaurantButton.setEnabled( true );
                 mRecipeButton.setEnabled( false );
                 break;
             case R.id.back:
                 finish();
+                break;
+            case R.id.hint:
+                Toast.makeText( this,"Press the RESTAURANT button to find the restaurants serve the food! Press the RECIPE button to find the recipes for the food!", Toast.LENGTH_LONG ).show();
                 break;
 
         }
