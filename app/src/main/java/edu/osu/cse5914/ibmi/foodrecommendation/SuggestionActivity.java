@@ -22,6 +22,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
     private Button mRestaurantButton;
     private Button mRecipeButton;
     private Button mBack;
+    private Button mHint;
     private ListView lvJson;
     private String foodType;
     private TextView mTextView;
