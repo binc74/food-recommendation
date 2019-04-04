@@ -15,8 +15,7 @@
         android:textSize="18sp"
         android:typeface="serif"
         app:layout_constraintBottom_toTopOf="@+id/listView1"
-        app:layout_constraintLeft_toRightOf="@+id/back"
-        app:layout_constraintRight_toLeftOf="@+id/hint" />
+        app:layout_constraintLeft_toRightOf="@+id/back"/>
 
 
     <TextView
@@ -69,8 +68,8 @@
         android:id="@+id/back"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/roundbutton"
         android:text="back"
         app:layout_constraintBottom_toTopOf="@+id/listView1"
