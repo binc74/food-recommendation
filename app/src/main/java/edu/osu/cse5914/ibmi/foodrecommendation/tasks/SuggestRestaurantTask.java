@@ -74,10 +74,12 @@ public class SuggestRestaurantTask extends AsyncTask<String, Void, ArrayList> {
             params2.put("latitude", "40.002230");
             params2.put("longitude", "-83.015695");
 
+            int len = objects[0].length()-1;
             Call<SearchResponse> call = yelpFusionApi.getBusinessSearch(params);
             Response<SearchResponse> response = call.execute();
-            if(response.body().getBusinesses().size() <= 0){
-                params2.put("term", objects[0].substring( 0,10 ));
+            while(response.body().getBusinesses().size() <= 0){
+                len--;
+                params2.put("term", objects[0].substring( 0,len ));
                 call = yelpFusionApi.getBusinessSearch(params2);
                 response = call.execute();
             }
