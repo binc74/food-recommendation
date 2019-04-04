@@ -51,7 +51,8 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected String doInBackground(String... objects) {
-        mText.setText("Recognizing food category...");
+        mText.setText("Recognizing food category...\n");
+        mText.setEnabled(false);
 
         Log.d("VisualRecTask", "File Place: " + objects[0]);
         //final File photoFile = new File( (Uri.parse(objects[0])).getPath());
@@ -118,6 +119,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
         super.onPostExecute(o);
         //new DiscoveryTask(o,mdiscovery,mDiscoveryView).execute();
         mText.setText(o);
+        mText.setEnabled(true);
     }
 }
 

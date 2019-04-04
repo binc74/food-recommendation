@@ -1,6 +1,7 @@
 package edu.osu.cse5914.ibmi.foodrecommendation;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

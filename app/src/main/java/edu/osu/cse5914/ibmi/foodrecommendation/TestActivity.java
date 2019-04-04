@@ -30,7 +30,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private static String TAG = "TestActivity";
     private ImageView mImage;
     private Button mReport;
-    private Button mDiscoveryButton;
+    //private Button mDiscoveryButton;
     private Button mAddFoodButton;
     private EditText mTextView;
     private TextView mDiscoveryView;
@@ -70,9 +70,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         mDiscoveryView.setVisibility(View.GONE);
         mImage = findViewById(R.id.image);
         mTextView = findViewById( R.id.tv_visual_rec );
-        mDiscoveryButton = findViewById(R.id.DiscoveryButton);
-        mDiscoveryButton.setOnClickListener(this);
-        mDiscoveryButton.setEnabled(false);
+        //mDiscoveryButton = findViewById(R.id.DiscoveryButton);
+        //mDiscoveryButton.setOnClickListener(this);
+        //mDiscoveryButton.setEnabled(false);
         mReport = findViewById(R.id.report);
         mReport.setOnClickListener(this);
         Bitmap image = BitmapFactory.decodeFile(filePath);
@@ -84,11 +84,11 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         //Log.d(TAG, "" + image.getByteCount() + " : " + compressedImage.getByteCount());
         updatePrevFoodView();
 
-        new VisualRecTask(mTextView,mDiscoveryButton,mDiscoveryView).execute(filePath);
+        new VisualRecTask(mTextView,mAddFoodButton,mDiscoveryView).execute(filePath);
     }
 
     private void updatePrevFoodView() {
-        String str = "Current food:\n";
+        String str = "Previous added food:\n";
         if (prevFood.size() != 0) {
             str += prevFood.get(0);
             for (int i = 1; i < prevFood.size(); ++i) {
@@ -158,12 +158,12 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 setResult(RESULT_OK, intent);
                 finish();
                 break;
-
+/*
             case R.id.DiscoveryButton:
                 Intent i = new Intent(Intent.ACTION_VIEW);
                 i.setData(Uri.parse(mDiscoveryView.getText().toString()));
                 startActivity(i);
-                break;
+                break;*/
         }
 
     }
