@@ -10,31 +10,33 @@
         android:id="@+id/kun_pao"
         android:layout_width="291dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginBottom="10dp"
         android:textAlignment="center"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:typeface="serif"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/listView1"
+        app:layout_constraintLeft_toRightOf="@+id/back"
+        app:layout_constraintRight_toLeftOf="@+id/hint" />
+
 
     <TextView
         android:id="@+id/hint_text"
         android:layout_width="291dp"
         android:layout_height="50dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="575dp"
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
-        android:textSize="16sp"
+        android:textSize="12sp"
         android:typeface="serif"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/listView1" />
 
 
     <ListView
         android:id="@+id/listView1"
         android:layout_width="413dp"
-        android:layout_height="451dp"
+        android:layout_height="400dp"
         android:layout_marginTop="112dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -45,33 +47,33 @@
         android:id="@+id/recipe"
         android:layout_width="115dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/roundbutton"
         android:text="Recipe"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hint_text" />
 
     <Button
         android:id="@+id/restaurant"
-        android:layout_width="115dp"
+        android:layout_width="112dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/roundbutton"
         android:text="Restaurant"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hint_text" />
 
     <Button
         android:id="@+id/back"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="10dp"
-        android:layout_marginBottom="648dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/roundbutton"
         android:text="back"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/listView1"
         app:layout_constraintStart_toStartOf="parent" />
 <!--
     <Button
@@ -79,10 +81,10 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="648dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/roundbutton"
         android:text="i"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/listView1"
         app:layout_constraintEnd_toEndOf="parent" />
 -->
 </android.support.constraint.ConstraintLayout>
