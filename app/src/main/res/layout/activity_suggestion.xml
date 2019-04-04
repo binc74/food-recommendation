@@ -16,11 +16,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/hint_text"
+        android:layout_width="291dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="572dp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ListView
         android:id="@+id/listView1"
         android:layout_width="413dp"
-        android:layout_height="502dp"
+        android:layout_height="451dp"
         android:layout_marginTop="112dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

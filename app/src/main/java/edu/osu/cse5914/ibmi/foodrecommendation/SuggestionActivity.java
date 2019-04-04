@@ -27,6 +27,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
     private ListView lvJson;
     private String foodType;
     private TextView mTextView;
+    private TextView mTextHint;
     private boolean flag = false;
 
     @Override
@@ -38,6 +39,7 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
         Log.d("Suggest", foodType);
 
         mTextView = findViewById( R.id.kun_pao );
+        mTextHint = findViewById( R.id.hint_text );
         Log.d("Suggest", "3");
         mRestaurantButton = findViewById( R.id.restaurant );
         mRestaurantButton.setOnClickListener(this);
@@ -58,7 +60,8 @@ public class SuggestionActivity extends AppCompatActivity implements View.OnClic
         mHint.setOnClickListener(this);
 
         new SuggestRestaurantTask(lvJson,getApplicationContext()).execute(foodType);
-        mTextView.setText("Restaurants may Serve the Food");
+        mTextView.setText("Restaurants Serve the Food");
+        mTextHint.setText("Click Items for More Information!");
         setRestaurantOnClick();
 
     }
