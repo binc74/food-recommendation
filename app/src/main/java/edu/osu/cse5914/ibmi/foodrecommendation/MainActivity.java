@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ListView lvRestaurantJson;
 
+    private Button mBack;
 
 
 
@@ -88,7 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         minCalAllowed=min_max_cal.get(0);
         maxCalAllowed=min_max_cal.get(1);
 
-
+        mBack = findViewById( R.id.back );
+        mBack.setOnClickListener(this);
 
         //get the precise calorie of the food use nutritionix api
 
@@ -133,6 +135,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.back:
+                finish();
+                break;
 
+        }
     }
 }

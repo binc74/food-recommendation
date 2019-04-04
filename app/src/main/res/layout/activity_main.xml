@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SuggestionActivity">
+<!--
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -18,7 +23,7 @@
         android:layout_margin="16dp"
         android:orientation="vertical"
         >
-
+-->
     <!--<EditText-->
     <!--android:id="@+id/password"-->
     <!--android:layout_width="match_parent"-->
@@ -39,23 +44,52 @@
             <!--android:layout_height="79dp"-->
             <!--android:background="@drawable/whitebkg"/>-->
 
-        <TextView
-            android:id="@+id/kun_pao"
-            android:layout_width="match_parent"
-            android:layout_height="27dp"
-            android:text="We recommend these dishes to you~"
-            android:textAlignment="center" />
+    <TextView
+        android:id="@+id/kun_pao"
+        android:layout_width="260dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="640dp"
+        android:text="Recommended Food for You~"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/hint_text"
+        android:layout_width="260dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginBottom="4dp"
+        android:text="Click Items for More Information!"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="600dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_weight="1">
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="578dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="44dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        </ListView>
+    </ListView>
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="664dp"
+        android:background="@drawable/roundbutton"
+        android:text="back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
         <!--
             <TextView
                 android:id="@+id/kun_pao_chicken"
@@ -118,5 +152,9 @@
         android:text="General Tao's Chicken"
         android:textAlignment="center" />
     -->
+
+    <!--
     </LinearLayout>
-</LinearLayout>
+</LinearLayout>-->
+
+</android.support.constraint.ConstraintLayout>
