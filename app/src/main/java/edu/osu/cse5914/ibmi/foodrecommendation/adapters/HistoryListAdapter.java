@@ -36,7 +36,7 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
-        if(listItem == null)
+            if(listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(R.layout.meal_item ,parent, false);
 
         if (position < mealList.size()) {

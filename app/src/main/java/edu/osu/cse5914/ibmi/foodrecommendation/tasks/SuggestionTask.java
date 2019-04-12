@@ -2,6 +2,8 @@ package edu.osu.cse5914.ibmi.foodrecommendation.tasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Debug;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +25,8 @@ import edu.osu.cse5914.ibmi.foodrecommendation.adapters.RecepieListAdapter;
 
 //referenced website: https://www.codexpedia.com/android/asynctask-and-httpurlconnection-sample-in-android/
 public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
+    private static final String TAG = "SuggestionTask";
+
     protected TextView mText;
     protected ListView mList;
     private final Context mContext;
@@ -112,15 +116,20 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
         catch (JSONException e) {
             e.printStackTrace();
         }
+        ArrayList b=recepieList;
         return recepieList;
 
     }
 
+
+
+
     @Override
     protected void onPostExecute(ArrayList o) {
         super.onPostExecute(o);
-
-        RecepieListAdapter adapter = new RecepieListAdapter(mContext, R.layout.adapter_view_layout, o);
+        ArrayList b=o;
+        Log.d(TAG, o == null?"o is null": "Nevermind");
+        RecepieListAdapter adapter = new RecepieListAdapter(mContext, o);
         mList.setAdapter(adapter);
 
 
