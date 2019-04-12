@@ -107,7 +107,7 @@ public class VisualRecTask extends AsyncTask<String, Void, String> {
 //
 //        Log.d("VisualRecTask", "Current File: " + result.toString());
 //        return className;
-        return "Default category";
+        return "Apple";
     }
 
     @Override
