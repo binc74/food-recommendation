@@ -115,7 +115,7 @@ public class SuggestRestaurantTask extends AsyncTask<String, Void, ArrayList> {
     protected void onPostExecute(ArrayList o) {
         super.onPostExecute(o);
 
-        RestaurantListAdapter adapter = new RestaurantListAdapter(mContext, R.layout.adapter_view_layout, o);
+        RestaurantListAdapter adapter = new RestaurantListAdapter(mContext, o);
         mList.setAdapter(adapter);
 
 
