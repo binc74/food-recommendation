@@ -61,9 +61,34 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
             date.setTextColor(Color.GREEN);
 
             TextView calorie = listItem.findViewById(R.id.calorie);
+            TextView cholesterol=listItem.findViewById(R.id.cholesterol);
+            TextView fat=listItem.findViewById(R.id.fat);
+            TextView protein=listItem.findViewById(R.id.protein);
+            TextView sodium=listItem.findViewById(R.id.sodium);
+
             String calStr = String.format("Total Calorie: %.2f", currMeal.getCalorie());
+            String choStr = String.format("Total Cholesterol: %.2f mg ", currMeal.getCholesterol());
+            String fatStr = String.format("Total Fat: %.2f g", currMeal.getFat());
+            String proStr = String.format("Total Protein: %.2f g", currMeal.getProtein() );
+            String sodStr = String.format("Total Sodium: %.2f mg", currMeal.getSodium());
+
+
+
             calorie.setText(calStr);
             calorie.setTextColor(Color.BLUE);
+
+
+            cholesterol.setText(choStr);
+            cholesterol.setTextColor(Color.BLUE);
+
+            fat.setText(fatStr);
+            fat.setTextColor(Color.BLUE);
+
+            protein.setText(proStr);
+            protein.setTextColor(Color.BLUE);
+
+            sodium.setText(sodStr);
+            sodium.setTextColor(Color.BLUE);
 
 
 
