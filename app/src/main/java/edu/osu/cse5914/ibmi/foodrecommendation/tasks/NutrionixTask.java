@@ -37,7 +37,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 
-public class NutrionixTask  extends AsyncTask<String, Void,ArrayList> {
+public class NutrionixTask  extends AsyncTask<String, Void,ArrayList<String>> {
     private static final String TAG = "NutrionixTask";
 
     private Meal meal;
