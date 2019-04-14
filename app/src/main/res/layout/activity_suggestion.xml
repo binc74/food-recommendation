@@ -50,9 +50,9 @@
         android:id="@+id/recipe"
         android:layout_width="115dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/roundbutton"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/roundbutton1"
         android:text="Recipe"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hint_text" />
@@ -61,9 +61,9 @@
         android:id="@+id/restaurant"
         android:layout_width="112dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/roundbutton"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="92dp"
+        android:background="@drawable/roundbutton2"
         android:text="Restaurant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hint_text" />
@@ -78,7 +78,14 @@
         android:text="back"
         app:layout_constraintBottom_toTopOf="@+id/listView1"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
+
 <!--
+
+android:progressTint="@android:color/holo_orange_dark"
+     style="@style/mRatingBar" ->
     <Button
         android:id="@+id/hint"
         android:layout_width="40dp"
