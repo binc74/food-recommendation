@@ -17,7 +17,6 @@
         map:layout_constraintTop_toTopOf="parent"
         tools:context=".MapsActivity" />
 
-
     <Button
         android:id="@+id/back"
         android:layout_width="60dp"
@@ -25,9 +24,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="580dp"
         android:background="@drawable/innersnapicon"
-        android:textColor="#ffc28d"
+        android:textColor="#ffffff"
+        android:text="back"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
+
 </android.support.constraint.ConstraintLayout>
