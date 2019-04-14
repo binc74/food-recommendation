@@ -56,12 +56,16 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
 
             time += d.getMonth() + "/" + d.getDay() + "/" + (d.getYear() + 1900) + "  " + hour + ":" + min;
 
-            date.setText("Date: " + time);
+            String timeStr = "Date: " + time;
+            date.setText(timeStr);
             date.setTextColor(Color.GREEN);
 
             TextView calorie = listItem.findViewById(R.id.calorie);
-            calorie.setText("Total Calorie: " + Float.toString(currMeal.getCalorie()));
+            String calStr = String.format("Total Calorie: %.2f", currMeal.getCalorie());
+            calorie.setText(calStr);
             calorie.setTextColor(Color.BLUE);
+
+
 
             // Add the food list
             ArrayList<String> foodList = currMeal.getFood();
