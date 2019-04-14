@@ -2,6 +2,7 @@ package edu.osu.cse5914.ibmi.foodrecommendation.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -43,6 +44,7 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
             Meal currMeal = mealList.get(position);
 
             TextView date = listItem.findViewById(R.id.date);
+            date.setTypeface(null, Typeface.BOLD);
             Date d = currMeal.getTime();
             String time = "";
             String hour = "" + d.getHours();
@@ -58,7 +60,7 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
 
             String timeStr = "Date: " + time;
             date.setText(timeStr);
-            date.setTextColor(Color.GREEN);
+            date.setTextColor(Color.RED);
 
             TextView calorie = listItem.findViewById(R.id.calorie);
             TextView cholesterol=listItem.findViewById(R.id.cholesterol);
