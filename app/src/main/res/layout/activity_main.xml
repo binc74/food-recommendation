@@ -6,8 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:weightSum="2"
-    android:background="@drawable/bkglogin">
+    android:weightSum="2">
+    <!--android:background="@drawable/bkglogin"-->
+
     <!--
     tools:context=".SuggestionActivity"
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
