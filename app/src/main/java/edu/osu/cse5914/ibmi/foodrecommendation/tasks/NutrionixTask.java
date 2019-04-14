@@ -37,7 +37,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 
-public class NutrionixTask  extends AsyncTask<String, Void,String> {
+public class NutrionixTask  extends AsyncTask<String, Void,ArrayList> {
     private static final String TAG = "NutrionixTask";
 
     private Meal meal;
@@ -59,23 +59,35 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
     }
 
 
-    protected String doInBackground(String...objects) {
+    protected ArrayList<String> doInBackground(String...objects) {
 
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String recipieJsonStr = null;
         String single ="";
         String rcpParsed = "";
+
         String cal="0";
+        String fat="0";
+        String cholesterol="0";
+        String sodium="0";
+        String protein="0";
+
         int nMeals= meal.getFood().size();
         float all_cal=0;
+        float all_fat=0;
+        float all_cholesterol=0;
+        float all_sodium=0;
+        float all_protein=0;
+
         for (int i=0;i<nMeals;i++) {
             try {
 
 
                 //remember to only search those with images
 //            URL url = new URL("http://api.myjson.com/bins/xu8g0");
-                URL url = new URL("http://api.nutritionix.com/v1_1/search/" + meal.getFood().get(i) + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=4a38b710&appKey=ff6b72c536d2ed14864e1688a34d9e45");
+//                URL url = new URL("http://api.nutritionix.com/v1_1/search/" + meal.getFood().get(i) + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=4a38b710&appKey=ff6b72c536d2ed14864e1688a34d9e45");
+                URL url = new URL("http://api.nutritionix.com/v1_1/search/" + meal.getFood().get(i) + "?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_vitaminc%2Cnf_total_carbohydrates%2Cnf_protein%2Cnf_total_fat%2Cnf_cholesterol%2Cnf_sodium&appId=4a38b710&appKey=ff6b72c536d2ed14864e1688a34d9e45");
 //            URL url = new URL("http://api.nutritionix.com/v1_1/search/steak?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=4a38b710&appKey=ff6b72c536d2ed14864e1688a34d9e45");
 
                 urlConnection = (HttpURLConnection) url.openConnection();
@@ -98,6 +110,10 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
                 JSONObject JO = (JSONObject) rcpArr.get(0);
                 JSONObject JO1 = JO.getJSONObject("fields");
                 cal = JO1.get("nf_calories").toString();
+                fat = JO1.get("nf_total_fat").toString();
+                cholesterol=JO1.get("nf_cholesterol").toString();
+                sodium=JO1.get("nf_sodium").toString();
+                protein=JO1.get("nf_protein").toString();
                 String a = "1";
 
 
@@ -108,25 +124,61 @@ public class NutrionixTask  extends AsyncTask<String, Void,String> {
                 e.printStackTrace();
             }
             float clf=Float.parseFloat(cal);
+            float clf_fat=Float.parseFloat(fat);
+            float clf_cholesterol=Float.parseFloat(cholesterol);
+            float clf_sodium=Float.parseFloat(sodium);
+            float clf_protein=Float.parseFloat(protein);
+
+
             all_cal+=clf;
+            all_fat+=clf_fat;
+            all_cholesterol+=clf_cholesterol;
+            all_sodium+=clf_sodium;
+            all_protein+=clf_protein;
         }
 
         String strval=String.valueOf(all_cal);
-        return strval;
+        String str_fat=String.valueOf(all_fat);
+        String str_cholesterol=String.valueOf(all_cholesterol);
+        String str_sodium=String.valueOf(all_sodium);
+        String str_protein=String.valueOf(all_protein);
+
+        ArrayList<String> all_nutri=new ArrayList<>();
+        all_nutri.add(strval);
+        all_nutri.add(str_fat);
+        all_nutri.add(str_cholesterol);
+        all_nutri.add(str_sodium);
+        all_nutri.add(str_protein);
+        return all_nutri;
 
     }
-    @Override
-    protected void onPostExecute(String o) {
+
+    protected void onPostExecute(ArrayList<String> o) {
         super.onPostExecute(o);
 
         ArrayList<String> min_max_cal=new ArrayList<String>();
-        float cal=Float.parseFloat(o);
+        float cal=Float.parseFloat(o.get(0));
+        float fat=Float.parseFloat(o.get(1));
+        float cholesterol=Float.parseFloat(o.get(2));
+        float sodium=Float.parseFloat(o.get(3));
+        float protein=Float.parseFloat(o.get(4));
+
+
+
         String minCalAllowed,maxCalAllowed;
         meal.setCalorie(cal);
+        meal.setFat(fat);
+        meal.setCholesterol(cholesterol);
+        meal.setSodium(sodium);
+        meal.setProtein(protein);
         MealService mealService = new MealService();
         Log.d(TAG, "ID: " + meal.getDocumentId());
         mealService.getDocumentReference(meal.getDocumentId());
         mealService.updateCalorie(cal);
+        mealService.updateFat(fat);
+        mealService.updateCholesterol(cholesterol);
+        mealService.updateSodium(sodium);
+        mealService.updateProtein(protein);
 
         if (cal>800) {
             minCalAllowed = "0.5";
