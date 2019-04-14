@@ -100,7 +100,10 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
 
 //                String rating= JO.get()
 //                rcpParsed = rcpParsed + single +"\n" ;
-                recepieList.add( new Recepie( name, rating, prepTime, imgUrl ) );//use rating=1 and prepTime=2 for now and change later
+                Recepie sing_recepie=new Recepie( name, rating, prepTime, imgUrl );
+                if (!recepieList.contains(sing_recepie.getImgUrl())) {
+                    recepieList.add(sing_recepie);//use rating=1 and prepTime=2 for now and change later
+                }
 
 
             }
