@@ -67,10 +67,10 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
             TextView sodium=listItem.findViewById(R.id.sodium);
 
             String calStr = String.format("Total Calorie: %.2f", currMeal.getCalorie());
-            String choStr = String.format("Total Cholesterol: %.2f", currMeal.getCholesterol());
-            String fatStr = String.format("Total Fat: %.2f", currMeal.getFat());
-            String proStr = String.format("Total Protein: %.2f", currMeal.getProtein());
-            String sodStr = String.format("Total Sodium: %.2f", currMeal.getSodium());
+            String choStr = String.format("Total Cholesterol: %.2f mg ", currMeal.getCholesterol());
+            String fatStr = String.format("Total Fat: %.2f g", currMeal.getFat());
+            String proStr = String.format("Total Protein: %.2f g", currMeal.getProtein() );
+            String sodStr = String.format("Total Sodium: %.2f mg", currMeal.getSodium());
 
 
 
