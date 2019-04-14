@@ -54,5 +54,23 @@ public class MealService extends BaseFirestoreService {
         dr.update("calorie", calorie);
     }
 
+    public void updateFat(float fat)  {
+        dr.update("fat", fat);
+    }
+
+    public void updateCholesterol(float cholesterol)  {
+        dr.update("cholesterol", cholesterol);
+    }
+
+    public void updateSodium(float sodium)  {
+        dr.update("sodium", sodium);
+    }
+
+    public void updateProtein(float protein)  {
+        dr.update("protein", protein);
+    }
+
+
+
     public void setDocumentId(String uid) { dr.update("documentId", uid); }
 }

@@ -10,6 +10,35 @@ public class Meal extends BaseModel {
     private float calorie;
     private float protein;
 
+    public float getFat() {
+        return fat;
+    }
+
+    public void setFat(float fat) {
+        this.fat = fat;
+    }
+
+    private float fat;
+
+    public float getCholesterol() {
+        return cholesterol;
+    }
+
+    public void setCholesterol(float cholesterol) {
+        this.cholesterol = cholesterol;
+    }
+
+    private float cholesterol;
+
+    public float getSodium() {
+        return sodium;
+    }
+
+    public void setSodium(float sodium) {
+        this.sodium = sodium;
+    }
+
+    private float sodium;
     @ServerTimestamp
     private Date time;
 
@@ -17,10 +46,14 @@ public class Meal extends BaseModel {
         food = new ArrayList<>();
     }
 
-    public Meal(String f, float calorie) {
+    public Meal(String f, float calorie,float fat, float cholesterol,float sodium, float protein) {
         food = new ArrayList<>();
         food.add(f);
         this.calorie = calorie;
+        this.fat=fat;
+        this.cholesterol=cholesterol;
+        this.sodium=sodium;
+        this.protein=protein;
     }
 
     public Meal(String f) {
