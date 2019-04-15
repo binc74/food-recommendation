@@ -54,7 +54,7 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
                 min = "0" + min;
             }
 
-            time += d.getMonth() + "/" + d.getDay() + "/" + (d.getYear() + 1900) + "  " + hour + ":" + min;
+            time += (d.getMonth() + 1) + "/" + d.getDate() + "/" + (d.getYear() + 1900) + "  " + hour + ":" + min;
 
             String timeStr = "Date: " + time;
             date.setText(timeStr);
