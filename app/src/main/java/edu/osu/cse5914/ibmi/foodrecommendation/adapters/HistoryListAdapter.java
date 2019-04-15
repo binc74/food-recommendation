@@ -2,6 +2,7 @@ package edu.osu.cse5914.ibmi.foodrecommendation.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -43,6 +44,7 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
             Meal currMeal = mealList.get(position);
 
             TextView date = listItem.findViewById(R.id.date);
+            date.setTypeface(null, Typeface.BOLD);
             Date d = currMeal.getTime();
             String time = "";
             String hour = "" + d.getHours();
@@ -58,7 +60,7 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
 
             String timeStr = "Date: " + time;
             date.setText(timeStr);
-            date.setTextColor(Color.GREEN);
+            date.setTextColor(Color.RED);
 
             TextView calorie = listItem.findViewById(R.id.calorie);
             TextView cholesterol=listItem.findViewById(R.id.cholesterol);
@@ -67,10 +69,10 @@ public class HistoryListAdapter extends ArrayAdapter<Meal> {
             TextView sodium=listItem.findViewById(R.id.sodium);
 
             String calStr = String.format("Total Calorie: %.2f", currMeal.getCalorie());
-            String choStr = String.format("Total Cholesterol: %.2f", currMeal.getCholesterol());
-            String fatStr = String.format("Total Fat: %.2f", currMeal.getFat());
-            String proStr = String.format("Total Protein: %.2f", currMeal.getProtein());
-            String sodStr = String.format("Total Sodium: %.2f", currMeal.getSodium());
+            String choStr = String.format("Total Cholesterol: %.2f mg ", currMeal.getCholesterol());
+            String fatStr = String.format("Total Fat: %.2f g", currMeal.getFat());
+            String proStr = String.format("Total Protein: %.2f g", currMeal.getProtein() );
+            String sodStr = String.format("Total Sodium: %.2f mg", currMeal.getSodium());
 
 
 

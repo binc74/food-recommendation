@@ -2,6 +2,7 @@ package edu.osu.cse5914.ibmi.foodrecommendation.adapters;
 //referenced: https://github.com/mitchtabian/ListViews
 import android.content.Context;
 import android.graphics.BitmapFactory;
+import android.media.Rating;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.ArrayAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.ImageView;
 
@@ -46,10 +48,12 @@ public class RestaurantListAdapter extends ArrayAdapter<Restaurant> {
         if (position < restaurants.size()) {
             Restaurant currRestaurant=restaurants.get(position);
             TextView name=listItem.findViewById(R.id.textView2);
-            TextView rating=listItem.findViewById(R.id.textView3);
+            //TextView rating=listItem.findViewById(R.id.textView3);
+            RatingBar rating = listItem.findViewById( R.id.ratingbar );
 
             name.setText(currRestaurant.getName());
-            rating.setText(currRestaurant.getRating());
+            //rating.setText(currRestaurant.getRating());
+            rating.setRating( Float.parseFloat( currRestaurant.getRating() ) );
 
 
             String imgUrl=currRestaurant.getImgUrl();

@@ -5,7 +5,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
 
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,36 +19,53 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="80dp"-->
     <!--android:id="@+id/textView1"-->
-    <!--android:layout_weight="50"/>-->
+    <!--android:layout_weight="50"/>
+     <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/textView2"/>-->
 
     <ImageView
 
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="80dp"
         android:layout_marginRight="6dip"
         android:id="@+id/imageView0" />
 
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="50">
 
         <TextView
-            android:gravity="center"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:textStyle="bold"
+            android:gravity="center"
             android:textSize="14sp"
-            android:id="@+id/textView2"/>
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:id="@+id/textView3"
-            android:layout_below="@+id/textView2"/>
-    </LinearLayout>
+        <RatingBar
+            android:id="@+id/ratingbar"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginStart="164dp"
+            android:layout_marginTop="40dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:progressTint="@android:color/holo_red_dark"
+            android:stepSize="0.01"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>
