@@ -45,6 +45,9 @@ public class RecepieListAdapter extends ArrayAdapter<Recepie> {
         if(listItem == null)
             listItem = LayoutInflater.from(mContext).inflate(R.layout.adapter_view_layout ,parent, false);
 
+        if (local_recepies == null)
+            return listItem;
+
         if (position < local_recepies.size()) {
             Recepie currRecepie=local_recepies.get(position);
             TextView name=listItem.findViewById(R.id.textView2);
@@ -74,6 +77,9 @@ public class RecepieListAdapter extends ArrayAdapter<Recepie> {
 
     @Override
     public int getCount() {
+        if (local_recepies == null)
+            return 0;
+
         return local_recepies.size();
     }
 }
