@@ -32,13 +32,13 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
     private final Context mContext;
     protected String maxCal;
     protected String minCal;
-
-
-    public SuggestionTask(ListView lv, Context ct, String maxcal,String mincal ){
+    protected int health_Pref;
+    public SuggestionTask(int healthPref,ListView lv, Context ct, String maxcal,String mincal ){
         mList = lv;
         mContext = ct;
         maxCal=maxcal;
         minCal=mincal;
+        health_Pref=healthPref;
 
 
     }
@@ -64,9 +64,14 @@ public class SuggestionTask extends AsyncTask<ArrayList, Void, ArrayList> {
 
             //remember to only search those with images
 //            URL url = new URL("http://api.myjson.com/bins/xu8g0");
-            URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.ENERC_KCAL.max="+maxCal+"&nutrition.ENERC_KCAL.min="+minCal+"&allowedCourse[]=course^course-Main Dishes");
-
-            urlConnection = (HttpURLConnection) url.openConnection();
+            URL url;
+            if(health_Pref==4) {
+                 url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.ENERC_KCAL.max=" + maxCal + "&nutrition.ENERC_KCAL.min=" + minCal + "&flavor.meaty.min=0.3&&allowedCourse[]=course^course-Main Dishes");
+            }
+            else {
+                url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=1818c65c&_app_key=a20fe4e4dbb576f4e146ad953f72bacc&nutrition.ENERC_KCAL.max=" + maxCal + "&nutrition.ENERC_KCAL.min=" + minCal + "&&allowedCourse[]=course^course-Main Dishes");
+            }
+                urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 

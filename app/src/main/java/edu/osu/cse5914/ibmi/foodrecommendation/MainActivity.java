@@ -13,8 +13,13 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.ibm.watson.developer_cloud.language_translator.v3.LanguageTranslator;
 
+import edu.osu.cse5914.ibmi.foodrecommendation.db.MealService;
+import edu.osu.cse5914.ibmi.foodrecommendation.db.UserService;
+import edu.osu.cse5914.ibmi.foodrecommendation.model.Meal;
+import edu.osu.cse5914.ibmi.foodrecommendation.model.User;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.NutrionixTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.SuggestRestaurantTask;
 import edu.osu.cse5914.ibmi.foodrecommendation.tasks.SuggestionTask;
@@ -93,11 +98,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBack.setOnClickListener(this);
 
         //get the precise calorie of the food use nutritionix api
-
+        final int ordinal[] = new int[] { 0 };
         text = getIntent().getStringExtra("id");
         uid = getIntent().getStringExtra("uid");
+        UserService userService = new UserService();
+        userService.processUserById(uid, task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot ds = task.getResult();
+                User user = UserService.getUserFromDocument(ds);
 
-        new SuggestionTask(lvRecepieJson, getApplicationContext(),maxCalAllowed,minCalAllowed).execute();
+                int a=user.getHealthoption();
+                ordinal[0]=a;
+                new SuggestionTask(ordinal[0],lvRecepieJson, getApplicationContext(),maxCalAllowed,minCalAllowed).execute();
+
+
+            }
+        });
 
         lvRestaurantJson= (ListView) findViewById(R.id.listView1);
         lvRecepieJson.setOnItemClickListener(new AdapterView.OnItemClickListener() {
